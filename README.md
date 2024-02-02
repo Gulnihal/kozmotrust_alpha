@@ -1,2 +1,1 @@
-# kosmotrust_alpha
-secret repo for graduation
+# kozmotrust_alpha
