@@ -1,26 +1,44 @@
 const express = require("express");
+const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("express-session");
 const mongoose = require("mongoose");
+const MongoStore = require('connect-mongo');
+
+const userRoutes = require('./routes/user');
+
+const { mongoDbUrl, port } = require("./config");
+
+mongoose.connect(mongoDbUrl);
+
 const openai = require("openai", ({
     organization: 'org-3rIrZdNEl7oIhol74DSrWlIN',
 }));
 
-const dbURL = 'mongodb://localhost:27017/kozmotrust';
-module.exports = async () => {
-  try {
-      await mongoose.connect(process.env.DB_URL || dbURL, {});
-      console.log("CONNECTED TO DATABASE SUCCESSFULLY");
-  } catch (error) {
-      console.error('COULD NOT CONNECT TO DATABASE:', error.message);
-  }
-};
 
 const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connected!");
 });
 
-const port = process.env.PORT || 5000;
 const app = express();
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: mongoDbUrl,
+    }),
+    cookie: { maxAge: 180 * 60 * 1000 },
+  }),
+);
 
 // const apiKey = process.env.OPENAI_API_KEY || 'sk-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';
 
@@ -58,6 +76,7 @@ const app = express();
  * babbage-002	Replacement for the GPT-3 ada and babbage base models.	16,384 tokens	Up to Sep 2021
  * davinci-002	Replacement for the GPT-3 curie and davinci base models.	16,384 tokens	Up to Sep 2021
 */
+app.use('/user', userRoutes);
 
 app.route("/").get((req, res) => res.json("Kozmotrust Server!"));
 

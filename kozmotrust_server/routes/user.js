@@ -10,7 +10,7 @@ router.route("/:username").get(middleware.checkToken, (req, res) => {
         { username: req.params.username },
         (err, result) => {
             if (err) return res.status(500).json({ msg: err });
-            res.json({
+            return res.json({
                 data: result,
                 username: req.params.username,
             });
@@ -24,7 +24,7 @@ router.route("/login").post((req, res) => {
         (err, result) => {
             if (err) return res.status(500).json({ msg: err });
             if (result === null) {
-                res.status(403).json("Username is incorrect!");
+                return res.status(403).json("Username is incorrect!");
             }
             if (result.password === req.body.password){
                 let token = jwt.sign(
@@ -32,13 +32,13 @@ router.route("/login").post((req, res) => {
                     config.key,
                     { expiresIn: "24h" }
                 );
-                res.json({
+                return res.json({
                     token: token,
                     msg: "Success.",
                 });
             }
             else {
-                res.status(403).json("Password is incorrect!");
+                return res.status(403).json("Password is incorrect!");
             }
         }
     );
@@ -53,12 +53,11 @@ router.route("/register").post((req, res) => {
     user
         .save()
         .then(() => {
-            res.status(200).json("OK");
+            return res.status(200).json("OK");
         })
         .catch((err) => {
-            res.status(403).json({ msg: err });
-        })
-    res.json("Registered.")
+            return res.status(403).json({ msg: err });
+        }) 
 });
 
 router.route("/update/:username").patch(middleware.checkToken, (req, res) => {
