@@ -1,3 +1,4 @@
+// IMPORTS FROM PACKAGES
 const express = require("express");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -5,25 +6,33 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require('connect-mongo');
-
-const userRoutes = require('./routes/user');
-
+// IMPORTS FROM OTHER FILES
+const adminRouter = require("./routes/admin");
+const authRouter = require("./routes/auth");
+const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
+// INIT
 const { mongoDbUrl, port } = require("./config");
-
-mongoose.connect(mongoDbUrl);
-
+const app = express();
 const openai = require("openai", ({
-    organization: 'org-3rIrZdNEl7oIhol74DSrWlIN',
+  organization: 'org-3rIrZdNEl7oIhol74DSrWlIN',
 }));
 
+// middleware
+app.use(express.json());
+app.use(authRouter);
+app.use(adminRouter);
+app.use(productRouter);
+app.use(userRouter);
 
+// database connection
+mongoose.connect(mongoDbUrl);
 const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connected!");
 });
 
-const app = express();
-
+// other features
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -76,8 +85,5 @@ app.use(
  * babbage-002	Replacement for the GPT-3 ada and babbage base models.	16,384 tokens	Up to Sep 2021
  * davinci-002	Replacement for the GPT-3 curie and davinci base models.	16,384 tokens	Up to Sep 2021
 */
-app.use('/user', userRoutes);
-
-app.route("/").get((req, res) => res.json("Kozmotrust Server!"));
 
 app.listen(port, () => console.log(`Kozmotrust Server is running on port ${port}!`));
