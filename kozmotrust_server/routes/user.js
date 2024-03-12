@@ -1,104 +1,74 @@
 const express = require("express");
-const User = require("../models/users.model");
-const config = require("../config");
-const jwt = require("jsonwebtoken");
-const middleware = require("../middleware")
-const router = express.Router();
+const userRouter = express.Router();
+const auth = require("../middlewares/auth");
+const { Product } = require("../models/product");
+const User = require("../models/user");
 
-router.route("/:username").get(middleware.checkToken, (req, res) => {
-    User.findOne(
-        { username: req.params.username },
-        (err, result) => {
-            if (err) return res.status(500).json({ msg: err });
-            return res.json({
-                data: result,
-                username: req.params.username,
-            });
+userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
+  try {
+    const { id } = req.body;
+    const product = await Product.findById(id);
+    let user = await User.findById(req.user);
+
+    if (user.favorites.length == 0) {
+      user.favorites.push({ product, quantity: 1 });
+    } else {
+      let isProductFound = false;
+      for (let i = 0; i < user.favorites.length; i++) {
+        if (user.favorites[i].product._id.equals(product._id)) {
+          isProductFound = true;
         }
-    );
+      }
+
+      if (isProductFound) {
+        let producttt = user.favorites.find((productt) =>
+          productt.product._id.equals(product._id)
+        );
+        producttt.quantity += 1;
+      } else {
+        user.favorites.push({ product, quantity: 1 });
+      }
+    }
+    user = await user.save();
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.route("/login").post((req, res) => {
-    User.findOne(
-        { username: req.body.username },
-        (err, result) => {
-            if (err) return res.status(500).json({ msg: err });
-            if (result === null) {
-                return res.status(403).json("Username is incorrect!");
-            }
-            if (result.password === req.body.password){
-                let token = jwt.sign(
-                    { username: req.body.username },
-                    config.key,
-                    { expiresIn: "24h" }
-                );
-                return res.json({
-                    token: token,
-                    msg: "Success.",
-                });
-            }
-            else {
-                return res.status(403).json("Password is incorrect!");
-            }
+userRouter.delete("/api/remove-from-favorites/:id", auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    let user = await User.findById(req.user);
+
+    for (let i = 0; i < user.favorites.length; i++) {
+      if (user.favorites[i].product._id.equals(product._id)) {
+        if (user.favorites[i].quantity == 1) {
+          user.favorites.splice(i, 1);
+        } else {
+          user.favorites[i].quantity -= 1;
         }
-    );
+      }
+    }
+    user = await user.save();
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.route("/register").post((req, res) => {
-    const user = new User({
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-    });
-    user
-        .save()
-        .then(() => {
-            return res.status(200).json("OK");
-        })
-        .catch((err) => {
-            return res.status(403).json({ msg: err });
-        }) 
+// save user allergies
+userRouter.post("/api/save-user-allergies", auth, async (req, res) => {
+  try {
+    const { allergies } = req.body;
+    let user = await User.findById(req.user);
+    user.allergies = allergies;
+    user = await user.save();
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.route("/update/:username").patch(middleware.checkToken, (req, res) => {
-    User.findOneAndUpdatePassword(
-        { username: req.params.username },
-        { $set: { password: req.body.password } },
-        (err, result) => {
-            if (err) return res.status(500).json({ msg: err });
-            const msg = {
-                msg: "Password successfully updated.",
-                username: req.params.username,
-            };
-            return res.json(msg);
-        }
-    );
-    User.findOneAndUpdateEmail(
-        { username: req.params.username },
-        { $set: { email: req.body.email } },
-        (err, result) => {
-            if (err) return res.status(500).json({ msg: err });
-            const msg = {
-                msg: "Email successfully updated.",
-                username: req.params.username,
-            };
-            return res.json(msg);
-        }
-    );
-});
-
-router.route("/delete/:username").delete(middleware.checkToken, (req, res) => {
-    User.findOneAndDelete(
-        { username: req.params.username },
-        (err, result) => {
-            if (err) return res.status(500).json({ msg: err });
-            const msg = {
-                msg: "User deleted.",
-                username: req.params.username,
-            };
-            return res.json(msg);
-        }
-    );
-});
-
-module.exports = router;
+module.exports = userRouter;
