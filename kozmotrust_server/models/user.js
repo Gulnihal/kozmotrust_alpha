@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     required: true,
     type: String,
     trim: true,
+    unique: true,
   },
   email: {
     required: true,
@@ -19,6 +20,7 @@ const userSchema = mongoose.Schema({
       },
       message: "Please enter a valid email address",
     },
+    unique: true,
   },
   password: {
     required: true,

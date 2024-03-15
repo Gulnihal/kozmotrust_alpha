@@ -11,7 +11,7 @@ userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
     let user = await User.findById(req.user);
 
     if (user.favorites.length == 0) {
-      user.favorites.push({ product, quantity: 1 });
+      user.favorites.push({ product });
     } else {
       let isProductFound = false;
       for (let i = 0; i < user.favorites.length; i++) {
@@ -20,13 +20,8 @@ userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
         }
       }
 
-      if (isProductFound) {
-        let producttt = user.favorites.find((productt) =>
-          productt.product._id.equals(product._id)
-        );
-        producttt.quantity += 1;
-      } else {
-        user.favorites.push({ product, quantity: 1 });
+      if (!isProductFound) {
+        user.favorites.push({ product });
       }
     }
     user = await user.save();
@@ -44,11 +39,7 @@ userRouter.delete("/api/remove-from-favorites/:id", auth, async (req, res) => {
 
     for (let i = 0; i < user.favorites.length; i++) {
       if (user.favorites[i].product._id.equals(product._id)) {
-        if (user.favorites[i].quantity == 1) {
-          user.favorites.splice(i, 1);
-        } else {
-          user.favorites[i].quantity -= 1;
-        }
+        user.favorites.splice(i, 1);
       }
     }
     user = await user.save();
