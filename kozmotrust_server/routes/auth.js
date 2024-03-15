@@ -10,8 +10,15 @@ authRouter.post("/api/signup", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+      return res
+        .status(400)
+        .json({ msg: "User with same username already exists!" });
+    }
+
+    const existingUserEmail = await User.findOne({ email });
+    if (existingUserEmail) {
       return res
         .status(400)
         .json({ msg: "User with same email already exists!" });
@@ -55,6 +62,42 @@ authRouter.post("/api/signin", async (req, res) => {
   }
 });
 
+// Update password
+authRouter.patch("/api/update/:username", async (req, res) => {
+  try {
+    const { username, password, newPassword } = req.body;
+    // TODO username should be coming from token
+    var user = await User.findOne({ username });
+    const isMatch = await bcryptjs.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Incorrect password." });
+    }
+    const newHashedPassword = await bcryptjs.hash(newPassword, 8);
+    user.password = newHashedPassword;
+    user = await user.save();
+    return res.json(user);
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+});
+
+// Deleting user
+authRouter.delete("/api/delete/:username", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    // TODO username should be coming from token and delete request doesnt remove item from db
+    var user = await User.findOne({ username });
+    const isMatch = await bcryptjs.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Incorrect password." });
+    }
+    return res.json({ msg: "User deleted." });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+});
+
+// token validation
 authRouter.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.header("x-auth-token");

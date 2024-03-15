@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const mongoose = require("mongoose");
-const MongoStore = require('connect-mongo');
+const MongoStore = require("connect-mongo");
+const cors = require("cors");
 // IMPORTS FROM OTHER FILES
 const adminRouter = require("./routes/admin");
 const authRouter = require("./routes/auth");
@@ -24,6 +25,7 @@ app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
 app.use(userRouter);
+app.use(cors());
 
 // database connection
 mongoose.connect(mongoDbUrl);
@@ -49,7 +51,7 @@ app.use(
   }),
 );
 
-// const apiKey = process.env.OPENAI_API_KEY || 'sk-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';
+// const apiKey = 'sk-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';
 
 // const client = new openai({ key: apiKey });
 
