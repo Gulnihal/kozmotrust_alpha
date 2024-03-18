@@ -54,7 +54,7 @@ authRouter.post("/api/signin", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: "Incorrect password." });
     }
-
+    // token cannot be used from other functions
     const token = jwt.sign({ id: user._id }, "passwordKey");
     res.json({ token, ...user._doc });
   } catch (e) {
@@ -114,7 +114,7 @@ authRouter.post("/tokenIsValid", async (req, res) => {
 });
 
 // get user data
-authRouter.get("/", auth, async (req, res) => {
+authRouter.get("/api/:user", auth, async (req, res) => {
   const user = await User.findById(req.user);
   res.json({ ...user._doc, token: req.token });
 });

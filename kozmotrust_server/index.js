@@ -87,5 +87,6 @@ app.use(
  * babbage-002	Replacement for the GPT-3 ada and babbage base models.	16,384 tokens	Up to Sep 2021
  * davinci-002	Replacement for the GPT-3 curie and davinci base models.	16,384 tokens	Up to Sep 2021
 */
+app.route("/").get((req, res) => res.json("Kozmotrust Server!"));
 
 app.listen(port, () => console.log(`Kozmotrust Server is running on port ${port}!`));
