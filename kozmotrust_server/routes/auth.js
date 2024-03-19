@@ -56,7 +56,6 @@ authRouter.post("/api/signin", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: "Incorrect password." });
     }
-    // token cannot be used from other functions
     const token = jwt.sign(
       { id: user._id },
       secretKey,
