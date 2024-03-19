@@ -13,7 +13,7 @@ const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
 // INIT
-const { AIapiKey, mongoDbUrl, port } = require("./config");
+const { secretKey, AIapiKey, mongoDbUrl, port } = require("./config");
 const app = express();
 const openai = require("openai");
 
@@ -31,7 +31,7 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connected!");
 });
-
+ 
 // other features
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: 'secret',
+    secret: secretKey,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
