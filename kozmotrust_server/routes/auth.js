@@ -1,9 +1,11 @@
 const express = require("express");
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
-const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
+const { secretKey } = require("../config");
+const authRouter = express.Router();
+
 
 // SIGN UP
 authRouter.post("/api/signup", async (req, res) => {
@@ -32,9 +34,9 @@ authRouter.post("/api/signup", async (req, res) => {
       username,
     });
     user = await user.save();
-    res.json(user);
+    return res.json(user);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: e.message });
   }
 });
 
@@ -54,20 +56,29 @@ authRouter.post("/api/signin", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: "Incorrect password." });
     }
-
-    const token = jwt.sign({ id: user._id }, "passwordKey");
-    res.json({ token, ...user._doc });
+    const token = jwt.sign(
+      { id: user._id },
+      secretKey,
+      {
+        algorithm: 'HS256',
+        allowInsecureKeySizes: true,
+        expiresIn: 86400, // 24 hours
+      }
+    );
+    jwt.token = token;
+    return res.status(200).json({ accessToken: token, ...user._doc });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: e.message });
   }
 });
 
 // Update password
 authRouter.patch("/api/update/:username", async (req, res) => {
   try {
-    const { username, password, newPassword } = req.body;
-    // TODO username should be coming from token
-    var user = await User.findOne({ username });
+    const { password, newPassword } = req.body;
+    const token = jwt.token;
+    const verified = jwt.verify(token, secretKey);
+    var user = await User.findById(verified.id);
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ msg: "Incorrect password." });
@@ -84,13 +95,15 @@ authRouter.patch("/api/update/:username", async (req, res) => {
 // Deleting user
 authRouter.delete("/api/delete/:username", async (req, res) => {
   try {
-    const { username, password } = req.body;
-    // TODO username should be coming from token and delete request doesnt remove item from db
-    var user = await User.findOne({ username });
+    const { password } = req.body;
+    const token = jwt.token;
+    const verified = jwt.verify(token, secretKey);
+    const user = await User.findById(verified.id);
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ msg: "Incorrect password." });
     }
+    await User.findByIdAndDelete(verified.id);
     return res.json({ msg: "User deleted." });
   } catch (e) {
     return res.status(500).json({ error: e.message });
@@ -100,23 +113,29 @@ authRouter.delete("/api/delete/:username", async (req, res) => {
 // token validation
 authRouter.post("/tokenIsValid", async (req, res) => {
   try {
-    const token = req.header("x-auth-token");
-    if (!token) return res.json(false);
-    const verified = jwt.verify(token, "passwordKey");
-    if (!verified) return res.json(false);
+    const token = jwt.token;
+    if (!token) {
+      return res.json(false);
+    }
+    const verified = jwt.verify(token, secretKey);
+    if (!verified) {
+      return res.json(false);
+    }
 
     const user = await User.findById(verified.id);
-    if (!user) return res.json(false);
-    res.json(true);
+    if (!user) {
+      return res.json(false);
+    }
+    return res.json(true);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: e.message });
   }
 });
 
 // get user data
-authRouter.get("/", auth, async (req, res) => {
+authRouter.get("/api/:user", auth, async (req, res) => {
   const user = await User.findById(req.user);
-  res.json({ ...user._doc, token: req.token });
+  return res.json({ ...user._doc, token: req.token });
 });
 
 module.exports = authRouter;
