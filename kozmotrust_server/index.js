@@ -13,11 +13,9 @@ const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
 // INIT
-const { mongoDbUrl, port } = require("./config");
+const { secretKey, AIapiKey, mongoDbUrl, port } = require("./config");
 const app = express();
-const openai = require("openai", ({
-  organization: 'org-3rIrZdNEl7oIhol74DSrWlIN',
-}));
+const openai = require("openai");
 
 // middleware
 app.use(express.json());
@@ -33,7 +31,7 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connected!");
 });
-
+ 
 // other features
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -41,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: 'secret',
+    secret: secretKey,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
@@ -51,36 +49,34 @@ app.use(
   }),
 );
 
-// const apiKey = 'sk-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';
+const client = new openai({ apiKey: AIapiKey });
 
-// const client = new openai({ key: apiKey });
+// Example of using the completions API for cosmetics information
+const prompt = 'Investigate and provide information about the potential effects of the following ingredients in cosmetic products:';
 
-// // Example of using the completions API for cosmetics information
-// const prompt = 'Investigate and provide information about the potential effects of the following ingredients in cosmetic products:';
+const ingredientsList = [
+  'Retinol',
+  'Hyaluronic Acid',
+  'Parabens',
+  'Fragrance',
+  // Add more ingredients as needed for testing
+];
 
-// const ingredientsList = [
-//   'Retinol',
-//   'Hyaluronic Acid',
-//   'Parabens',
-//   'Fragrance',
-//   // Add more ingredients as needed for testing
-// ];
+const ingredientsPrompt = ingredientsList.map((ingredient, index) => `${index + 1}. ${ingredient}`).join('\n');
 
-// const ingredientsPrompt = ingredientsList.map((ingredient, index) => `${index + 1}. ${ingredient}`).join('\n');
+const fullPrompt = `${prompt}\n${ingredientsPrompt}`;
 
-// const fullPrompt = `${prompt}\n${ingredientsPrompt}`;
-
-// client.completions.create({
-//   model: 'davinci-002', // we can choose different models
-//   prompt: fullPrompt,
-//   max_tokens: 200,
-// })
-// .then(response => {
-//   console.log(response.choices[0].text);
-// })
-// .catch(error => {
-//   console.error(error);
-// });
+client.completions.create({
+  model: 'davinci-002', // we can choose different models
+  prompt: fullPrompt,
+  max_tokens: 200,
+})
+.then(response => {
+  console.log(response.choices[0].text);
+})
+.catch(error => {
+  console.error(error);
+});
 
 /**
  * GPT base models can understand and generate natural language or code but are not trained with instruction following.
