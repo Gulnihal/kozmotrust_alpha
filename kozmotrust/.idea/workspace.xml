@@ -9,24 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="dependency added">
-      <change afterPath="$PROJECT_DIR$/assets/images/profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/logo - Copy.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/logo2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/NetworkHandler.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/runner/win32_window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/windows/runner/win32_window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/auth.js" afterDir="false" />
-    </list>
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="not working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,12 +109,13 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "issue#10",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib",
+    "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/features/auth/screens",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\auth\screens" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -155,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711151308084</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="not working">
+      <option name="closed" value="true" />
+      <created>1711184788337</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711184788337</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -177,6 +169,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dependency added" />
-    <option name="LAST_COMMIT_MESSAGE" value="dependency added" />
+    <MESSAGE value="not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="not working" />
   </component>
 </project>
