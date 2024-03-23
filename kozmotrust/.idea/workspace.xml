@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="not working" />
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711184788337</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix">
+      <option name="closed" value="true" />
+      <created>1711213737166</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711213737166</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -170,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dependency added" />
     <MESSAGE value="not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="not working" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>
