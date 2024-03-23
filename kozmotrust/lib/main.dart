@@ -1,26 +1,61 @@
+import 'package:kozmotrust/common/widgets/bottom_bar.dart';
+import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/admin/screens/admin_screen.dart';
+import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
+import 'package:kozmotrust/features/auth/services/auth_service.dart';
+import 'package:kozmotrust/providers/user_provider.dart';
+import 'package:kozmotrust/router.dart';
 import 'package:flutter/material.dart';
-import 'package:kozmotrust/constants.dart';
-import 'package:kozmotrust/screens/home/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    ),
+  ], child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
-  // This widget is the root of the application.
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+    authService.getUserData(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'Kozmotrust',
       theme: ThemeData(
-        scaffoldBackgroundColor: nBackgroundColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        colorScheme: const ColorScheme.light(
+          primary: GlobalVariables.secondaryColor,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
+        useMaterial3: true, // can remove this line
       ),
-      home: HomeScreen(),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? Provider.of<UserProvider>(context).user.type == 'user'
+              ? const BottomBar()
+              : const AdminScreen()
+          : const AuthScreen(),
     );
   }
 }

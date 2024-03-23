@@ -38,6 +38,15 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   logger: ^2.1.0
   http: ^1.2.1
+  google_fonts: ^6.2.1
+  image_picker: ^1.0.7
+  json_annotation: ^4.8.1
+  provider: ^6.1.2
+  carousel_slider: ^4.2.1
+  shared_preferences: ^2.2.2
+  dotted_border: ^2.1.0
+  cloudinary_public: ^0.23.1
+  file_picker: ^8.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +74,17 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
+  assets:
+    - assets/images/logo.png
+    - assets/images/logo2.png
+    - assets/images/profile.png
+    - assets/images/menu.png
+    - assets/images/google.png
+    - assets/images/email.png
+    - assets/images/mark.png
+    - assets/images/share.png
+    - assets/images/star.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
