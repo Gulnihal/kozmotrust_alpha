@@ -21,7 +21,7 @@ class AllergiesServices {
         Uri.parse('$uri/api/save-user-allergies'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': userProvider.user.token,
+          'accessToken': userProvider.user.token,
         },
         body: jsonEncode({
           'allergies': allergies,
@@ -56,7 +56,7 @@ class AllergiesServices {
       http.Response res = await http.post(Uri.parse('$uri/api/order'),
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
-            'x-auth-token': userProvider.user.token,
+            'accessToken': userProvider.user.token,
           },
           body: jsonEncode({
             'favorites': userProvider.user.favorites,
@@ -92,7 +92,7 @@ class AllergiesServices {
         Uri.parse('$uri/admin/delete-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': userProvider.user.token,
+          'accessToken': userProvider.user.token,
         },
         body: jsonEncode({
           'id': product.id,

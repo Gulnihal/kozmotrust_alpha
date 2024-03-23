@@ -46,7 +46,7 @@ class AdminServices {
         Uri.parse('$uri/admin/add-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': userProvider.user.token,
+          'accessToken': userProvider.user.token,
         },
         body: product.toJson(),
       );
@@ -72,7 +72,7 @@ class AdminServices {
       http.Response res =
       await http.get(Uri.parse('$uri/admin/get-products'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
-        'x-auth-token': userProvider.user.token,
+        'accessToken': userProvider.user.token,
       });
 
       httpErrorHandle(
@@ -108,7 +108,7 @@ class AdminServices {
         Uri.parse('$uri/admin/delete-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': userProvider.user.token,
+          'accessToken': userProvider.user.token,
         },
         body: jsonEncode({
           'id': product.id,
