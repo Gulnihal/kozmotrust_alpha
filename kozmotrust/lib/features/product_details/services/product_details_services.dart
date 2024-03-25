@@ -42,34 +42,4 @@ class ProductDetailsServices {
       showSnackBar(context, e.toString());
     }
   }
-
-  void rateProduct({
-    required BuildContext context,
-    required Product product,
-    required double rating,
-  }) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-
-    try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/rate-product'),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'accessToken': userProvider.user.token,
-        },
-        body: jsonEncode({
-          'id': product.id!,
-          'rating': rating,
-        }),
-      );
-
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {},
-      );
-    } catch (e) {
-      showSnackBar(context, e.toString());
-    }
-  }
 }

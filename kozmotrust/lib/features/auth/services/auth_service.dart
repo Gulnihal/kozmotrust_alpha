@@ -12,17 +12,18 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
+  late SharedPreferences prefs;
   // sign up user
   void signUpUser({
     required BuildContext context,
     required String email,
     required String password,
-    required String name,
+    required String username,
   }) async {
     try {
       User user = User(
         id: '',
-        name: name,
+        username: username,
         password: password,
         email: email,
         allergies: '',
@@ -75,9 +76,9 @@ class AuthService {
         response: res,
         context: context,
         onSuccess: () async {
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
-          await prefs.setString('accessToken', jsonDecode(res.body)['token']);
+          await prefs.setString('accessToken', jsonDecode(res.body)['accessToken']);
           Navigator.pushNamedAndRemoveUntil(
             context,
             BottomBar.routeName,
@@ -95,13 +96,12 @@ class AuthService {
     BuildContext context,
   ) async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('accessToken');
 
       if (token == null) {
         prefs.setString('accessToken', '');
       }
-
       var tokenRes = await http.post(
         Uri.parse('$uri/tokenIsValid'),
         headers: <String, String>{

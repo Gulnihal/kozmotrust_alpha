@@ -118,7 +118,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ? const Loader()
           : Column(
               children: [
-                const allergiesBox(),
+                const AllergiesBox(),
                 const SizedBox(height: 10),
                 Expanded(
                   child: ListView.builder(

@@ -26,7 +26,7 @@ class BelowAppBar extends StatelessWidget {
               ),
               children: [
                 TextSpan(
-                  text: user.name,
+                  text: user.username,
                   style: const TextStyle(
                     fontSize: 22,
                     color: Colors.black,

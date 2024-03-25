@@ -9,10 +9,10 @@ class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
 
   @override
-  State<FavoritesScreen> createState() => _CartScreenState();
+  State<FavoritesScreen> createState() => _FavoritesScreenState();
 }
 
-class _CartScreenState extends State<FavoritesScreen> {
+class _FavoritesScreenState extends State<FavoritesScreen> {
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
@@ -86,7 +86,7 @@ class _CartScreenState extends State<FavoritesScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
