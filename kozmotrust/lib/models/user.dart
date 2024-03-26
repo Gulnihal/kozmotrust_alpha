@@ -5,7 +5,7 @@ class User {
   final String id;
   final String username;
   final String email;
-  final String password;
+  late final String password;
   final String allergies;
   final String type;
   final List<dynamic> favorites;

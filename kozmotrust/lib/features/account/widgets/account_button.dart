@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
 
 class AccountButton extends StatelessWidget {
   final String text;
   final IconData icon;
+  final Color background;
   final VoidCallback onTap;
 
   const AccountButton({
     super.key,
     required this.text,
     required this.icon,
+    required this.background,
     required this.onTap,
   });
 
@@ -20,7 +21,7 @@ class AccountButton extends StatelessWidget {
       height: 40, // Adjust the height of the button as needed
       child: OutlinedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: GlobalVariables.buttonBackgroundColor,
+          backgroundColor: background,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50), // Set border radius to 50
           ),

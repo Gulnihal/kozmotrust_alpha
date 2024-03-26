@@ -2,6 +2,7 @@ import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/features/allergies/screens/allergies_screen.dart';
 import 'package:kozmotrust/features/admin/screens/add_product_screen.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
+import 'package:kozmotrust/features/account/screens/account_settings.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
@@ -15,7 +16,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const AuthScreen(),
       );
-
+    case AccountSettings.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const AccountSettings(),
+      );
     case HomeScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,

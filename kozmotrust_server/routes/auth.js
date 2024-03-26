@@ -49,12 +49,12 @@ authRouter.post("/signin", async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ msg: "User with this email does not exist!" });
+        .json({ msg: "E-mail or password is incorrect!" });
     }
-
+    // messages changed for security.
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: "Incorrect password." });
+      return res.status(400).json({ msg: "E-mail or password is incorrect!" });
     }
     const token = jwt.sign(
       { id: user._id },
@@ -73,7 +73,7 @@ authRouter.post("/signin", async (req, res) => {
 });
 
 // Update password
-authRouter.patch("/api/update/:username", async (req, res) => {
+authRouter.patch("/api/update", async (req, res) => {
   try {
     const { password, newPassword } = req.body;
     const token = jwt.token;
@@ -93,7 +93,7 @@ authRouter.patch("/api/update/:username", async (req, res) => {
 });
 
 // Deleting user
-authRouter.delete("/api/delete/:username", async (req, res) => {
+authRouter.delete("/api/delete", async (req, res) => {
   try {
     const { password } = req.body;
     const token = jwt.token;
