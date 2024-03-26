@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
-class CartServices {
-  void removeFromCart({
+class FavoritesServices {
+  void removeFromFavorites({
     required BuildContext context,
     required Product product,
   }) async {
@@ -19,7 +19,7 @@ class CartServices {
 
     try {
       http.Response res = await http.delete(
-        Uri.parse('$uri/api/remove-from-cart/${product.id}'),
+        Uri.parse('$uri/api/remove-from-favorites/${product.id}'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'accessToken': userProvider.user.token,
@@ -31,7 +31,7 @@ class CartServices {
         context: context,
         onSuccess: () {
           User user =
-              userProvider.user.copyWith(favorites: jsonDecode(res.body)['cart']);
+              userProvider.user.copyWith(favorites: jsonDecode(res.body)['favorites']);
           userProvider.setUserFromModel(user);
         },
       );

@@ -2,8 +2,8 @@ import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class allergiesBox extends StatelessWidget {
-  const allergiesBox({Key? key}) : super(key: key);
+class AllergiesBox extends StatelessWidget {
+  const AllergiesBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class allergiesBox extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: Text(
-                'Delivery to ${user.name} - ${user.allergies}',
+                'Delivery to ${user.username} - ${user.allergies}',
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                 ),

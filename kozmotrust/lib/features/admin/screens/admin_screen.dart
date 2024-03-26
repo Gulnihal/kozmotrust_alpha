@@ -30,11 +30,6 @@ class _AdminScreenState extends State<AdminScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: GlobalVariables.appBarGradient,
-            ),
-          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,8 +56,8 @@ class _AdminScreenState extends State<AdminScreen> {
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedNavBarColor,
-        unselectedItemColor: GlobalVariables.unselectedNavBarColor,
+        selectedItemColor: GlobalVariables.selectedTopBarColor,
+        unselectedItemColor: GlobalVariables.selectedTopBarColor,
         backgroundColor: GlobalVariables.backgroundColor,
         iconSize: 28,
         onTap: updatePage,
@@ -75,7 +70,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 0
-                        ? GlobalVariables.selectedNavBarColor
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -95,7 +90,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -115,7 +110,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 2
-                        ? GlobalVariables.selectedNavBarColor
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),

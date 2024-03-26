@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 class ProductDetailsServices {
-  void addTofavorites({
+  void addToFavorites({
     required BuildContext context,
     required Product product,
   }) async {
@@ -37,36 +37,6 @@ class ProductDetailsServices {
               userProvider.user.copyWith(favorites: jsonDecode(res.body)['favorites']);
           userProvider.setUserFromModel(user);
         },
-      );
-    } catch (e) {
-      showSnackBar(context, e.toString());
-    }
-  }
-
-  void rateProduct({
-    required BuildContext context,
-    required Product product,
-    required double rating,
-  }) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-
-    try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/rate-product'),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'accessToken': userProvider.user.token,
-        },
-        body: jsonEncode({
-          'id': product.id!,
-          'rating': rating,
-        }),
-      );
-
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {},
       );
     } catch (e) {
       showSnackBar(context, e.toString());

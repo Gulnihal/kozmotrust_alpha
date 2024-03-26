@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -9,7 +12,34 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="fix" />
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/global_variables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/global_variables.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/account_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/account_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/bottom_buttons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/bottom_buttons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/add_product_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/add_product_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/allergies/screens/allergies_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/allergies/screens/allergies_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/auth/screens/auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/screens/auth_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/auth/services/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/services/auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/favorites/screens/favorites_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/favorites/screens/favorites_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/favorites/widgets/favorite_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/favorites/widgets/favorite_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/widget/searched_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widget/searched_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/providers/user_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/user_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,6 +113,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -109,12 +142,14 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "issue#10",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/features/auth/screens",
+    "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/models",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\models" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\auth\screens" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib" />
     </key>
@@ -163,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711213753780</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix">
+      <option name="closed" value="true" />
+      <created>1711353856156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711353856156</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -186,6 +229,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dependency added" />
     <MESSAGE value="not working" />
+    <MESSAGE value="fixesse" />
     <MESSAGE value="fix" />
     <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>

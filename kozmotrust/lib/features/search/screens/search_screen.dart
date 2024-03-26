@@ -1,5 +1,4 @@
 import 'package:kozmotrust/common/widgets/loader.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/home/widgets/allergies_box.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/search/services/search_services.dart';
@@ -11,9 +10,9 @@ class SearchScreen extends StatefulWidget {
   static const String routeName = '/search-screen';
   final String searchQuery;
   const SearchScreen({
-    Key? key,
+    super.key,
     required this.searchQuery,
-  }) : super(key: key);
+  });
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -45,11 +44,6 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: GlobalVariables.appBarGradient,
-            ),
-          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -118,7 +112,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ? const Loader()
           : Column(
               children: [
-                const allergiesBox(),
+                const AllergiesBox(),
                 const SizedBox(height: 10),
                 Expanded(
                   child: ListView.builder(

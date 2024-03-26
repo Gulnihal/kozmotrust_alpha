@@ -5,31 +5,31 @@ import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CartProduct extends StatefulWidget {
+class FavoritesProduct extends StatefulWidget {
   final int index;
-  const CartProduct({
-    Key? key,
+  const FavoritesProduct({
+    super.key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
-  State<CartProduct> createState() => _CartProductState();
+  State<FavoritesProduct> createState() => _FavoritesProductState();
 }
 
-class _CartProductState extends State<CartProduct> {
+class _FavoritesProductState extends State<FavoritesProduct> {
   final ProductDetailsServices productDetailsServices =
       ProductDetailsServices();
-  final CartServices cartServices = CartServices();
+  final FavoritesServices favoritesServices = FavoritesServices();
 
   void increaseQuantity(Product product) {
-    productDetailsServices.addTofavorites(
+    productDetailsServices.addToFavorites(
       context: context,
       product: product,
     );
   }
 
   void decreaseQuantity(Product product) {
-    cartServices.removeFromCart(
+    favoritesServices.removeFromFavorites(
       context: context,
       product: product,
     );
@@ -37,9 +37,9 @@ class _CartProductState extends State<CartProduct> {
 
   @override
   Widget build(BuildContext context) {
-    final productCart = context.watch<UserProvider>().user.favorites[widget.index];
-    final product = Product.fromMap(productCart['product']);
-    final quantity = productCart['quantity'];
+    final productFavorites = context.watch<UserProvider>().user.favorites[widget.index];
+    final product = Product.fromMap(productFavorites['product']);
+    final quantity = productFavorites['quantity'];
 
     return Column(
       children: [
@@ -64,18 +64,6 @@ class _CartProductState extends State<CartProduct> {
                       product.name,
                       style: const TextStyle(
                         fontSize: 16,
-                      ),
-                      maxLines: 2,
-                    ),
-                  ),
-                  Container(
-                    width: 235,
-                    padding: const EdgeInsets.only(left: 10, top: 5),
-                    child: Text(
-                      '\$${product.price}',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
                       ),
                       maxLines: 2,
                     ),

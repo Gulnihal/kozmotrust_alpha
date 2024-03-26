@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/features/admin/services/admin_services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
-  const AddProductScreen({Key? key}) : super(key: key);
+  const AddProductScreen({super.key});
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
@@ -20,11 +19,11 @@ class AddProductScreen extends StatefulWidget {
 class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController priceController = TextEditingController();
-  final TextEditingController quantityController = TextEditingController();
+  final TextEditingController ingredientsController = TextEditingController();
   final AdminServices adminServices = AdminServices();
 
-  String category = 'Mobiles';
+  // TODO chek it out
+  String category = 'Skin Care';
   List<File> images = [];
   final _addProductFormKey = GlobalKey<FormState>();
 
@@ -33,26 +32,24 @@ class _AddProductScreenState extends State<AddProductScreen> {
     super.dispose();
     productNameController.dispose();
     descriptionController.dispose();
-    priceController.dispose();
-    quantityController.dispose();
+    ingredientsController.dispose();
   }
 
   List<String> productCategories = [
-    'Mobiles',
-    'Essentials',
-    'Appliances',
-    'Books',
-    'Fashion'
+    'Skin Care',
+    'Oral Care',
+    'Hair Care',
+    'Make-up',
+    'Perfumes & Deodorant'
   ];
 
-  void sellProduct() {
+  void addProduct() {
     if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
-      adminServices.sellProduct(
+      adminServices.addProduct(
         context: context,
         name: productNameController.text,
         description: descriptionController.text,
-        price: double.parse(priceController.text),
-        quantity: double.parse(quantityController.text),
+        ingredients: ingredientsController.text,
         category: category,
         images: images,
       );
@@ -72,11 +69,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: GlobalVariables.appBarGradient,
-            ),
-          ),
           title: const Text(
             'Add Product',
             style: TextStyle(
@@ -157,13 +149,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
-                  controller: priceController,
-                  hintText: 'Price',
-                ),
-                const SizedBox(height: 10),
-                CustomTextField(
-                  controller: quantityController,
-                  hintText: 'Quantity',
+                  controller: ingredientsController,
+                  hintText: 'ingredients',
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
@@ -187,7 +174,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 10),
                 CustomButton(
                   text: 'Sell',
-                  onTap: sellProduct,
+                  onTap: addProduct,
                 ),
               ],
             ),

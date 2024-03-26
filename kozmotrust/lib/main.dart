@@ -1,8 +1,8 @@
 import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/admin/screens/admin_screen.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/auth/services/auth_service.dart';
+import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/router.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     authService.getUserData(context);
+    // print(UserProvider().user.username+"dfgsdfg");
   }
 
   @override
@@ -51,10 +52,10 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true, // can remove this line
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type == 'user'
-              ? const BottomBar()
-              : const AdminScreen()
+      home: Provider.of<UserProvider>(context).user.token.isEmpty
+          ? Provider.of<UserProvider>(context).user.token.isNotEmpty
+              ? const HomeScreen()
+              : const BottomBar()
           : const AuthScreen(),
     );
   }

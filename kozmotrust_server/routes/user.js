@@ -62,4 +62,13 @@ userRouter.post("/api/save-user-allergies", auth, async (req, res) => {
   }
 });
 
+userRouter.get("/api/favorites", auth, async (req, res) => {
+  try {
+    const favorites = await Favorites.find({ userId: req.user });
+    res.json(favorites);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 module.exports = userRouter;
