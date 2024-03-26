@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
   final String image;
+  final String name;
   const SingleProduct({
-    Key? key,
+    super.key,
+    required this.name,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,22 @@ class SingleProduct extends StatelessWidget {
         child: Container(
           width: 180,
           padding: const EdgeInsets.all(10),
-          child: Image.network(
-            image,
-            fit: BoxFit.fitHeight,
-            width: 180,
+          child: Column (
+            children: [
+              Image.network(
+                image,
+                fit: BoxFit.fitHeight,
+                width: 150,
+              ),
+              const SizedBox(height: 20,),
+              Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,33 +1,54 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:kozmotrust/models/rating.dart';
 
 class Product {
   final String? id;
   final String name;
+  final String brand;
   final String description;
   final List<String> images;
   final String ingredients;
   final String category;
+  final Bool combination;
+  final Bool dry;
+  final Bool normal;
+  final Bool oily;
+  final Bool sensitive;
+
   final List<Rating>? rating;
+
   Product({
     this.id,
-    required this.name,
     required this.description,
+    required this.brand,
+    required this.name,
     required this.images,
     required this.ingredients,
     required this.category,
-    this.rating,
+    required this.combination,
+    required this.dry,
+    required this.normal,
+    required this.oily,
+    required this.sensitive,
+    required this.rating,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
       'description': description,
+      'brand': brand,
+      'name': name,
       'images': images,
       'ingredients': ingredients,
       'category': category,
+      'combination': combination,
+      'dry': dry,
+      'normal': normal,
+      'oily': oily,
+      'sensitive': sensitive,
       'rating': rating,
     };
   }
@@ -35,11 +56,17 @@ class Product {
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
       id: map['_id'],
-      name: map['name'] ?? '',
       description: map['description'] ?? '',
+      brand: map['brand'] ?? '',
+      name: map['name'] ?? '',
       images: List<String>.from(map['images']),
       category: map['category'] ?? '',
       ingredients: map['ingredients'] ?? '',
+      combination: map['combination'],
+      dry: map['dry'],
+      normal: map['normal'],
+      oily: map['oily'],
+      sensitive: map['sensitive'],
       rating: map['ratings'] != null
           ? List<Rating>.from(
               map['ratings']?.map(
