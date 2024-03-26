@@ -161,6 +161,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
+                          icon: Icons.app_registration_outlined,
                           color: GlobalVariables.buttonBackgroundColor,
                           text: 'Sign Up',
                           onTap: () {
@@ -213,6 +214,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
+                          icon: Icons.login_outlined,
                           color: GlobalVariables.buttonBackgroundColor,
                           text: 'Sign In',
                           onTap: () {
