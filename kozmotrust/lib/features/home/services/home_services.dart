@@ -6,7 +6,10 @@ import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 
 class HomeServices {
   final UserProvider userService = UserProvider();
-  late String userName = userService.user.username; // Declare a variable to store the user's name
+  Future<String> getUserName() async {
+    print(userService.user.username);
+    return userService.user.username;
+  }
 
   void logOut(BuildContext context) async {
     try {

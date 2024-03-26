@@ -161,7 +161,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
-                          color: GlobalVariables.buttonTextColor,
+                          color: GlobalVariables.buttonBackgroundColor,
                           text: 'Sign Up',
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
@@ -213,7 +213,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                         ),
                         const SizedBox(height: 10),
                         CustomButton(
-                          color: GlobalVariables.buttonTextColor,
+                          color: GlobalVariables.buttonBackgroundColor,
                           text: 'Sign In',
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {

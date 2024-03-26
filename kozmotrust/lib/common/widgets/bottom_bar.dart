@@ -4,9 +4,7 @@ import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/gptexamine/screens/gpt_examine_screen.dart';
 import 'package:kozmotrust/features/insights/screens/blogs.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -37,14 +35,12 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    final userfavoritesLen = context.watch<UserProvider>().user.favorites.length;
-
     return Scaffold(
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedNavBarColor,
-        unselectedItemColor: GlobalVariables.selectedNavBarColor,
+        selectedItemColor: GlobalVariables.selectedTopBarColor,
+        unselectedItemColor: GlobalVariables.selectedTopBarColor,
         backgroundColor: GlobalVariables.secondaryColor,
         iconSize: 28,
         onTap: updatePage,
@@ -57,7 +53,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 0
-                        ? GlobalVariables.selectedNavBarColor
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -77,7 +73,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -96,8 +92,8 @@ class _BottomBarState extends State<BottomBar> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
+                    color: _page == 2
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -116,8 +112,8 @@ class _BottomBarState extends State<BottomBar> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
+                    color: _page == 3
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -136,8 +132,8 @@ class _BottomBarState extends State<BottomBar> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
+                    color: _page == 4
+                        ? GlobalVariables.selectedTopBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),

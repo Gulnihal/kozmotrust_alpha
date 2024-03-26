@@ -3,8 +3,6 @@ import 'package:kozmotrust/features/product_details/services/product_details_ser
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:provider/provider.dart';
@@ -13,9 +11,9 @@ class ProductDetailScreen extends StatefulWidget {
   static const String routeName = '/product-details';
   final Product product;
   const ProductDetailScreen({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
@@ -49,7 +47,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   void addTofavorites() {
-    productDetailsServices.addTofavorites(
+    productDetailsServices.addToFavorites(
       context: context,
       product: widget.product,
     );
@@ -61,11 +59,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: GlobalVariables.appBarGradient,
-            ),
-          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -177,29 +170,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Container(
               color: Colors.black12,
               height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: RichText(
-                text: TextSpan(
-                  text: 'Deal Price: ',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '\$${widget.product.price}',
-                      style: const TextStyle(
-                        fontSize: 22,
-                        color: Colors.red,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

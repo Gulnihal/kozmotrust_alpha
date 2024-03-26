@@ -22,7 +22,7 @@ class _FavoritesProductState extends State<FavoritesProduct> {
   final FavoritesServices favoritesServices = FavoritesServices();
 
   void increaseQuantity(Product product) {
-    productDetailsServices.addTofavorites(
+    productDetailsServices.addToFavorites(
       context: context,
       product: product,
     );
@@ -64,18 +64,6 @@ class _FavoritesProductState extends State<FavoritesProduct> {
                       product.name,
                       style: const TextStyle(
                         fontSize: 16,
-                      ),
-                      maxLines: 2,
-                    ),
-                  ),
-                  Container(
-                    width: 235,
-                    padding: const EdgeInsets.only(left: 10, top: 5),
-                    child: Text(
-                      '\$${product.price}',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
                       ),
                       maxLines: 2,
                     ),

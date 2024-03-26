@@ -11,12 +11,11 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class AdminServices {
-  void sellProduct({
+  void addProduct({
     required BuildContext context,
     required String name,
     required String description,
-    required double price,
-    required double quantity,
+    required String ingredients,
     required String category,
     required List<File> images,
   }) async {
@@ -36,10 +35,9 @@ class AdminServices {
       Product product = Product(
         name: name,
         description: description,
-        quantity: quantity,
         images: imageUrls,
+        ingredients: ingredients,
         category: category,
-        price: price,
       );
 
       http.Response res = await http.post(

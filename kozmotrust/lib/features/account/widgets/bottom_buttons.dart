@@ -2,24 +2,35 @@ import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:kozmotrust/features/account/widgets/account_button.dart';
 import 'package:flutter/material.dart';
 
-class TopButtons extends StatelessWidget {
-  const TopButtons({super.key});
+class BottomButtons extends StatelessWidget {
+  const BottomButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AccountButton(
-              text: 'Log Out',
-              onTap: () => AccountServices().logOut(context),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: MediaQuery.of(context).size.width * 0.4,
+              child: AccountButton(
+                      text: 'Account Settings',
+                      icon: Icons.settings_outlined,
+                      onTap: () {},
+                    ),
             ),
-            AccountButton(
-              text: 'Your Favorite Products',
-              onTap: () {},
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: MediaQuery.of(context).size.width * 0.4,
+              child: AccountButton(
+                text: 'Logout',
+                icon: Icons.logout_outlined,
+                onTap: () => AccountServices().logOut(context),
+              ),
             ),
-          ],
+          ]
         ),
       ],
     );
