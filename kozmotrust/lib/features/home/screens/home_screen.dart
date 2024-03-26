@@ -1,7 +1,7 @@
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/home/services/home_services.dart';
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -12,13 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final UserProvider userService = UserProvider();
-  Future<String> getUserName() async {
-    print(userService.user.username+ "sdjkmsjdfm");
-    return userService.user.username;
-  }
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: buildAppBar(),
       backgroundColor: GlobalVariables.backgroundColor,
@@ -28,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 100),
           Center( // Center the text horizontally
             child: Text(
-              "Welcome ${userService.user.username}!",
+              "Welcome ${user.username}!",
               style: const TextStyle(
                 fontSize: 24, // Set the font size to 24
                 fontWeight: FontWeight.bold, // Make the text bold
