@@ -5,10 +5,6 @@ const favoritesSchema = mongoose.Schema({
   products: [
     {
       product: productSchema,
-      quantity: {
-        type: Number,
-        required: true,
-      },
     },
   ],
 });

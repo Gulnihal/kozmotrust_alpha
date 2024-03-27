@@ -31,7 +31,7 @@ userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
   }
 });
 
-userRouter.delete("/api/remove-from-favorites/:id", auth, async (req, res) => {
+userRouter.delete("/api/remove-from-favorites/", auth, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -61,11 +61,13 @@ userRouter.post("/api/save-user-allergies", auth, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
-
+// return favorites products
 userRouter.get("/api/favorites", auth, async (req, res) => {
   try {
-    const favorites = await Favorites.find({ userId: req.user });
-    res.json(favorites);
+    const token = jwt.token;
+    const verified = jwt.verify(token, secretKey);
+    var user = await User.findById(verified.id);
+    return res.json(user.favorites);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

@@ -13,11 +13,18 @@ import 'package:provider/provider.dart';
 class AdminServices {
   void addProduct({
     required BuildContext context,
-    required String name,
-    required String description,
-    required String ingredients,
-    required String category,
-    required List<File> images,
+    required description,
+    required brand,
+    required name,
+    required ingredients,
+    required category,
+    required combination,
+    required dry,
+    required normal,
+    required oily,
+    required sensitive,
+    required id,
+    required List<String> images,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
@@ -25,19 +32,27 @@ class AdminServices {
       final cloudinary = CloudinaryPublic('denfgaxvg', 'uszbstnu');
       List<String> imageUrls = [];
 
-      for (int i = 0; i < images.length; i++) {
-        CloudinaryResponse res = await cloudinary.uploadFile(
-          CloudinaryFile.fromFile(images[i].path, folder: name),
-        );
-        imageUrls.add(res.secureUrl);
-      }
+      // for (int i = 0; i < images.length; i++) {
+      //   CloudinaryResponse res = await cloudinary.uploadFile(
+      //     CloudinaryFile.fromFile(images[i].path, folder: name),
+      //   );
+      //   imageUrls.add(res.secureUrl);
+      // }
 
       Product product = Product(
-        name: name,
+        id: id,
         description: description,
-        images: imageUrls,
+        brand: brand,
+        name: name,
+        images: images,
         ingredients: ingredients,
         category: category,
+        combination: combination,
+        dry: dry,
+        normal: normal,
+        oily: oily,
+        sensitive: sensitive,
+        rating: [],
       );
 
       http.Response res = await http.post(

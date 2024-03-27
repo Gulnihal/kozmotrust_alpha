@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
 import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/features/admin/services/admin_services.dart';
@@ -24,7 +22,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   // TODO chek it out
   String category = 'Skin Care';
-  List<File> images = [];
+  List<String> images = [];
   final _addProductFormKey = GlobalKey<FormState>();
 
   @override
@@ -51,7 +49,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         description: descriptionController.text,
         ingredients: ingredientsController.text,
         category: category,
-        images: images,
+        images: images, brand: null, combination: null, dry: null, normal: null, oily: null, sensitive: null, id: null,
       );
     }
   }
@@ -59,7 +57,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   void selectImages() async {
     var res = await pickImages();
     setState(() {
-      images = res;
+      images = res.cast<String>();
     });
   }
 
@@ -91,7 +89,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           (i) {
                             return Builder(
                               builder: (BuildContext context) => Image.file(
-                                i,
+                                i as File,
                                 fit: BoxFit.cover,
                                 height: 200,
                               ),

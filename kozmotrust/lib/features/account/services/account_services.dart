@@ -6,6 +6,7 @@ import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/models/favorites.dart';
+import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -77,11 +78,11 @@ class AccountServices {
     }
   }
 
-  Future<List<Favorites>> fetchFavorites({
+  Future<List<Product>> fetchFavorites({
     required BuildContext context,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    List<Favorites> favoritesList = [];
+    List<Product> favoritesList = [];
     try {
       http.Response res =
       await http.get(Uri.parse('$uri/api/favorites'), headers: {
@@ -95,7 +96,7 @@ class AccountServices {
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
             favoritesList.add(
-              Favorites.fromJson(
+              Product.fromJson(
                 jsonEncode(
                   jsonDecode(res.body)[i],
                 ),
@@ -109,6 +110,7 @@ class AccountServices {
     }
     return favoritesList;
   }
+
   void logOut(BuildContext context) async {
     try {
       SharedPreferences sharedPreferences =
