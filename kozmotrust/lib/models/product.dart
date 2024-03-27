@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:kozmotrust/models/rating.dart';
 
@@ -11,11 +10,11 @@ class Product {
   final String image;
   final String ingredients;
   final String category;
-  final Bool combination;
-  final Bool dry;
-  final Bool normal;
-  final Bool oily;
-  final Bool sensitive;
+  final bool combination;
+  final bool dry;
+  final bool normal;
+  final bool oily;
+  final bool sensitive;
 
   final List<Rating>? rating;
 

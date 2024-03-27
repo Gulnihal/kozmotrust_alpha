@@ -8,7 +8,7 @@ class User {
   late final String password;
   final String healthinfo;
   final String type;
-  final List<dynamic> favorites;
+  final List<dynamic>? favorites;
 
   User({
     required this.token,

@@ -18,25 +18,25 @@ class AccountScreen extends StatelessWidget {
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Card( // Center the text horizontally
             child: Text(
-              "Welcome !",
-              style: TextStyle(
+              "Welcome ${user.username}!",
+              style: const TextStyle(
                 fontSize: 24, // Set the font size to 24
                 fontWeight: FontWeight.bold, // Make the text bold
               ),
             ),
           ),
-          SizedBox(height: 50),
-          // ListFavorites(),
-          Expanded(
+          const SizedBox(height: 50),
+          const ListFavorites(),
+          const Expanded(
             child: SizedBox(), // Add any other content here
           ),
-          BottomButtons(),
-          SizedBox(height: 50),
+          const BottomButtons(),
+          const SizedBox(height: 50),
         ],
       ),
     );

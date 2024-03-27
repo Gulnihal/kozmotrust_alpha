@@ -154,6 +154,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 widget.product.image,
                 fit: BoxFit.contain,
                 height: 200,
+                width: 200,
               ),
             ),
             Container(

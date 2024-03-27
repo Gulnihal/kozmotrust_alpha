@@ -5,7 +5,6 @@ import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
-import 'package:kozmotrust/models/favorites.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -111,12 +110,12 @@ class AccountServices {
       showSnackBar(context, e.toString());
     }
   }
-
+  //very important fetch favorites part
   Future<List<Product>> fetchFavorites({
     required BuildContext context,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    List<Product> favoritesList = [];
+    List<Product> favorites = [];
     try {
       http.Response res =
       await http.get(Uri.parse('$uri/api/favorites'), headers: {
@@ -128,11 +127,14 @@ class AccountServices {
         response: res,
         context: context,
         onSuccess: () {
-          for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            favoritesList.add(
+          for (int i = 0; i < jsonDecode(res.body)['favorites'].length; i++) {
+            print(jsonEncode(
+              jsonDecode(jsonEncode(jsonDecode(res.body)['favorites'][i]))['product'],
+            ),);
+            favorites.add(
               Product.fromJson(
                 jsonEncode(
-                  jsonDecode(res.body)[i],
+                  jsonDecode(jsonEncode(jsonDecode(res.body)['favorites'][i]))['product'],
                 ),
               ),
             );
@@ -142,7 +144,36 @@ class AccountServices {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-    return favoritesList;
+    return favorites;
+  }
+
+  void removeFromFavorites({
+    required BuildContext context,
+    required Product product,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    try {
+      http.Response res = await http.delete(
+        Uri.parse('$uri/api/remove-from-favorites/${product.id}'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
+        },
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          User user =
+          userProvider.user.copyWith(favorites: jsonDecode(res.body)['favorites']);
+          userProvider.setUserFromModel(user);
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
   }
 
   void logOut(BuildContext context) async {
