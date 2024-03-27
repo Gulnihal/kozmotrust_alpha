@@ -27,7 +27,7 @@ class SearchedProduct extends StatelessWidget {
           child: Row(
             children: [
               Image.network(
-                product.images[0],
+                product.image,
                 fit: BoxFit.contain,
                 height: 135,
                 width: 135,
@@ -48,22 +48,6 @@ class SearchedProduct extends StatelessWidget {
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
-                  ),
-                  Container(
-                    width: 235,
-                    padding: const EdgeInsets.only(left: 10),
-                    child: const Text('Eligible for FREE Shipping'),
-                  ),
-                  Container(
-                    width: 235,
-                    padding: const EdgeInsets.only(left: 10, top: 5),
-                    child: const Text(
-                      'In Stock',
-                      style: TextStyle(
-                        color: Colors.teal,
-                      ),
-                      maxLines: 2,
-                    ),
                   ),
                 ],
               ),

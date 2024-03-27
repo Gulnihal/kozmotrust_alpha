@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:kozmotrust/models/rating.dart';
 
@@ -8,14 +7,14 @@ class Product {
   final String name;
   final String brand;
   final String description;
-  final List<String> images;
+  final String image;
   final String ingredients;
   final String category;
-  final Bool combination;
-  final Bool dry;
-  final Bool normal;
-  final Bool oily;
-  final Bool sensitive;
+  final bool combination;
+  final bool dry;
+  final bool normal;
+  final bool oily;
+  final bool sensitive;
 
   final List<Rating>? rating;
 
@@ -24,7 +23,7 @@ class Product {
     required this.description,
     required this.brand,
     required this.name,
-    required this.images,
+    required this.image,
     required this.ingredients,
     required this.category,
     required this.combination,
@@ -41,7 +40,7 @@ class Product {
       'description': description,
       'brand': brand,
       'name': name,
-      'images': images,
+      'image': image,
       'ingredients': ingredients,
       'category': category,
       'combination': combination,
@@ -59,7 +58,7 @@ class Product {
       description: map['description'] ?? '',
       brand: map['brand'] ?? '',
       name: map['name'] ?? '',
-      images: List<String>.from(map['images']),
+      image: map['image'] ?? '',
       category: map['category'] ?? '',
       ingredients: map['ingredients'] ?? '',
       combination: map['combination'],

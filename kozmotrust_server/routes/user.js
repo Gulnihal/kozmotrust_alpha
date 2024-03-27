@@ -64,12 +64,20 @@ userRouter.post("/api/save-user-healthinfo", auth, async (req, res) => {
 // return favorites products
 userRouter.get("/api/favorites", auth, async (req, res) => {
   try {
-    const token = jwt.token;
+    const token = req.token;
     const verified = jwt.verify(token, secretKey);
-    var user = await User.findById(verified.id);
+    const userId = verified.id;
+    const user = await User.findById(userId, { favorites: 1 });
+
+    // Check if the user exists and has favorites
+    if (!user || !user.favorites) {
+      return res.status(404).json({ error: "Favorites not found" });
+    }
+
+    // Return the favorites list
     return res.json(user.favorites);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: e.message });
   }
 });
 

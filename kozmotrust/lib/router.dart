@@ -53,12 +53,9 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         ),
       );
     case HealthInformationScreen.routeName:
-      var totalAmount = routeSettings.arguments as String;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => HealthInformationScreen(
-          totalAmount: totalAmount,
-        ),
+        builder: (_) => HealthInformationScreen(),
       );
     default:
       return MaterialPageRoute(

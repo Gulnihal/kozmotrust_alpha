@@ -1,6 +1,4 @@
 import 'package:kozmotrust/common/widgets/loader.dart';
-import 'package:kozmotrust/common/widgets/custom_textfield.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:kozmotrust/features/account/widgets/single_product.dart';
 import 'package:kozmotrust/models/product.dart';
@@ -15,7 +13,7 @@ class ListFavorites extends StatefulWidget {
 }
 
 class _ListFavoritesState extends State<ListFavorites> {
-  List<Product>? favorites;
+  List<Product>? favorites = [];
   final AccountServices accountServices = AccountServices();
 
   @override
@@ -33,29 +31,72 @@ class _ListFavoritesState extends State<ListFavorites> {
   Widget build(BuildContext context) {
     return favorites == null
         ? const Loader()
-        : GridView.builder(
-          itemCount: favorites!.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2),
-          itemBuilder: (context, index) {
-            final favoritesData = favorites![index];
-            return GestureDetector(
-              onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   ProductDetailScreen.routeName,
-                //   arguments: favoritesData,
-                // );
-              },
-              child: SizedBox(
-                height: 140,
-                child: SingleProduct(
-                  name: favoritesData.name[0],
-                  image: favoritesData.images[0],
+        : SizedBox(
+            height: MediaQuery.of(context).size.height/3,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                      ),
+                      child: const Text(
+                        'Your Favorite Products',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            );
-          },
-    );
+                // display favorites
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      left: 10,
+                      top: 20,
+                      right: 10,
+                    ),
+                    child: favorites!.isEmpty // Add a null check here
+                        ? const Center(
+                          child: Text('No favorite products found'),
+                    )
+                        : ListView.builder(
+                          scrollDirection: Axis.vertical, // Change scroll direction to vertical
+                          itemCount: favorites!.length,
+                          itemBuilder: (context, index) {
+                            final favoriteProduct = favorites![index];
+                            return GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    ProductDetailScreen.routeName,
+                                    arguments: favoriteProduct,
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    SingleProduct(
+                                      brand: favorites![index].brand,
+                                      name: favorites![index].name,
+                                      image: favorites![index].image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                )
+                            );
+                          },
+                        ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          );
   }
+
+
 }

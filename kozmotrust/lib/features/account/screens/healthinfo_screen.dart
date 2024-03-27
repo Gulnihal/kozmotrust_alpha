@@ -1,15 +1,14 @@
 import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 
 class HealthInformationScreen extends StatefulWidget {
   static const String routeName = '/healthinfo';
-  final String totalAmount;
   const HealthInformationScreen({
     super.key,
-    required this.totalAmount,
   });
 
   @override
@@ -17,96 +16,153 @@ class HealthInformationScreen extends StatefulWidget {
 }
 
 class _HealthInformationScreenState extends State<HealthInformationScreen> {
-  final TextEditingController flatBuildingController = TextEditingController();
-  final TextEditingController areaController = TextEditingController();
-  final TextEditingController pincodeController = TextEditingController();
-  final TextEditingController cityController = TextEditingController();
+  final TextEditingController _healthinfoController = TextEditingController();
+  final AccountServices accountServices = AccountServices();
   final _healthinfoFormKey = GlobalKey<FormState>();
 
-  String healthinfoToBeUsed = "";
-  final AccountServices healthinfoServices = AccountServices();
-
+  void updateHealthInformation() {
+    accountServices.saveHealthInformation(
+      context: context,
+      healthinfo: _healthinfoController.text,
+    );
+  }
+  
   @override
   void initState() {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    flatBuildingController.dispose();
-    areaController.dispose();
-    pincodeController.dispose();
-    cityController.dispose();
+  Future<void> updateInfo() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // Allow dismissal by tapping outside
+      builder: (BuildContext context) {
+        return AlertDialog.adaptive(
+          title: const Text('Update Health Information:'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Form(
+                  key: _healthinfoFormKey,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 50),
+                      const Text(
+                        "You can add any information you desired like your health background or your skin type:",
+                        style: TextStyle(
+                          fontSize: 16, // Set the font size to 24
+                          fontWeight: FontWeight.bold, // Make the text bold
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+                      Container(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                          top: 20,
+                          right: 10,
+                        ),
+                        child: CustomTextField(
+                          controller: _healthinfoController,
+                          hintText: '',
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      CustomButton(
+                        text: 'Update',
+                        icon: Icons.edit_note_outlined,
+                        color: Colors.lightBlueAccent,
+                        onTap: () {
+                          if (_healthinfoFormKey.currentState!.validate()) {
+                            updateHealthInformation();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
-
+  
   @override
   Widget build(BuildContext context) {
     var healthinfo = context.watch<UserProvider>().user.healthinfo;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.cyan.shade700,
+            width: 5,
+          ),
+          borderRadius: BorderRadius.circular(5),
+          color: Colors.cyan.shade50,
+        ),
+        child: Container(
+          height: MediaQuery.of(context).size.width/4,
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.all(10),
+          child: Column (
             children: [
-              if (healthinfo.isNotEmpty)
-                Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          healthinfo,
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(
+                      left: 15,
                     ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'OR',
+                    child: const Text(
+                      'Your General Health Information:',
                       style: TextStyle(
                         fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: 20),
-                  ],
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    left: 10,
+                    top: 20,
+                    right: 10,
+                  ),
+                  child: TextFormField(
+                    enabled: false,
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: healthinfo,
+                    ),
+                  ),
                 ),
-              Form(
-                key: _healthinfoFormKey,
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      controller: flatBuildingController,
-                      hintText: 'Flat, House no, Building',
-                    ),
-                    const SizedBox(height: 10),
-                    CustomTextField(
-                      controller: areaController,
-                      hintText: 'Area, Street',
-                    ),
-                    const SizedBox(height: 10),
-                    CustomTextField(
-                      controller: pincodeController,
-                      hintText: 'Pincode',
-                    ),
-                    const SizedBox(height: 10),
-                    CustomTextField(
-                      controller: cityController,
-                      hintText: 'Town/City',
-                    ),
-                    const SizedBox(height: 10),
-                  ],
+              ),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerRight,
+                child: CustomButton(
+                  text: "Update",
+                  icon:Icons.edit_note_outlined,
+                  color: Colors.blue.shade200,
+                  onTap: () {
+                    updateInfo();
+                  },
                 ),
-              )
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

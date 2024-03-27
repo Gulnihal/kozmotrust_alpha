@@ -1,4 +1,5 @@
 import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/account/widgets/bottom_buttons.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/features/account/widgets/list_favorites.dart';
@@ -18,25 +19,39 @@ class AccountScreen extends StatelessWidget {
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Card( // Center the text horizontally
             child: Text(
-              "Welcome !",
-              style: TextStyle(
+              "Welcome ${user.username}!",
+              style: const TextStyle(
                 fontSize: 24, // Set the font size to 24
                 fontWeight: FontWeight.bold, // Make the text bold
               ),
             ),
           ),
-          SizedBox(height: 50),
-          ListFavorites(),
-          Expanded(
-            child: SizedBox(), // Add any other content here
+          const SizedBox(height: 50),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.redAccent.shade700,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.red.shade100,
+            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.all(10),
+              child: const ListFavorites(),
+            ),
           ),
-          BottomButtons(),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
+          const HealthInformationScreen(),
+          const Expanded(child: SizedBox()),
+          const BottomButtons(),
+          const SizedBox(height: 50),
         ],
       ),
     );

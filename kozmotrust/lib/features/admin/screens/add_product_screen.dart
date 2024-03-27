@@ -1,9 +1,6 @@
 import 'dart:io';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
-import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/features/admin/services/admin_services.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -15,6 +12,7 @@ class AddProductScreen extends StatefulWidget {
 }
 
 class _AddProductScreenState extends State<AddProductScreen> {
+  final TextEditingController productBrandController = TextEditingController();
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController ingredientsController = TextEditingController();
@@ -22,12 +20,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   // TODO chek it out
   String category = 'Skin Care';
-  List<String> images = [];
+  String image = 'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg';
   final _addProductFormKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     super.dispose();
+    productBrandController.dispose();
     productNameController.dispose();
     descriptionController.dispose();
     ingredientsController.dispose();
@@ -42,23 +41,22 @@ class _AddProductScreenState extends State<AddProductScreen> {
   ];
 
   void addProduct() {
-    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+    if (_addProductFormKey.currentState!.validate() && image.isNotEmpty) {
       adminServices.addProduct(
         context: context,
+        brand: productBrandController.text,
         name: productNameController.text,
         description: descriptionController.text,
         ingredients: ingredientsController.text,
         category: category,
-        images: images, brand: null, combination: null, dry: null, normal: null, oily: null, sensitive: null, id: null,
+        image: image,
+        combination: null,
+        dry: null,
+        normal: null,
+        oily: null,
+        sensitive: null,
       );
     }
-  }
-
-  void selectImages() async {
-    var res = await pickImages();
-    setState(() {
-      images = res.cast<String>();
-    });
   }
 
   @override
@@ -83,57 +81,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                images.isNotEmpty
-                    ? CarouselSlider(
-                        items: images.map(
-                          (i) {
-                            return Builder(
-                              builder: (BuildContext context) => Image.file(
-                                i as File,
-                                fit: BoxFit.cover,
-                                height: 200,
-                              ),
-                            );
-                          },
-                        ).toList(),
-                        options: CarouselOptions(
-                          viewportFraction: 1,
+                image.isNotEmpty
+                    ? Builder(
+                        builder: (BuildContext context) => Image.file(
+                          image as File,
+                          fit: BoxFit.cover,
                           height: 200,
                         ),
-                      )
-                    : GestureDetector(
-                        onTap: selectImages,
-                        child: DottedBorder(
-                          borderType: BorderType.RRect,
-                          radius: const Radius.circular(10),
-                          dashPattern: const [10, 4],
-                          strokeCap: StrokeCap.round,
-                          child: Container(
-                            width: double.infinity,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.folder_open,
-                                  size: 40,
-                                ),
-                                const SizedBox(height: 15),
-                                Text(
-                                  'Select Product Images',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.grey.shade400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      ) :
                 const SizedBox(height: 30),
                 CustomTextField(
                   controller: productNameController,

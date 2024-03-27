@@ -22,28 +22,24 @@ class AdminServices {
     required normal,
     required oily,
     required sensitive,
-    required id,
-    required List<String> images,
+    required image,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
       final cloudinary = CloudinaryPublic('denfgaxvg', 'uszbstnu');
-      List<String> imageUrls = [];
 
-      // for (int i = 0; i < images.length; i++) {
-      //   CloudinaryResponse res = await cloudinary.uploadFile(
-      //     CloudinaryFile.fromFile(images[i].path, folder: name),
-      //   );
-      //   imageUrls.add(res.secureUrl);
-      // }
+      CloudinaryResponse cloudinaryRes = await cloudinary.uploadFile(
+          CloudinaryFile.fromFile(image.path, folder: name),
+      );
+      String imageUrl = cloudinaryRes.secureUrl;
+
 
       Product product = Product(
-        id: id,
         description: description,
         brand: brand,
         name: name,
-        images: images,
+        image: imageUrl,
         ingredients: ingredients,
         category: category,
         combination: combination,

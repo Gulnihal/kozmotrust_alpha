@@ -30,7 +30,6 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     //animation 1

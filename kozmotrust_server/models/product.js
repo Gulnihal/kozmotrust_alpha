@@ -14,11 +14,9 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  images: [
-    {
+  image: {
       type: String,
-    },
-  ],
+  },
   ingredients: {
     type: String,
     required: true,
