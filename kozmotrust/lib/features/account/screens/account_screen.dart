@@ -1,4 +1,5 @@
 import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/account/widgets/bottom_buttons.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/features/account/widgets/list_favorites.dart';
@@ -31,10 +32,24 @@ class AccountScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          const ListFavorites(),
-          const Expanded(
-            child: SizedBox(), // Add any other content here
+          DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.redAccent.shade700,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.red.shade100,
+            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.all(10),
+              child: const ListFavorites(),
+            ),
           ),
+          const SizedBox(height: 50),
+          const HealthInformationScreen(),
+          const Expanded(child: SizedBox()),
           const BottomButtons(),
           const SizedBox(height: 50),
         ],

@@ -31,61 +31,72 @@ class _ListFavoritesState extends State<ListFavorites> {
   Widget build(BuildContext context) {
     return favorites == null
         ? const Loader()
-        : Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
+        : SizedBox(
+            height: MediaQuery.of(context).size.height/3,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                      ),
+                      child: const Text(
+                        'Your Favorite Products',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // display favorites
+                Expanded(
+                  child: Container(
                     padding: const EdgeInsets.only(
-                      left: 15,
+                      left: 10,
+                      top: 20,
+                      right: 10,
                     ),
-                    child: const Text(
-                      'Your Favorite Products',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: favorites!.isEmpty // Add a null check here
+                        ? const Center(
+                          child: Text('No favorite products found'),
+                    )
+                        : ListView.builder(
+                          scrollDirection: Axis.vertical, // Change scroll direction to vertical
+                          itemCount: favorites!.length,
+                          itemBuilder: (context, index) {
+                            final favoriteProduct = favorites![index];
+                            return GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    ProductDetailScreen.routeName,
+                                    arguments: favoriteProduct,
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    SingleProduct(
+                                      brand: favorites![index].brand,
+                                      name: favorites![index].name,
+                                      image: favorites![index].image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                )
+                            );
+                          },
+                        ),
                   ),
-                ],
-              ),
-              // display favorites
-              Container(
-                height: 170,
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  top: 20,
-                  right: 0,
                 ),
-                child: favorites!.isEmpty // Add a null check here
-                    ? const Center(
-                        child: Text('No favorite products found'),
-                      )
-                    : ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: favorites!.length,
-                  itemBuilder: (context, index) {
-                    final favoriteProduct = favorites![index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          ProductDetailScreen.routeName,
-                          arguments: favoriteProduct,
-                        );
-                      },
-                      child: SingleProduct(
-                        brand: favorites![index].brand,
-                        name: favorites![index].name,
-                        image: Uri.parse(favorites![index].image).toString(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
+                const SizedBox(height: 20),
+              ],
+            ),
           );
   }
+
 
 }

@@ -20,25 +20,26 @@ class SingleProduct extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.black12,
+            color: Colors.red,
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(5),
           color: Colors.white,
         ),
         child: Container(
-          width: 180,
+          width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.all(10),
-          child: Column (
+          child: Row (
             children: [
               Image.network(
-                image,
+                'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
                 fit: BoxFit.fitHeight,
-                width: 150,
+                height: 200,
+                width: 200,
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 20),
               Text(
-                name,
+                "$brand\n$name",
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

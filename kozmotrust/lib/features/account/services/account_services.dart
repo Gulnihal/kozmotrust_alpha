@@ -77,7 +77,7 @@ class AccountServices {
       showSnackBar(context, e.toString());
     }
   }
-  void saveUserHealthInformation({
+  void saveHealthInformation({
     required BuildContext context,
     required String healthinfo,
   }) async {
@@ -106,6 +106,7 @@ class AccountServices {
           userProvider.setUserFromModel(user);
         },
       );
+      showSnackBar(context, "Health information updated!");
     } catch (e) {
       showSnackBar(context, e.toString());
     }
@@ -128,9 +129,9 @@ class AccountServices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body)['favorites'].length; i++) {
-            print(jsonEncode(
-              jsonDecode(jsonEncode(jsonDecode(res.body)['favorites'][i]))['product'],
-            ),);
+            // print(jsonEncode(
+            //   jsonDecode(jsonEncode(jsonDecode(res.body)['favorites'][i]))['product'],
+            // ),);
             favorites.add(
               Product.fromJson(
                 jsonEncode(
