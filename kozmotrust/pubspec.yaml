@@ -80,12 +80,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/logo2.png
     - assets/images/profile.png
-    - assets/images/menu.png
     - assets/images/google.png
-    - assets/images/email.png
-    - assets/images/mark.png
-    - assets/images/share.png
-    - assets/images/star.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

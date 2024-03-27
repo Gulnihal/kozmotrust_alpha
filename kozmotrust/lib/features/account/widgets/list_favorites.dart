@@ -21,10 +21,10 @@ class _ListFavoritesState extends State<ListFavorites> {
   @override
   void initState() {
     super.initState();
-    fetchOrders();
+    fetchFavorites();
   }
 
-  void fetchOrders() async {
+  void fetchFavorites() async {
     favorites = await accountServices.fetchFavorites(context: context);
     setState(() {});
   }
@@ -41,11 +41,11 @@ class _ListFavoritesState extends State<ListFavorites> {
             final favoritesData = favorites![index];
             return GestureDetector(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  ProductDetailScreen.routeName,
-                  arguments: favoritesData,
-                );
+                // Navigator.pushNamed(
+                //   context,
+                //   ProductDetailScreen.routeName,
+                //   arguments: favoritesData,
+                // );
               },
               child: SizedBox(
                 height: 140,

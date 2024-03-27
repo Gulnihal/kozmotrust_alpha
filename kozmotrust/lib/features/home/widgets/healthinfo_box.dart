@@ -2,8 +2,8 @@ import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AllergiesBox extends StatelessWidget {
-  const AllergiesBox({super.key});
+class HealthInformationBox extends StatelessWidget {
+  const HealthInformationBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +24,14 @@ class AllergiesBox extends StatelessWidget {
       child: Row(
         children: [
           const Icon(
-            Icons.location_on_outlined,
+            Icons.healing_outlined,
             size: 20,
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: Text(
-                'Delivery to ${user.username} - ${user.allergies}',
+                '${user.username} - ${user.healthinfo}',
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                 ),

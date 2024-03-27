@@ -16,160 +16,98 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
-      appBar: buildAppBar(),
       backgroundColor: GlobalVariables.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-          const SizedBox(height: 100),
-          Center( // Center the text horizontally
-            child: Text(
-              "Welcome ${user.username}!",
-              style: const TextStyle(
-                fontSize: 24, // Set the font size to 24
-                fontWeight: FontWeight.bold, // Make the text bold
+            const SizedBox(height: 50),
+            Center( // Center the text horizontally
+              child: Image.asset('assets/images/logo2.png'),
+            ),
+            const SizedBox(height: 100), // Added SizedBox for spacing
+            Center( // Center the text horizontally
+              child: Text(
+                "Welcome ${user.username}!",
+                style: const TextStyle(
+                  fontSize: 24, // Set the font size to 24
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 100), // Added SizedBox for spacing
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
-                height: MediaQuery.of(context).size.width * 0.3,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add functionality for button 1
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: GlobalVariables.buttonBackgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Set border radius to 10
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 10),
-                      Expanded(
-                        child: Image.asset(
-                          'assets/images/profile.png',
-                          fit: BoxFit.contain, // Make the image fit within the button
+            const SizedBox(height: 150), // Added SizedBox for spacing
+            Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.width * 0.4,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for button 1
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: GlobalVariables.buttonBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10), // Set border radius to 10
                         ),
                       ),
-                      const SizedBox(height: 8), // Add spacing between image and text
-                      const Text(
-                        'Profile',
-                        style: TextStyle(fontSize: 20), // Increase the font size of the text
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 10),
+                          Expanded(
+                            child: Image.asset(
+                              'assets/images/profile.png',
+                              fit: BoxFit.contain, // Make the image fit within the button
+                            ),
+                          ),
+                          const SizedBox(height: 8), // Add spacing between image and text
+                          const Text(
+                            'Insights',
+                            style: TextStyle(fontSize: 20), // Increase the font size of the text
+                          ),
+                          const SizedBox(height: 10),
+                        ],
                       ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
-                height: MediaQuery.of(context).size.width * 0.3,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add functionality for button 2
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: GlobalVariables.buttonBackgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Set border radius to 10
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 10),
-                      Expanded(
-                        child: Image.asset(
-                          'assets/images/profile.png',
-                          fit: BoxFit.contain, // Make the image fit within the button
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.width * 0.4,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for button 2
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: GlobalVariables.buttonBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10), // Set border radius to 10
                         ),
                       ),
-                      const SizedBox(height: 8), // Add spacing between image and text
-                      const Text(
-                        'Scanner',
-                        style: TextStyle(fontSize: 20), // Increase the font size of the text
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20), // Added SizedBox for spacing
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              height: MediaQuery.of(context).size.width * 0.3,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add functionality for button 1
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: GlobalVariables.buttonBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10), // Set border radius to 10
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 10),
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/profile.png',
-                        fit: BoxFit.contain, // Make the image fit within the button
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 10),
+                          Expanded(
+                            child: Image.asset(
+                              'assets/images/profile.png',
+                              fit: BoxFit.contain, // Make the image fit within the button
+                            ),
+                          ),
+                          const SizedBox(height: 8), // Add spacing between image and text
+                          const Text(
+                            'Insights',
+                            style: TextStyle(fontSize: 20), // Increase the font size of the text
+                          ),
+                          const SizedBox(height: 10),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              height: MediaQuery.of(context).size.width * 0.3,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add functionality for button 2
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: GlobalVariables.buttonBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10), // Set border radius to 10
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 10),
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/profile.png',
-                        fit: BoxFit.contain, // Make the image fit within the button
-                      ),
-                    ),
-                    const SizedBox(height: 8), // Add spacing between image and text
-                    const Text(
-                      'Insights',
-                      style: TextStyle(fontSize: 20), // Increase the font size of the text
-                    ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ),
-          ],
-          ),
           ],
         ),
       ),

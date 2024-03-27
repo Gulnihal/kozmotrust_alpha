@@ -1,5 +1,5 @@
 import 'package:kozmotrust/common/widgets/bottom_bar.dart';
-import 'package:kozmotrust/features/allergies/screens/allergies_screen.dart';
+import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/admin/screens/add_product_screen.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/account/screens/account_settings.dart';
@@ -52,11 +52,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           product: product,
         ),
       );
-    case AllergiesScreen.routeName:
+    case HealthInformationScreen.routeName:
       var totalAmount = routeSettings.arguments as String;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AllergiesScreen(
+        builder: (_) => HealthInformationScreen(
           totalAmount: totalAmount,
         ),
       );
