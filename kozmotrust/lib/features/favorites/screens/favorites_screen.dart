@@ -1,9 +1,5 @@
-import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -19,11 +15,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<UserProvider>().user;
-    int sum = 0;
-    user.favorites
-        .map((e) => sum += e['quantity'] * e['product']['price'] as int)
-        .toList();
 
     return Scaffold(
       appBar: PreferredSize(

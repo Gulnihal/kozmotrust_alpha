@@ -58,8 +58,9 @@ class _PostsScreenState extends State<PostsScreen> {
                     SizedBox(
                       height: 140,
                       child: SingleProduct(
+                        brand: productData.brand[0],
                         name: productData.name[0],
-                        image: productData.images[0],
+                        image: productData.image[0],
                       ),
                     ),
                     Row(
@@ -67,7 +68,7 @@ class _PostsScreenState extends State<PostsScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            productData.name,
+                            "${productData.brand} ${productData.name}",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                           ),
@@ -85,9 +86,9 @@ class _PostsScreenState extends State<PostsScreen> {
               },
             ),
             floatingActionButton: FloatingActionButton(
-              child: const Icon(Icons.add),
               onPressed: navigateToAddProduct,
               tooltip: 'Add a Product',
+              child: const Icon(Icons.add),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,

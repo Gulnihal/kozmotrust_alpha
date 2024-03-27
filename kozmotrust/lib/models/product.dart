@@ -8,7 +8,7 @@ class Product {
   final String name;
   final String brand;
   final String description;
-  final List<String> images;
+  final String image;
   final String ingredients;
   final String category;
   final Bool combination;
@@ -24,7 +24,7 @@ class Product {
     required this.description,
     required this.brand,
     required this.name,
-    required this.images,
+    required this.image,
     required this.ingredients,
     required this.category,
     required this.combination,
@@ -41,7 +41,7 @@ class Product {
       'description': description,
       'brand': brand,
       'name': name,
-      'images': images,
+      'image': image,
       'ingredients': ingredients,
       'category': category,
       'combination': combination,
@@ -59,7 +59,7 @@ class Product {
       description: map['description'] ?? '',
       brand: map['brand'] ?? '',
       name: map['name'] ?? '',
-      images: List<String>.from(map['images']),
+      image: map['image'] ?? '',
       category: map['category'] ?? '',
       ingredients: map['ingredients'] ?? '',
       combination: map['combination'],

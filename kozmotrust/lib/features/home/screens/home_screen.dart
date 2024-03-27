@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 150), // Added SizedBox for spacing
-            Card(
+            Card( // TODO CarouselSlider
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

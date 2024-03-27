@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
   final String image;
+  final String brand;
   final String name;
+
   const SingleProduct({
     super.key,
-    required this.name,
-    required this.image,
+    this.brand = '',
+    this.name = '',
+    this.image = 'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
   });
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,6 @@
 import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/features/product_details/services/product_details_services.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/models/product.dart';
@@ -150,21 +149,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
               ),
             ),
-            CarouselSlider(
-              items: widget.product.images.map(
-                (i) {
-                  return Builder(
-                    builder: (BuildContext context) => Image.network(
-                      i,
-                      fit: BoxFit.contain,
-                      height: 200,
-                    ),
-                  );
-                },
-              ).toList(),
-              options: CarouselOptions(
-                viewportFraction: 1,
-                height: 300,
+            Builder(
+              builder: (BuildContext context) => Image.network(
+                widget.product.image,
+                fit: BoxFit.contain,
+                height: 200,
               ),
             ),
             Container(

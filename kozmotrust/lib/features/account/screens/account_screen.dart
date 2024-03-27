@@ -31,7 +31,7 @@ class AccountScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 50),
-          ListFavorites(),
+          // ListFavorites(),
           Expanded(
             child: SizedBox(), // Add any other content here
           ),

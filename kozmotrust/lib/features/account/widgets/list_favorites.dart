@@ -41,17 +41,17 @@ class _ListFavoritesState extends State<ListFavorites> {
             final favoritesData = favorites![index];
             return GestureDetector(
               onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   ProductDetailScreen.routeName,
-                //   arguments: favoritesData,
-                // );
+                Navigator.pushNamed(
+                  context,
+                  ProductDetailScreen.routeName,
+                  arguments: favoritesData,
+                );
               },
               child: SizedBox(
                 height: 140,
                 child: SingleProduct(
                   name: favoritesData.name[0],
-                  image: favoritesData.images[0],
+                  image: favoritesData.image[0],
                 ),
               ),
             );
