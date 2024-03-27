@@ -1,5 +1,5 @@
 import 'package:kozmotrust/common/widgets/loader.dart';
-import 'package:kozmotrust/features/home/widgets/allergies_box.dart';
+import 'package:kozmotrust/features/home/widgets/healthinfo_box.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/search/services/search_services.dart';
 import 'package:kozmotrust/features/search/widget/searched_product.dart';
@@ -112,7 +112,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ? const Loader()
           : Column(
               children: [
-                const AllergiesBox(),
+                const HealthInformationBox(),
                 const SizedBox(height: 10),
                 Expanded(
                   child: ListView.builder(

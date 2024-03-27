@@ -12,32 +12,31 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="fix">
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/global_variables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/global_variables.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/mark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/profile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/share.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/account_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/account_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/bottom_buttons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/bottom_buttons.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/add_product_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/add_product_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/allergies/screens/allergies_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/allergies/screens/allergies_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/auth/screens/auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/screens/auth_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/allergies/screens/allergies_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/allergies/screens/allergises_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/allergies/services/allergies_services.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/auth/services/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/services/auth_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/favorites/screens/favorites_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/favorites/screens/favorites_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/favorites/widgets/favorite_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/favorites/widgets/favorite_product.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/allergies_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/widget/searched_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widget/searched_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/providers/user_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/user_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/runner/win32_window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/windows/runner/win32_window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +63,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="b96faf7babf07280cdc1262ab98a12b54c35bd97" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -86,12 +85,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="issue#10" />
-                    <option name="lastUsedInstant" value="1711151302" />
+                    <option name="branchName" value="issue#33" />
+                    <option name="lastUsedInstant" value="1711539421" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1711151224" />
+                    <option name="lastUsedInstant" value="1711538608" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="issue#10" />
+                    <option name="lastUsedInstant" value="1711151302" />
                   </RecentBranch>
                 </list>
               </option>
@@ -140,7 +143,8 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "issue#10",
+    "git-widget-placeholder": "issue#33",
+    "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/models",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -154,8 +158,15 @@
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\account\screens" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\assets\images" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -206,7 +217,31 @@
       <option name="project" value="LOCAL" />
       <updated>1711353856156</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="win32 file fix">
+      <option name="closed" value="true" />
+      <created>1711498498037</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711498498037</updated>
+    </task>
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1711538704575</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711538704575</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1711542852345</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711542852345</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -231,6 +266,8 @@
     <MESSAGE value="not working" />
     <MESSAGE value="fixesse" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="win32 file fix" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

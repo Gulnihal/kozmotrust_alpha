@@ -1,5 +1,5 @@
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/allergies/screens/allergies_screen.dart';
+import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +15,6 @@ class FavoritesScreen extends StatefulWidget {
 class _FavoritesScreenState extends State<FavoritesScreen> {
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
-  }
-
-  void navigateToAllergies(int sum) {
-    Navigator.pushNamed(
-      context,
-      AllergiesScreen.routeName,
-      arguments: sum.toString(),
-    );
   }
 
   @override

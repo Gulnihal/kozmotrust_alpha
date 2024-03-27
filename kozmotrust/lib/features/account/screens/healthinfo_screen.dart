@@ -1,32 +1,30 @@
-import 'package:kozmotrust/constants/utils.dart';
-import 'package:kozmotrust/features/allergies/services/allergies_services.dart';
+import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 
-class AllergiesScreen extends StatefulWidget {
-  static const String routeName = '/allergies';
+class HealthInformationScreen extends StatefulWidget {
+  static const String routeName = '/healthinfo';
   final String totalAmount;
-  const AllergiesScreen({
+  const HealthInformationScreen({
     super.key,
     required this.totalAmount,
   });
 
   @override
-  State<AllergiesScreen> createState() => _AllergiesScreenState();
+  State<HealthInformationScreen> createState() => _HealthInformationScreenState();
 }
 
-class _AllergiesScreenState extends State<AllergiesScreen> {
+class _HealthInformationScreenState extends State<HealthInformationScreen> {
   final TextEditingController flatBuildingController = TextEditingController();
   final TextEditingController areaController = TextEditingController();
   final TextEditingController pincodeController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
-  final _allergiesFormKey = GlobalKey<FormState>();
+  final _healthinfoFormKey = GlobalKey<FormState>();
 
-  String allergiesToBeUsed = "";
-  final AllergiesServices allergiesServices = AllergiesServices();
+  String healthinfoToBeUsed = "";
+  final AccountServices healthinfoServices = AccountServices();
 
   @override
   void initState() {
@@ -42,61 +40,9 @@ class _AllergiesScreenState extends State<AllergiesScreen> {
     cityController.dispose();
   }
 
-  void onApplePayResult(res) {
-    if (Provider.of<UserProvider>(context, listen: false)
-        .user
-        .allergies
-        .isEmpty) {
-      allergiesServices.saveUserAllergies(
-          context: context, allergies: allergiesToBeUsed);
-    }
-    allergiesServices.placeOrder(
-      context: context,
-      allergies: allergiesToBeUsed,
-      totalSum: double.parse(widget.totalAmount),
-    );
-  }
-
-  void onGooglePayResult(res) {
-    if (Provider.of<UserProvider>(context, listen: false)
-        .user
-        .allergies
-        .isEmpty) {
-      allergiesServices.saveUserAllergies(
-          context: context, allergies: allergiesToBeUsed);
-    }
-    allergiesServices.placeOrder(
-      context: context,
-      allergies: allergiesToBeUsed,
-      totalSum: double.parse(widget.totalAmount),
-    );
-  }
-
-  void payPressed(String allergiesFromProvider) {
-    allergiesToBeUsed = "";
-
-    bool isForm = flatBuildingController.text.isNotEmpty ||
-        areaController.text.isNotEmpty ||
-        pincodeController.text.isNotEmpty ||
-        cityController.text.isNotEmpty;
-
-    if (isForm) {
-      if (_allergiesFormKey.currentState!.validate()) {
-        allergiesToBeUsed =
-            '${flatBuildingController.text}, ${areaController.text}, ${cityController.text} - ${pincodeController.text}';
-      } else {
-        throw Exception('Please enter all the values!');
-      }
-    } else if (allergiesFromProvider.isNotEmpty) {
-      allergiesToBeUsed = allergiesFromProvider;
-    } else {
-      showSnackBar(context, 'ERROR');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    var allergies = context.watch<UserProvider>().user.allergies;
+    var healthinfo = context.watch<UserProvider>().user.healthinfo;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -104,7 +50,7 @@ class _AllergiesScreenState extends State<AllergiesScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              if (allergies.isNotEmpty)
+              if (healthinfo.isNotEmpty)
                 Column(
                   children: [
                     Container(
@@ -117,7 +63,7 @@ class _AllergiesScreenState extends State<AllergiesScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          allergies,
+                          healthinfo,
                           style: const TextStyle(
                             fontSize: 18,
                           ),
@@ -135,7 +81,7 @@ class _AllergiesScreenState extends State<AllergiesScreen> {
                   ],
                 ),
               Form(
-                key: _allergiesFormKey,
+                key: _healthinfoFormKey,
                 child: Column(
                   children: [
                     CustomTextField(

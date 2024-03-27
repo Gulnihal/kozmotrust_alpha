@@ -49,12 +49,12 @@ userRouter.delete("/api/remove-from-favorites/", auth, async (req, res) => {
   }
 });
 
-// save user allergies
-userRouter.post("/api/save-user-allergies", auth, async (req, res) => {
+// save user healthinfo
+userRouter.post("/api/save-user-healthinfo", auth, async (req, res) => {
   try {
-    const { allergies } = req.body;
+    const { healthinfo } = req.body;
     let user = await User.findById(req.user);
-    user.allergies = allergies;
+    user.healthinfo = healthinfo;
     user = await user.save();
     res.json(user);
   } catch (e) {

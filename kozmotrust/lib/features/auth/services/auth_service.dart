@@ -26,7 +26,7 @@ class AuthService {
         username: username,
         password: password,
         email: email,
-        allergies: '',
+        healthinfo: '',
         type: '',
         token: '',
         favorites: [],

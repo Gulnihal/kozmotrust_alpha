@@ -6,7 +6,7 @@ class User {
   final String username;
   final String email;
   late final String password;
-  final String allergies;
+  final String healthinfo;
   final String type;
   final List<dynamic> favorites;
 
@@ -16,7 +16,7 @@ class User {
     required this.username,
     required this.email,
     required this.password,
-    required this.allergies,
+    required this.healthinfo,
     required this.type,
     required this.favorites,
   });
@@ -28,7 +28,7 @@ class User {
       'username': username,
       'email': email,
       'password': password,
-      'allergies': allergies,
+      'healthinfo': healthinfo,
       'type': type,
       'favorites': favorites,
     };
@@ -41,7 +41,7 @@ class User {
       username: map['username'] ?? '',
       email: map['email'] ?? '',
       password: map['password'] ?? '',
-      allergies: map['allergies'] ?? '',
+      healthinfo: map['healthinfo'] ?? '',
       type: map['type'] ?? '',
       favorites: List<Map<String, dynamic>>.from(
         map['favorites']?.map(
@@ -61,7 +61,7 @@ class User {
     String? name,
     String? email,
     String? password,
-    String? allergies,
+    String? healthinfo,
     String? type,
     List<dynamic>? favorites,
   }) {
@@ -71,7 +71,7 @@ class User {
       username: username,
       email: email ?? this.email,
       password: password ?? this.password,
-      allergies: allergies ?? this.allergies,
+      healthinfo: healthinfo ?? this.healthinfo,
       type: type ?? this.type,
       favorites: favorites ?? this.favorites,
     );

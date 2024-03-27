@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:kozmotrust/models/user.dart';
 
 class AccountServices {
   late SharedPreferences prefs;
@@ -73,6 +74,39 @@ class AccountServices {
         },
       );
       showSnackBar(context, "Account Deleted!");
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+  void saveUserHealthInformation({
+    required BuildContext context,
+    required String healthinfo,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$uri/api/save-user-healthinfo'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
+        },
+        body: jsonEncode({
+          'healthinfo': healthinfo,
+        }),
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          User user = userProvider.user.copyWith(
+            healthinfo: jsonDecode(res.body)['healthinfo'],
+          );
+
+          userProvider.setUserFromModel(user);
+        },
+      );
     } catch (e) {
       showSnackBar(context, e.toString());
     }

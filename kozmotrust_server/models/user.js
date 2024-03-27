@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     required: true,
     type: String,
   },
-  allergies: {
+  healthinfo: {
     type: String,
     default: "",
   },
