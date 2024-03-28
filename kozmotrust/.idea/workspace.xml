@@ -13,13 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +126,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "issue#33",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/models",
