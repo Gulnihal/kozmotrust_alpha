@@ -31,8 +31,9 @@ class HealthInformationBox extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: Text(
-                '${user.username} - ${user.healthinfo}',
+                'Hi ${user.username}! Here is your information that you give us: ${user.healthinfo}',
                 style: const TextStyle(
+                  fontSize: 24,
                   fontWeight: FontWeight.w500,
                 ),
                 overflow: TextOverflow.ellipsis,

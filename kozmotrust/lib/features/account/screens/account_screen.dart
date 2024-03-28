@@ -31,7 +31,7 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           DecoratedBox(
             decoration: BoxDecoration(
               border: Border.all(
@@ -47,11 +47,11 @@ class AccountScreen extends StatelessWidget {
               child: const ListFavorites(),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           const HealthInformationScreen(),
           const Expanded(child: SizedBox()),
           const BottomButtons(),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
         ],
       ),
     );
