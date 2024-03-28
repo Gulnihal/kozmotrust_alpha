@@ -13,13 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kozmotrust_server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="issue#42" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -74,12 +74,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="issue#33" />
-                    <option name="lastUsedInstant" value="1711539421" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1711640747" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1711538608" />
+                    <option name="branchName" value="issue#33" />
+                    <option name="lastUsedInstant" value="1711539421" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="issue#10" />
@@ -132,7 +132,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "issue#33",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/models",
