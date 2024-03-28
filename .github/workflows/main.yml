@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  my_job:
+    name: development environmets
+    runs-on: 
+      - windows-latest
+      - ubuntu-22.04
+    steps:
+      - name: Kozmotrust Super Secret
+        env:
+          AIAPIKEY: ${{ secrets.AIAPIKEY }
