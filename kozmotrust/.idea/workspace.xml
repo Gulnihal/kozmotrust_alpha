@@ -14,13 +14,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widgets/custom_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widgets/custom_textfield.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/single_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/single_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/gptexamine/screens/gpt_examine_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +41,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">

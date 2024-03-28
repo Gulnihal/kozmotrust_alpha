@@ -30,8 +30,8 @@ class CustomButton extends StatelessWidget {
           const SizedBox(width: 8), // Add spacing between icon and text
           Text(
             text,
-            style: TextStyle(
-              color: color == null ? Colors.white : Colors.black,
+            style: const TextStyle(
+              color: Colors.white,
             ),
           ),
         ],
