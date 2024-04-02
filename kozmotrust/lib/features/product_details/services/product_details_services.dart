@@ -42,4 +42,36 @@ class ProductDetailsServices {
       showSnackBar(context, e.toString());
     }
   }
+
+  void removeFromFavorites({
+    required BuildContext context,
+    required Product product,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    try {
+      http.Response res = await http.delete(
+        Uri.parse('$uri/api/remove-from-favorites'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
+        },
+        body: jsonEncode({
+          'id': product.id!,
+        }),
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          User user =
+          userProvider.user.copyWith(favorites: jsonDecode(res.body)['favorites']);
+          userProvider.setUserFromModel(user);
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 }

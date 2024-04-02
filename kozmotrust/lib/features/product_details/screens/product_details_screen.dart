@@ -1,10 +1,10 @@
 import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/features/product_details/services/product_details_services.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
+import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
-import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/models/product.dart';
-import 'package:provider/provider.dart';
+
+import 'package:kozmotrust/constants/global_variables.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const String routeName = '/product-details';
@@ -21,36 +21,40 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final ProductDetailsServices productDetailsServices =
       ProductDetailsServices();
-  double avgRating = 0;
-  double myRating = 0;
+  List<Product>? favorites = [];
+  final AccountServices accountServices = AccountServices();
 
   @override
   void initState() {
     super.initState();
-    double totalRating = 0;
-    for (int i = 0; i < widget.product.rating!.length; i++) {
-      totalRating += widget.product.rating![i].rating;
-      if (widget.product.rating![i].userId ==
-          Provider.of<UserProvider>(context, listen: false).user.id) {
-        myRating = widget.product.rating![i].rating;
-      }
-    }
-
-    if (totalRating != 0) {
-      avgRating = totalRating / widget.product.rating!.length;
-    }
+    fetchFavorites();
   }
 
-  void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  void fetchFavorites() async {
+    favorites = await accountServices.fetchFavorites(context: context);
+    setState(() {});
   }
 
-  void addTofavorites() {
+  bool isFavorite(Product product) {
+    return favorites!.any((favProduct) => favProduct.id == product.id);
+  }
+
+  void addToFavorites() async {
     productDetailsServices.addToFavorites(
       context: context,
       product: widget.product,
     );
+    fetchFavorites(); // Refresh the favorites list
   }
+
+  void removeFromFavorites() async {
+    productDetailsServices.removeFromFavorites(
+      context: context,
+      product: widget.product,
+    );
+    fetchFavorites(); // Refresh the favorites list
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,142 +62,242 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Container(
-                  height: 42,
-                  margin: const EdgeInsets.only(left: 15),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(7),
-                    elevation: 1,
-                    child: TextFormField(
-                      onFieldSubmitted: navigateToSearchScreen,
-                      decoration: InputDecoration(
-                        prefixIcon: InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.only(
-                              left: 6,
-                            ),
-                            child: Icon(
-                              Icons.search,
-                              color: Colors.black,
-                              size: 23,
-                            ),
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: const EdgeInsets.only(top: 10),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
-                          borderSide: BorderSide(
-                            color: Colors.black38,
-                            width: 1,
-                          ),
-                        ),
-                        hintText: 'Search',
-                        hintStyle: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.mic, color: Colors.black, size: 25),
-              ),
-            ],
-          ),
+          backgroundColor: GlobalVariables.selectedTopBarColor,
+          elevation: 0,
+          centerTitle: true,
+          title: Image.asset('assets/images/logo.png'),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.01),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    widget.product.id!,
+                  Image.network(
+                    'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
+                    fit: BoxFit.fitHeight,
+                    height: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 4,
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      return const Text('😢');
+                    },
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width*0.05),
+                  Column(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: widget.product.brand,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: widget.product.name,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.black12,
+              height: 5,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.01),
+              child: Row(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Product Description: ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: widget.product.description,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 10,
-              ),
-              child: Text(
-                widget.product.name,
-                style: const TextStyle(
-                  fontSize: 15,
-                ),
-              ),
+            Container(
+              color: Colors.black12,
+              height: 5,
             ),
-            Builder(
-              builder: (BuildContext context) => Image.network(
-                widget.product.image,
-                fit: BoxFit.contain,
-                height: 200,
-                width: 200,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.01),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Ingredients: ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                        ),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: widget.product.ingredients,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
               color: Colors.black12,
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(widget.product.description),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.01),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: "Is product ...?: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width/10),
+                      RichText(
+                        text: TextSpan(
+                          text: "Combination: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      Checkbox(
+                        value: widget.product.combination,
+                        onChanged: null, // Set onChanged to null to make the checkbox non-changeable
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: "For normal skin: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      Checkbox(
+                        value: widget.product.normal,
+                        onChanged: null, // Set onChanged to null to make the checkbox non-changeable
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width/10),
+                      RichText(
+                        text: TextSpan(
+                          text: "For oily skin: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      Checkbox(
+                        value: widget.product.oily,
+                        onChanged: null, // Set onChanged to null to make the checkbox non-changeable
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: "For dry skin: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      Checkbox(
+                        value: widget.product.dry,
+                        onChanged: null, // Set onChanged to null to make the checkbox non-changeable
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width/10),
+                      RichText(
+                        text: TextSpan(
+                          text: "For sensitive skin: ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                          ),
+                        ),
+                      ),
+                      Checkbox(
+                        value: widget.product.sensitive,
+                        onChanged: null, // Set onChanged to null to make the checkbox non-changeable
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ),
             Container(
               color: Colors.black12,
               height: 5,
             ),
-            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(10),
               child: CustomButton(
-                icon: Icons.favorite_border_outlined,
-                text: 'Add to favorites',
-                onTap: addTofavorites,
-                color: const Color.fromRGBO(254, 216, 19, 1),
+                icon: isFavorite(widget.product) ? Icons.favorite : Icons.favorite_border_outlined,
+                text: isFavorite(widget.product) ? 'Remove from favorites' : 'Add to favorites',
+                onTap: () {
+                  if (isFavorite(widget.product)) {
+                    removeFromFavorites();
+                  } else {
+                    addToFavorites();
+                  }
+                },
+                color: isFavorite(widget.product) ? Colors.red : Colors.red.shade400,
               ),
             ),
+
             const SizedBox(height: 10),
-            Container(
-              color: Colors.black12,
-              height: 5,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                'Rate The Product',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
           ],
         ),
       ),

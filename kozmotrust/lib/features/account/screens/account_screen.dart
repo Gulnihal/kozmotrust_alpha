@@ -1,14 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/account/widgets/bottom_buttons.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/features/account/widgets/list_favorites.dart';
+import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 
+  @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;

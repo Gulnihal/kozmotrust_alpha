@@ -12,7 +12,6 @@ class SingleProduct extends StatelessWidget {
     this.image = 'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,6 +35,10 @@ class SingleProduct extends StatelessWidget {
                 fit: BoxFit.fitHeight,
                 height: MediaQuery.of(context).size.width/4,
                 width: MediaQuery.of(context).size.width/4,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  return const Text('😢');
+                },
               ),
               const SizedBox(width: 10),
               RichText(
