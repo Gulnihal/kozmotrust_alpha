@@ -23,20 +23,30 @@ class AccountScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           SizedBox(height: MediaQuery.of(context).size.height/50),
-          Center( // Center the text horizontally
-            child: Text(
-              "Welcome ${user.username}!",
-              style: const TextStyle(
-                fontSize: 24, // Set the font size to 24
-                fontWeight: FontWeight.bold, // Make the text bold
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "Hi ${user.username} ",
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height/35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '😊', // Smile emoji
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.height/35), // Adjust emoji if needed
+                  ),
+                ],
               ),
             ),
           ),
+
           SizedBox(height: MediaQuery.of(context).size.height/50),
           const ListFavorites(),
           SizedBox(height: MediaQuery.of(context).size.height/50),
           const HealthInformationScreen(),
-          SizedBox(height: MediaQuery.of(context).size.height/50),
+          SizedBox(height: MediaQuery.of(context).size.height/35),
           const BottomButtons(),
           SizedBox(height: MediaQuery.of(context).size.height/50),
         ],
