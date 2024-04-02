@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     authService.getUserData(context);
-    // print(UserProvider().user.username+"dfgsdfg");
   }
 
   @override
@@ -52,11 +51,13 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true, // can remove this line
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-        home: Provider.of<UserProvider>(context).user.token.isEmpty
+      home: ScaffoldMessenger(
+        child: Provider.of<UserProvider>(context).user.token.isEmpty
             ? const AuthScreen()
             : Provider.of<UserProvider>(context).user.token.isNotEmpty
-            ? const BottomBar()
-            : const HomeScreen(),
+                ? const BottomBar()
+                : const HomeScreen(),
+      ),
     );
   }
 }

@@ -34,15 +34,17 @@ class SingleProduct extends StatelessWidget {
               Image.network(
                 'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
                 fit: BoxFit.fitHeight,
-                height: 200,
-                width: 200,
+                height: MediaQuery.of(context).size.width/4,
+                width: MediaQuery.of(context).size.width/4,
               ),
-              const SizedBox(height: 20),
-              Text(
-                "$brand\n$name",
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              const SizedBox(width: 10),
+              RichText(
+                text: TextSpan(
+                  text: "$brand\n$name",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: MediaQuery.of(context).size.width * 0.035,
+                  ),
                 ),
               ),
             ],

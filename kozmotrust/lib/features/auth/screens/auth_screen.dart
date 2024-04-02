@@ -89,16 +89,17 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
         ),
       child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-          child: Column(
+          child: ListView(
             children: [
-              Expanded(
-                child: SlideTransition(
-                  position: animation1,
+              SlideTransition(
+                position: animation1,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
                   child: Image.asset('assets/images/logo2.png'),
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 15,
+                height: MediaQuery.of(context).size.height / 50,
               ),
               SlideTransition(
                 position: animation1,
@@ -112,8 +113,8 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 50,
               ),
               ListTile(
                 tileColor: _auth == Auth.signup
@@ -154,6 +155,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
+                        // TODO obscureText should be added after ui design change
                         CustomTextField(
                           controller: _passwordController,
                           hintText: 'Password',

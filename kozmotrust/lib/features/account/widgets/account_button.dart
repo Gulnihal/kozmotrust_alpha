@@ -18,7 +18,7 @@ class AccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      height: 40, // Adjust the height of the button as needed
+      height: MediaQuery.of(context).size.width * 0.5, // Adjust the height of the button as needed
       child: OutlinedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: background,
@@ -34,11 +34,11 @@ class AccountButton extends StatelessWidget {
               icon,
               color: Colors.white,
             ),
-            const SizedBox(width: 8), // Add spacing between icon and text
+            SizedBox(width: MediaQuery.of(context).size.width / 25), // Add spacing between icon and text
             Text(
               text,
-              style: const TextStyle(
-                fontSize: 20,
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.04,
                 color: Colors.white,
               ),
             ),

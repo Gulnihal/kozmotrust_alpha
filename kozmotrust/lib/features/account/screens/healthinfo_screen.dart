@@ -46,7 +46,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                   key: _healthinfoFormKey,
                   child: Column(
                     children: [
-                      const SizedBox(height: 50),
+                      SizedBox(height: MediaQuery.of(context).size.height/50),
                       const Text(
                         "You can add any information you desired like your health background or your skin type:",
                         style: TextStyle(
@@ -54,7 +54,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                           fontWeight: FontWeight.bold, // Make the text bold
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      SizedBox(height: MediaQuery.of(context).size.height/50),
                       Container(
                         padding: const EdgeInsets.only(
                           left: 10,
@@ -63,10 +63,11 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                         ),
                         child: CustomTextField(
                           controller: _healthinfoController,
-                          hintText: '',
+                          hintText: _healthinfoController.text,
+                          maxLines: (MediaQuery.of(context).size.height/100).round(),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: MediaQuery.of(context).size.height/50),
                       CustomButton(
                         text: 'Update',
                         icon: Icons.edit_note_outlined,
@@ -112,7 +113,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
           color: Colors.cyan.shade50,
         ),
         child: Container(
-          height: MediaQuery.of(context).size.width/4,
+          height: MediaQuery.of(context).size.height/3.5,
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.all(10),
           child: Column (
@@ -124,10 +125,10 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                     padding: const EdgeInsets.only(
                       left: 15,
                     ),
-                    child: const Text(
+                    child: Text(
                       'Your General Health Information:',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: MediaQuery.of(context).size.height/50,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -141,13 +142,12 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                     top: 20,
                     right: 10,
                   ),
-                  child: TextFormField(
-                    enabled: false,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      hintText: healthinfo,
+                  child: Text(
+                    healthinfo,
+                    style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.height/60,
                     ),
-                  ),
+                  )
                 ),
               ),
               const SizedBox(height: 20),
@@ -158,6 +158,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                   icon:Icons.edit_note_outlined,
                   color: Colors.blue.shade200,
                   onTap: () {
+                    _healthinfoController.text = healthinfo.toString();
                     updateInfo();
                   },
                 ),

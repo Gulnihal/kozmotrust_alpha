@@ -19,10 +19,11 @@ class AccountScreen extends StatelessWidget {
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),
       ),
-      body: Column(
+      body: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         children: [
-          const SizedBox(height: 50),
-          Card( // Center the text horizontally
+          SizedBox(height: MediaQuery.of(context).size.height/50),
+          Center( // Center the text horizontally
             child: Text(
               "Welcome ${user.username}!",
               style: const TextStyle(
@@ -31,27 +32,13 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 50),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.redAccent.shade700,
-                width: 5,
-              ),
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.red.shade100,
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(10),
-              child: const ListFavorites(),
-            ),
-          ),
-          const SizedBox(height: 50),
+          SizedBox(height: MediaQuery.of(context).size.height/50),
+          const ListFavorites(),
+          SizedBox(height: MediaQuery.of(context).size.height/50),
           const HealthInformationScreen(),
-          const Expanded(child: SizedBox()),
+          SizedBox(height: MediaQuery.of(context).size.height/50),
           const BottomButtons(),
-          const SizedBox(height: 50),
+          SizedBox(height: MediaQuery.of(context).size.height/50),
         ],
       ),
     );

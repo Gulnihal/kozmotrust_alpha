@@ -23,17 +23,17 @@ class _BottomButtonsState extends State <BottomButtons> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.width * 0.2,
               child: AccountButton(
-                      text: 'Account Settings',
+                      text: 'Account\nSettings',
                       icon: Icons.settings_outlined,
                       background: GlobalVariables.buttonBackgroundColor,
                       onTap: () => navigateToAccountSettings(),
                     ),
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.width * 0.2,
               child: AccountButton(
                 text: 'Logout',
