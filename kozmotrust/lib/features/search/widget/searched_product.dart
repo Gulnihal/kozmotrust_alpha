@@ -14,7 +14,7 @@ class SearchedProduct extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(
-            horizontal: 10,
+            horizontal: 10, vertical: 10
           ),
           child: Row(
             children: [

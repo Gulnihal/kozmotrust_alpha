@@ -14,44 +14,66 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.red,
-            width: 1.5,
-          ),
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.white,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.red,
+          width: 1.5,
         ),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.all(10),
-          child: Row (
-            children: [
-              Image.network(
-                'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
-                fit: BoxFit.fitHeight,
-                height: MediaQuery.of(context).size.width/4,
-                width: MediaQuery.of(context).size.width/4,
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  return const Text('😢');
-                },
-              ),
-              const SizedBox(width: 10),
-              RichText(
-                text: TextSpan(
-                  text: "$brand\n$name",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: MediaQuery.of(context).size.width * 0.035,
+        borderRadius: BorderRadius.circular(5),
+        color: Colors.white,
+      ),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Row (
+          children: [
+            Image.network(
+              'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
+              fit: BoxFit.fitHeight,
+              height: MediaQuery.of(context).size.width/4,
+              width: MediaQuery.of(context).size.width/4,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return const Text('😢');
+              },
+            ),
+            const SizedBox(width: 5),
+            Column(
+              children: [
+                Container(
+                  width: 235,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    brand,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                    ),
+                    maxLines: 2,
                   ),
                 ),
-              ),
-            ],
-          ),
+                Container(
+                  width: 235,
+                  padding: const EdgeInsets.only(left: 10, top: 5),
+                ),
+                Container(
+                  width: 235,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.035,
+                    ),
+                    maxLines: 2,
+                  ),
+                ),
+                Container(
+                  width: 235,
+                  padding: const EdgeInsets.only(left: 10, top: 5),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

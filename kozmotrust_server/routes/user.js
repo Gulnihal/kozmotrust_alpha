@@ -31,9 +31,9 @@ userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
   }
 });
 
-userRouter.delete("/api/remove-from-favorites/", auth, async (req, res) => {
+userRouter.delete("/api/remove-from-favorites", auth, async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     const product = await Product.findById(id);
     let user = await User.findById(req.user);
 
