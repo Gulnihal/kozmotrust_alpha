@@ -12,12 +12,16 @@ productRouter.get("/api/products/", auth, async (req, res) => {
   }
 });
 
-// create a get request to search products and get them
-// /api/products/search/i
-productRouter.get("/api/products/search/:name", auth, async (req, res) => {
+// create a get request to search products by name or brand
+// /api/products/search/:query
+productRouter.get("/api/products/search/:query", auth, async (req, res) => {
   try {
+    const query = req.params.query;
     const products = await Product.find({
-      name: { $regex: req.params.name, $options: "i" },
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { brand: { $regex: query, $options: "i" } }
+      ]
     });
 
     res.json(products);

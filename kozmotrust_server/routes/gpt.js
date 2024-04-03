@@ -9,7 +9,7 @@ require('dotenv').config();
 const AIapiKey = process.env.AIAPIKEY;
 const client = new openai({ apiKey: AIapiKey });
 
-gptRouter.get("/api/gptexamine", auth, async (req, res) => {
+gptRouter.post("/api/gptexamine", auth, async (req, res) => {
     try {
       const token = req.token;
       const verified = jwt.verify(token, secretKey);
