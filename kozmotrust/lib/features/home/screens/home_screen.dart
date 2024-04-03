@@ -2,6 +2,8 @@ import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:dotenv/dotenv.dart' as dotenv;
+import 'package:weather/weather.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';

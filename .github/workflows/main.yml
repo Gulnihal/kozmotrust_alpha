@@ -12,3 +12,4 @@ jobs:
       - name: Kozmotrust Super Secret
         env:
           AIAPIKEY: ${{ secrets.AIAPIKEY }
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }

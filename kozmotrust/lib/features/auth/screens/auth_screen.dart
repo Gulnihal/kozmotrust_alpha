@@ -1,5 +1,6 @@
 import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
+import 'package:kozmotrust/common/widgets/custom_textfield_with_eye.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/auth/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -155,8 +156,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
-                        // TODO obscureText should be added after ui design change
-                        CustomTextField(
+                        CustomTextFieldWithEye(
                           controller: _passwordController,
                           hintText: 'Password',
                         ),
@@ -209,7 +209,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
-                        CustomTextField(
+                        CustomTextFieldWithEye(
                           controller: _passwordController,
                           hintText: 'Password',
                         ),
