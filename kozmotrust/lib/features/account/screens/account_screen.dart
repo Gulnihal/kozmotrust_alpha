@@ -19,7 +19,11 @@ class _AccountScreenState extends State<AccountScreen> {
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: GlobalVariables.selectedTopBarColor,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: GlobalVariables.selectedTopBarColor
+          ),
+        ),
         elevation: 0,
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),

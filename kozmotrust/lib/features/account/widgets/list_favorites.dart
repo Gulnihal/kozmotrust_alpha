@@ -36,12 +36,13 @@ class _ListFavoritesState extends State<ListFavorites> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.redAccent.shade700,
+                  color: const Color(0xFFE75480), // Rose
                   width: 5,
                 ),
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.red.shade100,
-              ),
+                color: const Color(0xFFF6BDC4), // Light Rose
+
+            ),
               child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.all(10),

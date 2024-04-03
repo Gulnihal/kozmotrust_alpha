@@ -96,7 +96,11 @@ class _AccountSettingsState extends State<AccountSettings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: GlobalVariables.selectedTopBarColor,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: GlobalVariables.selectedTopBarColor
+          ),
+        ),
         elevation: 0,
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),

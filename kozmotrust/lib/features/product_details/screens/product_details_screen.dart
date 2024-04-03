@@ -61,7 +61,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          backgroundColor: GlobalVariables.selectedTopBarColor,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+                gradient: GlobalVariables.selectedTopBarColor
+            ),
+          ),
           elevation: 0,
           centerTitle: true,
           title: Image.asset('assets/images/logo.png'),

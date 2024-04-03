@@ -116,7 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: GlobalVariables.selectedTopBarColor,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+            gradient: GlobalVariables.selectedTopBarColor
+        ),
+      ),
       elevation: 0,
       centerTitle: true,
       title: Image.asset('assets/images/logo.png'),

@@ -48,13 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
         child: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 200, 162, 200), // Lilac
-                  Color.fromARGB(255, 255, 176, 190), // Rose
-                ],
-                stops: [0.5, 1.0],
-              ),
+              gradient: GlobalVariables.selectedTopBarColor
             ),
           ),
           title: Row(

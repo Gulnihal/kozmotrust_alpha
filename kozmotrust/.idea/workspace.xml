@@ -12,15 +12,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment=".">
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="search functionality done">
+      <change beforePath="$PROJECT_DIR$/../.idea/kozmotrust_alpha.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/kozmotrust_alpha.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widgets/custom_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widgets/custom_textfield.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widgets/bottom_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/global_variables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/global_variables.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/healthinfo_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/services/account_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/account/screens/account_settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/screens/account_settings.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/list_favorites.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/account/widgets/single_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/account/widgets/single_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/screens/search_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +52,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -100,7 +117,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -121,16 +138,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "issue#33",
+    "git-widget-placeholder": "issue#42",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/Gulnihal/StudioProjects/kozmotrust_alpha/kozmotrust/lib/models",
+    "last_opened_file_path": "C:/Users/Gulnihal/Desktop/flutter-amazon-clone-tutorial",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propDebugger",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -225,7 +244,47 @@
       <option name="project" value="LOCAL" />
       <updated>1711542852345</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="small enhancements">
+      <option name="closed" value="true" />
+      <created>1712093427047</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712093427047</updated>
+    </task>
+    <task id="LOCAL-00010" summary="more small enhancements">
+      <option name="closed" value="true" />
+      <created>1712095316784</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712095316784</updated>
+    </task>
+    <task id="LOCAL-00011" summary="product detail add-remove favorites fixed.">
+      <option name="closed" value="true" />
+      <created>1712101272853</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712101272853</updated>
+    </task>
+    <task id="LOCAL-00012" summary="search functionality done">
+      <option name="closed" value="true" />
+      <created>1712107058935</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712107058935</updated>
+    </task>
+    <task id="LOCAL-00013" summary="search functionality done">
+      <option name="closed" value="true" />
+      <created>1712107121205</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712107121206</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -252,6 +311,10 @@
     <MESSAGE value="fix" />
     <MESSAGE value="win32 file fix" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="small enhancements" />
+    <MESSAGE value="more small enhancements" />
+    <MESSAGE value="product detail add-remove favorites fixed." />
+    <MESSAGE value="search functionality done" />
+    <option name="LAST_COMMIT_MESSAGE" value="search functionality done" />
   </component>
 </project>
