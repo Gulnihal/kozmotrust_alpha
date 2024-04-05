@@ -1,5 +1,6 @@
 import 'package:kozmotrust/common/widgets/loader.dart';
 import 'package:kozmotrust/features/account/services/account_services.dart';
+import 'package:kozmotrust/features/account/widgets/search_favorites.dart';
 import 'package:kozmotrust/features/account/widgets/single_product.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +16,22 @@ class ListFavorites extends StatefulWidget {
 class _ListFavoritesState extends State<ListFavorites> {
   List<Product>? favorites = [];
   final AccountServices accountServices = AccountServices();
+  final SearchFavorites searchFavorites = const SearchFavorites(searchQuery: '');
 
   @override
   void initState() {
     super.initState();
+    searchFavorites;
     fetchFavorites();
   }
 
   void fetchFavorites() async {
     favorites = await accountServices.fetchFavorites(context: context);
     setState(() {});
+  }
+
+  void navigateToSearchFavorites() {
+    Navigator.pushNamed(context, SearchFavorites.routeName);
   }
 
   @override
@@ -37,7 +44,7 @@ class _ListFavoritesState extends State<ListFavorites> {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: const Color(0xFFE75480), // Rose
-                  width: 5,
+                  width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5),
                 color: const Color(0xFFF6BDC4), // Light Rose
@@ -47,7 +54,7 @@ class _ListFavoritesState extends State<ListFavorites> {
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.all(10),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height / 3.5,
+                    height: MediaQuery.of(context).size.height / 2.4,
                     child: Column(
                       children: [
                         Row(
@@ -65,6 +72,15 @@ class _ListFavoritesState extends State<ListFavorites> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
+                            ),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.search_rounded,
+                                color: Colors.black,
+                              ), // Config icon
+                              onPressed: () {
+                                navigateToSearchFavorites();
+                              },
                             ),
                           ],
                         ),
@@ -112,7 +128,7 @@ class _ListFavoritesState extends State<ListFavorites> {
                                   ),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   )),

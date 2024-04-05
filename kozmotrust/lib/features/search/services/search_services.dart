@@ -45,4 +45,41 @@ class SearchServices {
     }
     return productList;
   }
+
+  Future<List<Product>> fetchSearchedFavoriteProduct({
+    required BuildContext context,
+    required String searchQuery,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<Product> productList = [];
+    try {
+      http.Response res = await http.get(
+        Uri.parse('$uri/api/user/favorites/search/$searchQuery'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
+        },
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            productList.add(
+              Product.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    print(productList);
+    return productList;
+  }
 }

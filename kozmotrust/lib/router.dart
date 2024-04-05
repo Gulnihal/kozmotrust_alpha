@@ -1,5 +1,6 @@
 import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
+import 'package:kozmotrust/features/account/widgets/search_favorites.dart';
 import 'package:kozmotrust/features/admin/screens/add_product_screen.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/account/screens/account_settings.dart';
@@ -41,6 +42,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => SearchScreen(
+          searchQuery: searchQuery,
+        ),
+      );
+    case SearchFavorites.routeName:
+      var searchQuery = routeSettings.arguments as String?;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SearchFavorites(
           searchQuery: searchQuery,
         ),
       );
