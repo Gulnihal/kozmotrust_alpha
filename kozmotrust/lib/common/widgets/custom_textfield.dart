@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:kozmotrust/constants/global_variables.dart';
+
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final int maxLines;
   final bool enabled;
+  final bool filled;
+  final Color color;
   const CustomTextField({
     super.key,
     required this.controller,
     required this.hintText,
+    required this.filled,
+    this.color = GlobalVariables.backgroundColor,
     this.maxLines = 1,
     this.enabled = true,
   });
@@ -20,6 +26,8 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           hintText: hintText,
+          filled: true,
+          fillColor: color,
           border: const OutlineInputBorder(
               borderSide: BorderSide(
             color: Colors.black38,

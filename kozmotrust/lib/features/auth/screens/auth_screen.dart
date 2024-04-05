@@ -185,11 +185,13 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                       children: [
                         CustomTextField(
                           controller: _usernameController,
+                          filled: false,
                           hintText: 'Username',
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
                           controller: _emailController,
+                          filled: false,
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
@@ -243,6 +245,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                       children: [
                         CustomTextField(
                           controller: _emailController,
+                          filled: false,
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),

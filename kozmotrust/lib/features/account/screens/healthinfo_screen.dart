@@ -64,6 +64,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
                         child: CustomTextField(
                           controller: _healthinfoController,
                           hintText: _healthinfoController.text,
+                          filled: false,
                           maxLines: (MediaQuery.of(context).size.height/100).round(),
                         ),
                       ),

@@ -92,17 +92,20 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 30),
                 CustomTextField(
                   controller: productNameController,
+                  filled: false,
                   hintText: 'Product Name',
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
                   controller: descriptionController,
+                  filled: false,
                   hintText: 'Description',
                   maxLines: 7,
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
                   controller: ingredientsController,
+                  filled: false,
                   hintText: 'ingredients',
                 ),
                 const SizedBox(height: 10),
