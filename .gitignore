@@ -6,3 +6,4 @@ kozmotrust/.idea/workspace.xml
 .github/workflows/main.yaml
 /.idea
 /kozmotrust/windows
+kozmotrust/.env

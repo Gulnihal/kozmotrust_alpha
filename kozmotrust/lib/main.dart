@@ -7,6 +7,8 @@ import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'localizations.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -15,6 +17,11 @@ void main() {
     ),
   ], child: const MyApp()));
 }
+
+final supportedLocales = [
+  const Locale('en'), // English
+  const Locale('tr'), // Turkish
+];
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -25,6 +32,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
+  Locale _locale = const Locale('en'); // Default locale is English
+
+  // Function to change the app's language
+  void changeLanguage(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   void initState() {
@@ -37,6 +52,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Kozmotrust',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      locale: _locale,
+      supportedLocales: supportedLocales,
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
         colorScheme: const ColorScheme.light(
