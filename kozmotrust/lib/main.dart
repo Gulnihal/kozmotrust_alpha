@@ -1,13 +1,13 @@
-import 'package:kozmotrust/common/widgets/bottom_bar.dart';
-import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
-import 'package:kozmotrust/features/auth/services/auth_service.dart';
-import 'package:kozmotrust/features/home/screens/home_screen.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
-import 'package:kozmotrust/router.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:kozmotrust/providers/user_provider.dart';
+import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
+import 'package:kozmotrust/features/home/screens/home_screen.dart';
+import 'package:kozmotrust/common/widgets/bottom_bar.dart';
+import 'package:kozmotrust/features/auth/services/auth_service.dart';
+import 'package:kozmotrust/router.dart';
+import 'constants/global_variables.dart';
 import 'localizations.dart';
 
 void main() {
@@ -31,20 +31,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final AuthService authService = AuthService();
-  Locale _locale = const Locale('en'); // Default locale is English
-
-  // Function to change the app's language
-  void changeLanguage(Locale locale) {
-    setState(() {
-      _locale = locale;
-    });
-  }
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
     super.initState();
-    authService.getUserData(context);
+    _authService.getUserData(context);
   }
 
   @override
@@ -57,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      locale: _locale,
+      locale: const Locale('en'), // Default locale is English
       supportedLocales: supportedLocales,
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
@@ -70,15 +62,17 @@ class _MyAppState extends State<MyApp> {
             color: Colors.black,
           ),
         ),
-        useMaterial3: true, // can remove this line
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: ScaffoldMessenger(
-        child: Provider.of<UserProvider>(context).user.token.isEmpty
-            ? const AuthScreen()
-            : Provider.of<UserProvider>(context).user.token.isNotEmpty
-                ? const BottomBar()
-                : const HomeScreen(),
+      home: Consumer<UserProvider>(
+        builder: (context, userProvider, _) {
+          // userProvider.fetchUserData();
+          if (userProvider.user.token.isEmpty) {
+            return const AuthScreen();
+          } else {
+            return userProvider.user.token.isNotEmpty ? const BottomBar() : const HomeScreen();
+          }
+        },
       ),
     );
   }
