@@ -10,6 +10,7 @@ class UserProvider extends ChangeNotifier {
     password: '',
     healthinfo: '',
     type: '',
+    language: '',
     favorites: [],
   );
 

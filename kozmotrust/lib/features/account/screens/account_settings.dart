@@ -17,8 +17,12 @@ class _AccountSettingsState extends State<AccountSettings> {
   final TextEditingController _passwordDeleteController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
   final AccountServices accountServices = AccountServices();
+  final _languageFormKey = GlobalKey<FormState>();
   final _updatePasswordFormKey = GlobalKey<FormState>();
   final _deleteAccountFormKey = GlobalKey<FormState>();
+
+  String _selectedLanguage = 'en';
+  final List<String> _languageOptions = ['en', 'tr'];
 
   void updatePassword() {
     accountServices.updatePassword(
@@ -32,6 +36,13 @@ class _AccountSettingsState extends State<AccountSettings> {
     accountServices.deleteAccount(
       context: context,
       password: _passwordDeleteController.text,
+    );
+  }
+
+  void changeLanguage() {
+    accountServices.changeLanguage(
+      context: context,
+      language: _selectedLanguage,
     );
   }
 
@@ -143,6 +154,48 @@ class _AccountSettingsState extends State<AccountSettings> {
                       }
                     },
                   )
+                ],
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height/50),
+            Form(
+              key: _languageFormKey,
+              child: Row(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height/50),
+                  const Text(
+                    "App language: ",
+                    style: TextStyle(
+                      fontSize: 16, // Set the font size to 24
+                      fontWeight: FontWeight.bold, // Make the text bold
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height/50),
+                  DropdownButton<String>(
+                    value: _selectedLanguage, // Store the selected option
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _selectedLanguage = newValue!;
+                      });
+                    },
+                    items: _languageOptions.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height/50),
+                  CustomButton(
+                    text: 'Change Language',
+                    icon: Icons.edit_note_outlined,
+                    color: Colors.lightBlueAccent,
+                    onTap: () {
+                      if (_languageFormKey.currentState!.validate()) {
+                        changeLanguage();
+                      }
+                    },
+                  ),
                 ],
               ),
             ),

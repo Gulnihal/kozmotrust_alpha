@@ -111,6 +111,48 @@ class AccountServices {
       showSnackBar(context, e.toString());
     }
   }
+
+  void changeLanguage({
+    required BuildContext context,
+    required String language,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$uri/api/language'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
+        },
+        body: jsonEncode({
+          'language': language,
+        }),
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          User user = userProvider.user.copyWith(
+            language: jsonDecode(res.body)['language'],
+          );
+
+          userProvider.setUserFromModel(user);
+        },
+      );
+      if (language == 'tr') {
+        showSnackBar(context, "Dil ayarı değişti!");
+      }
+      else {
+        showSnackBar(context, "Language settings changed!");
+      }
+
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
   //very important fetch favorites part
   Future<List<Product>> fetchFavorites({
     required BuildContext context,

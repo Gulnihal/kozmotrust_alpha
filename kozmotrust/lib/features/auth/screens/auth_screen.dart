@@ -12,13 +12,14 @@ enum Auth {
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth-screen';
+
   const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
+class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
@@ -26,13 +27,16 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  late String _selectedLanguage;
+  final List<String> _languageOptions = ['en', 'tr'];
+
   late AnimationController _controller1;
   late Animation<Offset> animation1;
 
   @override
   void initState() {
     super.initState();
-
+    _selectedLanguage = 'en';
     //animation 1
     _controller1 = AnimationController(
       duration: const Duration(milliseconds: 1000),
@@ -61,6 +65,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
       username: _usernameController.text,
       email: _emailController.text,
       password: _passwordController.text,
+      language: _selectedLanguage
     );
   }
 
@@ -76,6 +81,38 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GlobalVariables.backgroundColor,
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, GlobalVariables.backgroundColor],
+              begin: FractionalOffset(0.0, 1.0),
+              end: FractionalOffset(0.0, 1.0),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.repeated,
+            ),
+          ),
+        ),
+        title: DropdownButton<String>(
+          value: _selectedLanguage, // Store the selected option
+          onChanged: (String? newValue) {
+            setState(() {
+              _selectedLanguage = newValue!;
+            });
+          },
+          items: _languageOptions.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Row(
+                children: [
+                  Text( value == 'en' ? '🇺🇸  ' : '🇹🇷  '),
+                  Text(value),
+                ],
+              )
+            );
+          }).toList(),
+        ),
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -88,8 +125,8 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
             tileMode: TileMode.repeated,
           ),
         ),
-      child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           child: ListView(
             children: [
               SlideTransition(

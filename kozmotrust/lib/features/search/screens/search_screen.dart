@@ -48,8 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
         child: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-              gradient: GlobalVariables.selectedTopBarColor
-            ),
+                gradient: GlobalVariables.selectedTopBarColor),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,31 +109,67 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: products == null
-          ? const Loader()
-          : Column(
-              children: [
-                const SizedBox(height: 10),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: products!.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            ProductDetailScreen.routeName,
-                            arguments: products![index],
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: Image.asset('assets/images/logo2.png'),
+                  ),
+                  const Loader(),
+                ],
+              ),
+            )
+          : products!.isEmpty
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.warning,
+                        size: 100,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 50,
+                      ),
+                      const Text(
+                        "The product is not found.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 28,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: products!.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                ProductDetailScreen.routeName,
+                                arguments: products![index],
+                              );
+                            },
+                            child: SearchedProduct(
+                              product: products![index],
+                            ),
                           );
                         },
-                        child: SearchedProduct(
-                          product: products![index],
-                        ),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
     );
   }
 }

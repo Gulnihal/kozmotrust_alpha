@@ -34,6 +34,11 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "user",
   },
+  language: {
+    type: String,
+    enum: ["en", "tr"], // Only allow "en" or "tr"
+    default: "en", // Default value is "en"
+  },
   favorites: [
     {
       product: productSchema,
