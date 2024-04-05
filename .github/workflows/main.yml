@@ -1,15 +1,18 @@
 on:
   pull_request:
     branches:
-    - main
+      - main
 jobs:
   my_job:
-    name: development environmets
+    name: Development Environments
     runs-on: 
       - windows-latest
       - ubuntu-22.04
     steps:
       - name: Kozmotrust Super Secret
         env:
-          AIAPIKEY: ${{ secrets.AIAPIKEY }
-          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }
+          AIAPIKEY: ${{ secrets.AIAPIKEY }}
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+          MONGODBURL: ${{ secrets.MONGODBURL }}
+        run: |
+          # Add your steps here
