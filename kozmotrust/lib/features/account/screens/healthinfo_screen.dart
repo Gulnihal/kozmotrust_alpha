@@ -107,7 +107,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen> {
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.cyan.shade700,
-            width: 5,
+            width: 0.5,
           ),
           borderRadius: BorderRadius.circular(5),
           color: Colors.cyan.shade50,

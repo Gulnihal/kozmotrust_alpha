@@ -44,7 +44,7 @@ class _ListFavoritesState extends State<ListFavorites> {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: const Color(0xFFE75480), // Rose
-                  width: 2,
+                  width: 0.5,
                 ),
                 borderRadius: BorderRadius.circular(5),
                 color: const Color(0xFFF6BDC4), // Light Rose
