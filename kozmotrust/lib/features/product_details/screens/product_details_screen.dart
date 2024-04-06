@@ -3,7 +3,7 @@ import 'package:kozmotrust/features/product_details/services/product_details_ser
 import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/models/product.dart';
-
+import 'package:kozmotrust/features/product_details/screens/gpt_examine_screen.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -27,7 +27,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     super.initState();
+    productDetailsServices.getGptAnswer(context: context, product: widget.product);
     fetchFavorites();
+  }
+
+  void navigateToGPT() {
+    Navigator.pushNamed(
+        context,
+        GPTExamineScreen.routeName,
+        arguments: productDetailsServices.getAnswer(),
+    );
   }
 
   void fetchFavorites() async {
@@ -63,12 +72,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         child: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-                gradient: GlobalVariables.selectedTopBarColor
-            ),
+                gradient: GlobalVariables.selectedTopBarColor),
           ),
           elevation: 0,
           centerTitle: true,
           title: Image.asset('assets/images/logo.png'),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.question_answer_outlined,
+                color: GlobalVariables.gptIconColor,
+              ), // Logout icon
+              onPressed: () {
+                navigateToGPT();
+              },
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(

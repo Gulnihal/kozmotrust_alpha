@@ -89,7 +89,7 @@ class _ListFavoritesState extends State<ListFavorites> {
                           child: Container(
                             padding: const EdgeInsets.only(
                               left: 10,
-                              top: 20,
+                              top: 10,
                               right: 10,
                             ),
                             child: favorites!.isEmpty // Add a null check here

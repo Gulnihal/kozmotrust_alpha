@@ -6,6 +6,7 @@ import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/account/screens/account_settings.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
+import 'package:kozmotrust/features/product_details/screens/gpt_examine_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +62,18 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           product: product,
         ),
       );
+    case GPTExamineScreen.routeName:
+      var answer = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => GPTExamineScreen(
+          answer: answer,
+        ),
+      );
     case HealthInformationScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => HealthInformationScreen(),
+        builder: (_) => const HealthInformationScreen(),
       );
     default:
       return MaterialPageRoute(

@@ -16,4 +16,5 @@ class GlobalVariables {
   static const buttonBackgroundColor = Color(0xFF9FA8DA);
   static const primaryColor = Color(0xFF673AB7);
   static const backgroundColor = Color(0xFFFCE4EC);
+  static const gptIconColor = Color(0xFF4C0043);
 }

@@ -24,7 +24,7 @@ class SingleProduct extends StatelessWidget {
         color: Colors.white,
       ),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
         child: Row (
           children: [
             Image.network(
