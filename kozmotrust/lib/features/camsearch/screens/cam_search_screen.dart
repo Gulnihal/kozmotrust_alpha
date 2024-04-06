@@ -29,7 +29,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
           children:[
           ]
         ),
-      )
+      ),
     );
   }
 }
