@@ -102,7 +102,6 @@ class ProductDetailsServices {
         onSuccess: () async {
           final Map<String, dynamic> decodedBody = jsonDecode(res.body);
           String answer = decodedBody['modelAnswer'];
-          print(answer);
           onDataReceived(answer); // Pass the answer to the callback function
         },
       );
