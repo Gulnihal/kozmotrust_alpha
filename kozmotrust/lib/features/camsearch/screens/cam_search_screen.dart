@@ -27,7 +27,6 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children:[
-
           ]
         ),
       )
