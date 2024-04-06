@@ -11,8 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 class ProductDetailsServices {
-  late String answer = '';
-
   void addToFavorites({
     required BuildContext context,
     required Product product,
@@ -109,6 +107,4 @@ class ProductDetailsServices {
       showSnackBar(context, e.toString());
     }
   }
-
-  String getAnswer() => answer;
 }

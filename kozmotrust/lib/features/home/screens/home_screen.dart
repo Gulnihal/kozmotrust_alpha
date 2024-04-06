@@ -1,9 +1,8 @@
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:flutter/material.dart';
+import 'package:kozmotrust/features/home/widgets/weatherinfo_box.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:dotenv/dotenv.dart' as dotenv;
-import 'package:weather/weather.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -26,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Center( // Center the text horizontally
               child: Image.asset('assets/images/logo2.png'),
             ),
-            const SizedBox(height: 100), // Added SizedBox for spacing
+            const SizedBox(height: 50), // Added SizedBox for spacing
             Center( // Center the text horizontally
               child: Text(
                 "Welcome ${user.username}!",
@@ -36,7 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 150), // Added SizedBox for spacing
+            const SizedBox(height: 50),
+            const WeatherInformationBox(),
+            const SizedBox(height: 50),// Added SizedBox for spacing
             Card( // TODO CarouselSlider
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

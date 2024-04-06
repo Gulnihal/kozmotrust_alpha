@@ -106,6 +106,7 @@ class _GPTExamineScreenState extends State<GPTExamineScreen> {
                         ),
                       ],
                     ),
+                    // TODO animation repeats 3 times?
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(

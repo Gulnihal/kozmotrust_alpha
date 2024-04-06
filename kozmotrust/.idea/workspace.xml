@@ -12,9 +12,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="">
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="unsaved changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/global_variables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/global_variables.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/services/home_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/healthinfo_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/weatherinfo_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/screens/gpt_examine_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/screens/gpt_examine_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/screens/product_details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/product_details/services/product_details_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/gpt.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/gpt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,16 +82,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="issue#33" />
-                    <option name="lastUsedInstant" value="1711539421" />
-                  </RecentBranch>
-                  <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1711538608" />
+                    <option name="lastUsedInstant" value="1712370778" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="issue#10" />
-                    <option name="lastUsedInstant" value="1711151302" />
+                    <option name="branchName" value="issue#42" />
+                    <option name="lastUsedInstant" value="1712370577" />
                   </RecentBranch>
                 </list>
               </option>
@@ -128,7 +137,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;issue#42&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Gulnihal/Desktop/flutter-amazon-clone-tutorial&quot;,
@@ -316,7 +325,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712291674369</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="unsaved changes">
+      <option name="closed" value="true" />
+      <created>1712371203497</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712371203497</updated>
+    </task>
+    <task id="LOCAL-00021" summary="unsaved changes">
+      <option name="closed" value="true" />
+      <created>1712371497712</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712371497712</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -353,6 +378,7 @@
     <MESSAGE value="search funtionality is now fully functional" />
     <MESSAGE value="product server is functional" />
     <MESSAGE value="ui enhancement" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui enhancement" />
+    <MESSAGE value="unsaved changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="unsaved changes" />
   </component>
 </project>
