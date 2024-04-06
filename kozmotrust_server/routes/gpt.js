@@ -2,8 +2,9 @@ const express = require("express");
 const gptRouter = express.Router();
 const auth = require("../middlewares/auth");
 const { Product } = require("../models/product");
-const { User } = require("../models/user");
+const User = require("../models/user");
 const openai = require("openai");
+const { model } = require("mongoose");
 
 require('dotenv').config();
 const AIapiKey = process.env.AIAPIKEY;
@@ -11,20 +12,18 @@ const client = new openai({ apiKey: AIapiKey });
 
 gptRouter.post("/api/gptexamine", auth, async (req, res) => {
     try {
-      const token = req.token;
-      const verified = jwt.verify(token, secretKey);
-      const userId = verified.id;
-      const user = await User.findById(userId);
-      const product = await Product.find(req.body.product);
+      const { id } = req.body;
+      const product = await Product.findById(id);
+      let user = await User.findById(req.user);
       const healthinfo = user.healthinfo;
 
-      // Check if the user exists and has favorites
+      // Check if the user exists
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
 
     // Fine tuning with using the completions API for cosmetics information
-    const prompt = "I will provide you with information about a person and a product. Based on the given information, we will try to understand the content of the product and its purpose. Additionally, we will assess whether this product is suitable for this person based on the information provided by them. We must only tell how this product may affect the person positively or negatively to the user,. We must also do that in language which is the language of \"User Information\" part. If \"User Information\" part is empty, we can give general info in English.";
+    const prompt = "I will provide you with information about a person and a product. Based on the given information, we will try to understand the content of the product and its purpose. Additionally, we will assess whether this product is suitable for this person based on the information provided by them. We must only tell how this product may affect the person positively or negatively to the user,. We must also do that in language which is the language of \"User Information\" part. If \"User Information\" part is empty, we can give general info in English. Your response limited by 3 paragraphs, therefore you should summerize you work but don't lose important details.";
 
     const fullPrompt = `${prompt}\nUser Info: ${healthinfo}\nProduct: ${JSON.stringify(product)}`;
 
@@ -56,10 +55,14 @@ gptRouter.post("/api/gptexamine", auth, async (req, res) => {
         });
         
     return (response.choices[0].message.content);
-    };    
-    // Return the gpt model answer
-    return res.json(answer(messages));
+    };
+    const modelAnswer = await answer(messages);
+    console.log("oldu ins");
+    // console.log(res.json({"modelAnswer": modelAnswer}));
+    return res.json({"modelAnswer": modelAnswer});
     } catch (e) {
       return res.status(500).json({ error: e.message });
     }
   });
+
+  module.exports = gptRouter;

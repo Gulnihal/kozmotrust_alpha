@@ -12,6 +12,7 @@ const adminRouter = require("./routes/admin");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
+const gptRouter = require("./routes/gpt");
 // INIT
 const { secretKey, mongoDbUrl, port } = require("./config");
 const app = express();
@@ -22,6 +23,7 @@ app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
 app.use(userRouter);
+app.use(gptRouter);
 app.use(cors());
 
 // database connection
