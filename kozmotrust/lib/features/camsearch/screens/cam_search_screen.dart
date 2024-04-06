@@ -19,7 +19,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          backgroundColor: GlobalVariables.selectedTopBarColor,
+          backgroundColor: GlobalVariables.backgroundColor,
           elevation: 0,
           centerTitle: true,
           title: Image.asset('assets/images/logo.png'),
