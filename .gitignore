@@ -3,3 +3,8 @@ kozmotrust/windows/runner/win32_window.cpp
 kozmotrust/windows/runner/win32_window.cpp
 kozmotrust_server/.env
 kozmotrust/.idea/workspace.xml
+.github/workflows/main.yaml
+/.idea
+/kozmotrust/windows
+kozmotrust/.env
+kozmotrust/.idea/workspace.xml

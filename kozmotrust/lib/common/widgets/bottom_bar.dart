@@ -2,7 +2,7 @@ import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/account/screens/account_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
-import 'package:kozmotrust/features/gptexamine/screens/gpt_examine_screen.dart';
+import 'package:kozmotrust/features/camsearch/screens/cam_search_screen.dart';
 import 'package:kozmotrust/features/insights/screens/blogs.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class _BottomBarState extends State<BottomBar> {
     const HomeScreen(),
     const AccountScreen(),
     const SearchScreen(searchQuery: '',),
-    const GPTExamineScreen(),
+    const CameraSearchScreen(),
     const Blogs(url: ''),
   ];
 
@@ -39,8 +39,8 @@ class _BottomBarState extends State<BottomBar> {
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedTopBarColor,
-        unselectedItemColor: GlobalVariables.selectedTopBarColor,
+        selectedItemColor: GlobalVariables.primaryColor,
+        unselectedItemColor: GlobalVariables.primaryColor,
         backgroundColor: GlobalVariables.secondaryColor,
         iconSize: 28,
         onTap: updatePage,
@@ -53,7 +53,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 0
-                        ? GlobalVariables.selectedTopBarColor
+                        ? GlobalVariables.primaryColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -73,7 +73,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 1
-                        ? GlobalVariables.selectedTopBarColor
+                        ? GlobalVariables.primaryColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -93,7 +93,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 2
-                        ? GlobalVariables.selectedTopBarColor
+                        ? GlobalVariables.primaryColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
@@ -113,14 +113,14 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 3
-                        ? GlobalVariables.selectedTopBarColor
+                        ? GlobalVariables.primaryColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),
                 ),
               ),
               child: const Icon(
-                Icons.question_answer_outlined,
+                Icons.camera_enhance_outlined,
               ),
             ),
             label: '',
@@ -133,7 +133,7 @@ class _BottomBarState extends State<BottomBar> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 4
-                        ? GlobalVariables.selectedTopBarColor
+                        ? GlobalVariables.primaryColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
                   ),

@@ -1,57 +1,87 @@
+import 'package:flutter/material.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
-import 'package:kozmotrust/features/account/widgets/bottom_buttons.dart';
-import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/features/account/widgets/list_favorites.dart';
+import 'package:kozmotrust/features/account/screens/account_settings.dart';
+import 'package:kozmotrust/features/account/services/account_services.dart';
+import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
+
+  @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
+  void navigateToAccountSettings() {
+    Navigator.pushNamed(context, AccountSettings.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: GlobalVariables.selectedTopBarColor,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: GlobalVariables.selectedTopBarColor,
+          ),
+        ),
         elevation: 0,
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.settings,
+            color: Colors.white,
+          ), // Config icon
+          onPressed: () {
+            navigateToAccountSettings();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.white,
+            ), // Logout icon
+            onPressed: () {
+              AccountServices().logOut(context);
+            },
+          ),
+        ],
       ),
-      body: Column(
+      body: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         children: [
-          const SizedBox(height: 50),
-          Card( // Center the text horizontally
-            child: Text(
-              "Welcome ${user.username}!",
-              style: const TextStyle(
-                fontSize: 24, // Set the font size to 24
-                fontWeight: FontWeight.bold, // Make the text bold
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "Hi ${user.username} ",
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height / 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '😊', // Smile emoji
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height /
+                            35), // Adjust emoji if needed
+                  ),
+                ],
               ),
             ),
           ),
-          const SizedBox(height: 30),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.redAccent.shade700,
-                width: 5,
-              ),
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.red.shade100,
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(10),
-              child: const ListFavorites(),
-            ),
-          ),
-          const SizedBox(height: 30),
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
+          const ListFavorites(),
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
           const HealthInformationScreen(),
-          const Expanded(child: SizedBox()),
-          const BottomButtons(),
-          const SizedBox(height: 30),
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
         ],
       ),
     );

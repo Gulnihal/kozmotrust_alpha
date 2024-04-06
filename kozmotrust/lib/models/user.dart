@@ -8,6 +8,7 @@ class User {
   late final String password;
   final String healthinfo;
   final String type;
+  final String language;
   final List<dynamic>? favorites;
 
   User({
@@ -18,6 +19,7 @@ class User {
     required this.password,
     required this.healthinfo,
     required this.type,
+    required this.language,
     required this.favorites,
   });
 
@@ -30,6 +32,7 @@ class User {
       'password': password,
       'healthinfo': healthinfo,
       'type': type,
+      'language': language,
       'favorites': favorites,
     };
   }
@@ -43,6 +46,7 @@ class User {
       password: map['password'] ?? '',
       healthinfo: map['healthinfo'] ?? '',
       type: map['type'] ?? '',
+      language: map['language'] ?? '',
       favorites: List<Map<String, dynamic>>.from(
         map['favorites']?.map(
           (x) => Map<String, dynamic>.from(x),
@@ -63,6 +67,7 @@ class User {
     String? password,
     String? healthinfo,
     String? type,
+    String? language,
     List<dynamic>? favorites,
   }) {
     return User(
@@ -73,6 +78,7 @@ class User {
       password: password ?? this.password,
       healthinfo: healthinfo ?? this.healthinfo,
       type: type ?? this.type,
+      language: language ?? this.language,
       favorites: favorites ?? this.favorites,
     );
   }

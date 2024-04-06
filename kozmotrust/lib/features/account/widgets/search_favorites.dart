@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:kozmotrust/common/widgets/loader.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
@@ -6,38 +7,44 @@ import 'package:kozmotrust/features/search/widget/searched_product.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
 
-class SearchScreen extends StatefulWidget {
-  static const String routeName = '/search-screen';
-  final String searchQuery;
-  const SearchScreen({
+class SearchFavorites extends StatefulWidget {
+  static const String routeName = '/search-favorites';
+  final String? searchQuery;
+  const SearchFavorites({
     super.key,
     required this.searchQuery,
   });
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<SearchFavorites> createState() => _SearchFavoritesState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchFavoritesState extends State<SearchFavorites> {
   List<Product>? products;
   final SearchServices searchServices = SearchServices();
 
   @override
   void initState() {
     super.initState();
-    fetchSearchedProduct();
+    fetchSearchedFavoriteProduct();
   }
 
-  fetchSearchedProduct() async {
-    if (widget.searchQuery != '') {
-      products = await searchServices.fetchSearchedProduct(
-          context: context, searchQuery: widget.searchQuery);
+  fetchSearchedFavoriteProduct() async {
+    if (widget.searchQuery != '' || widget.searchQuery != null) {
+      products = await searchServices.fetchSearchedFavoriteProduct(
+          context: context, searchQuery: widget.searchQuery!);
       setState(() {});
+      print(products);
+    }
+    else{
+      if (kDebugMode) {
+        print('Search query is null or empty: (package:kozmotrust/features/account/widgets/search_favorites.dart:38)');
+      }
     }
   }
 
-  void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  void navigateToSearchFavoriteScreen(String query) {
+    Navigator.pushNamed(context, SearchFavorites.routeName, arguments: query);
   }
 
   @override
@@ -61,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-                      onFieldSubmitted: navigateToSearchScreen,
+                      onFieldSubmitted: navigateToSearchFavoriteScreen,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: () {},
@@ -94,7 +101,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search in Kozmotrust',
+                        hintText: 'Search in Your Favorites',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -110,66 +117,66 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: products == null
           ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: Image.asset('assets/images/logo2.png'),
-                  ),
-                  const Loader(),
-                ],
-              ),
-            )
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Image.asset('assets/images/logo2.png'),
+            ),
+            const Loader(),
+          ],
+        ),
+      )
           : products!.isEmpty
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.warning,
-                        size: 100,
-                        color: Colors.red,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 50,
-                      ),
-                      const Text(
-                        "The product is not found.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 28,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                    ],
+          ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.warning,
+              size: 100,
+              color: Colors.red,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 50,
+            ),
+            const Text(
+              "The product is not found.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 28,
+                letterSpacing: 2,
+              ),
+            ),
+          ],
+        ),
+      )
+          : Column(
+        children: [
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView.builder(
+              itemCount: products!.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      ProductDetailScreen.routeName,
+                      arguments: products![index],
+                    );
+                  },
+                  child: SearchedProduct(
+                    product: products![index],
                   ),
-                )
-              : Column(
-                  children: [
-                    const SizedBox(height: 10),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: products!.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                ProductDetailScreen.routeName,
-                                arguments: products![index],
-                              );
-                            },
-                            child: SearchedProduct(
-                              product: products![index],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

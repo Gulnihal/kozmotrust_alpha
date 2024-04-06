@@ -33,7 +33,7 @@ userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
 
 userRouter.delete("/api/remove-from-favorites", auth, async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     const product = await Product.findById(id);
     let user = await User.findById(req.user);
 
@@ -61,6 +61,7 @@ userRouter.post("/api/save-user-healthinfo", auth, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
+
 // return favorites products
 userRouter.get("/api/favorites", auth, async (req, res) => {
   try {
@@ -78,6 +79,19 @@ userRouter.get("/api/favorites", auth, async (req, res) => {
     return res.json(user.favorites);
   } catch (e) {
     return res.status(500).json({ error: e.message });
+  }
+});
+
+// Update password
+userRouter.post("/api/language", async (req, res) => {
+  try {
+    const { language } = req.body;
+    let user = await User.findById(req.user);
+    user.language = language;
+    user = await user.save();
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 });
 

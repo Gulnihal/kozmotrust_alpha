@@ -1,5 +1,6 @@
 import 'package:kozmotrust/common/widgets/custom_button.dart';
 import 'package:kozmotrust/common/widgets/custom_textfield.dart';
+import 'package:kozmotrust/common/widgets/custom_textfield_with_eye.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/auth/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,14 @@ enum Auth {
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth-screen';
+
   const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
+class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
@@ -25,13 +27,16 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  late String _selectedLanguage;
+  final List<String> _languageOptions = ['en', 'tr'];
+
   late AnimationController _controller1;
   late Animation<Offset> animation1;
 
   @override
   void initState() {
     super.initState();
-
+    _selectedLanguage = 'en';
     //animation 1
     _controller1 = AnimationController(
       duration: const Duration(milliseconds: 1000),
@@ -60,6 +65,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
       username: _usernameController.text,
       email: _emailController.text,
       password: _passwordController.text,
+      language: _selectedLanguage
     );
   }
 
@@ -75,6 +81,38 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GlobalVariables.backgroundColor,
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, GlobalVariables.backgroundColor],
+              begin: FractionalOffset(0.0, 1.0),
+              end: FractionalOffset(0.0, 1.0),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.repeated,
+            ),
+          ),
+        ),
+        title: DropdownButton<String>(
+          value: _selectedLanguage, // Store the selected option
+          onChanged: (String? newValue) {
+            setState(() {
+              _selectedLanguage = newValue!;
+            });
+          },
+          items: _languageOptions.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Row(
+                children: [
+                  Text( value == 'en' ? '🇺🇸  ' : '🇹🇷  '),
+                  Text(value),
+                ],
+              )
+            );
+          }).toList(),
+        ),
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -87,18 +125,19 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
             tileMode: TileMode.repeated,
           ),
         ),
-      child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-          child: Column(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: ListView(
             children: [
-              Expanded(
-                child: SlideTransition(
-                  position: animation1,
+              SlideTransition(
+                position: animation1,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
                   child: Image.asset('assets/images/logo2.png'),
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 15,
+                height: MediaQuery.of(context).size.height / 50,
               ),
               SlideTransition(
                 position: animation1,
@@ -112,8 +151,8 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 50,
               ),
               ListTile(
                 tileColor: _auth == Auth.signup
@@ -146,15 +185,17 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                       children: [
                         CustomTextField(
                           controller: _usernameController,
+                          filled: false,
                           hintText: 'Username',
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
                           controller: _emailController,
+                          filled: false,
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
-                        CustomTextField(
+                        CustomTextFieldWithEye(
                           controller: _passwordController,
                           hintText: 'Password',
                         ),
@@ -204,10 +245,11 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin{
                       children: [
                         CustomTextField(
                           controller: _emailController,
+                          filled: false,
                           hintText: 'Email',
                         ),
                         const SizedBox(height: 10),
-                        CustomTextField(
+                        CustomTextFieldWithEye(
                           controller: _passwordController,
                           hintText: 'Password',
                         ),

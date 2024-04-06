@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 module.exports = {
-    mongoDbUrl: "mongodb+srv://Gulnihal:9639101ulya@kozmotrust.jrnnqrq.mongodb.net/kozmotrust?retryWrites=true&w=majority",
+    mongoDbUrl: process.env.MONGODBURL,
     secretKey: 'Kozmotrust',
     port: 5000,
 };

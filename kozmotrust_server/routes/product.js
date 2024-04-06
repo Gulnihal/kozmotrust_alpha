@@ -1,6 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
 const auth = require("../middlewares/auth");
+const User = require("../models/user");
 const { Product } = require("../models/product");
 
 productRouter.get("/api/products/", auth, async (req, res) => {
@@ -12,12 +13,16 @@ productRouter.get("/api/products/", auth, async (req, res) => {
   }
 });
 
-// create a get request to search products and get them
-// /api/products/search/i
-productRouter.get("/api/products/search/:name", auth, async (req, res) => {
+// create a get request to search products by name or brand
+// /api/products/search/:query
+productRouter.get("/api/products/search/:query", auth, async (req, res) => {
   try {
+    const query = req.params.query;
     const products = await Product.find({
-      name: { $regex: req.params.name, $options: "i" },
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { brand: { $regex: query, $options: "i" } }
+      ]
     });
 
     res.json(products);
@@ -25,6 +30,24 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
+
+productRouter.get("/api/user/favorites/search/:query", auth, async (req, res) => {
+  try {
+    const query = req.params.query.toLowerCase(); // Convert query to lowercase
+    const user = await User.findById(req.user).populate('favorites'); // Populate the favorites field
+    // Filter favorite products that match the search query
+    const favoriteProducts = user.favorites.map(favorite => {
+      return favorite.product;
+    }).filter(product => {
+      return (typeof product.name === 'string' && product.name.toLowerCase().includes(query)) || 
+       (typeof product.brand === 'string' && product.brand.toLowerCase().includes(query));
+    });
+    res.json(favoriteProducts);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 
 // create a post request route to rate the product.
 productRouter.post("/api/rate-product", auth, async (req, res) => {
