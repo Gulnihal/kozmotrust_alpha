@@ -1,5 +1,3 @@
-import 'package:kozmotrust/features/gptexamine/widgets/list_find_from_favorites.dart';
-import 'package:kozmotrust/features/home/widgets/healthinfo_box.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +27,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children:[
-            const HealthInformationBox(),
-            const ListAndFindFavorites(),
+
           ]
         ),
       )
