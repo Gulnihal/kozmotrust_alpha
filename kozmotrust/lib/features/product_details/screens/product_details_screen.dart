@@ -1,4 +1,5 @@
 import 'package:kozmotrust/common/widgets/custom_button.dart';
+import 'package:kozmotrust/common/widgets/loader.dart';
 import 'package:kozmotrust/features/product_details/services/product_details_services.dart';
 import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:flutter/material.dart';
@@ -22,20 +23,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final ProductDetailsServices productDetailsServices =
       ProductDetailsServices();
   List<Product>? favorites = [];
+  late String answer = '';
   final AccountServices accountServices = AccountServices();
 
   @override
   void initState() {
     super.initState();
-    productDetailsServices.getGptAnswer(context: context, product: widget.product);
-    fetchFavorites();
+    productDetailsServices.getGptAnswer(context: context, product: widget.product, onDataReceived: (result) {
+      setState(() {
+        answer = result; // Update the answer when data is received
+      });
+    });    fetchFavorites();
   }
 
   void navigateToGPT() {
     Navigator.pushNamed(
         context,
         GPTExamineScreen.routeName,
-        arguments: productDetailsServices.getAnswer(),
+        arguments: answer,
     );
   }
 
@@ -78,16 +83,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           centerTitle: true,
           title: Image.asset('assets/images/logo.png'),
           actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.question_answer_outlined,
-                color: GlobalVariables.gptIconColor,
-              ), // Logout icon
-              onPressed: () {
-                navigateToGPT();
-              },
+            answer == ''
+                ? const Loader()
+                : Tooltip(
+              message: 'Now your product review is ready.', // Tooltip message
+              child: IconButton(
+                icon: const Icon(
+                  Icons.question_answer_outlined,
+                  color: GlobalVariables.gptIconColor,
+                ),
+                onPressed: navigateToGPT,
+              ),
             ),
           ],
+
         ),
       ),
       body: SingleChildScrollView(

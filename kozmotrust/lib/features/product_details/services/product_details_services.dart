@@ -80,6 +80,7 @@ class ProductDetailsServices {
   void getGptAnswer({
     required BuildContext context,
     required Product product,
+    required Function(String) onDataReceived, // Callback function to handle the response
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
@@ -100,8 +101,9 @@ class ProductDetailsServices {
         context: context,
         onSuccess: () async {
           final Map<String, dynamic> decodedBody = jsonDecode(res.body);
-          answer = decodedBody['modelAnswer'];
+          String answer = decodedBody['modelAnswer'];
           print(answer);
+          onDataReceived(answer); // Pass the answer to the callback function
         },
       );
     } catch (e) {
