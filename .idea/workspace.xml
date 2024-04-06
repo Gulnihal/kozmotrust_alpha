@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/main.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gulnihal&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="issue#33" />
+                    <option name="lastUsedInstant" value="1711539421" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1711538608" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="issue#10" />
+                    <option name="lastUsedInstant" value="1711151302" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d6ec50c1-d45e-4655-8ab2-ae0a61e7c973" />
+        <option name="url" value="https://github.com/Gulnihal/kozmotrust_alpha.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2e442jeY45hlWzjCZHZP9f63PDR" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <option name="show-excluded-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;issue#42&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gulnihal/Desktop/flutter-amazon-clone-tutorial&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\models" />
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\auth\screens" />
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\account\widgets" />
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\account\screens" />
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\assets\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="" />
+      <created>1711150311034</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711150311034</updated>
+    </task>
+    <task id="LOCAL-00001" summary="dependency added">
+      <option name="closed" value="true" />
+      <created>1711151308084</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711151308084</updated>
+    </task>
+    <task id="LOCAL-00002" summary="not working">
+      <option name="closed" value="true" />
+      <created>1711184788337</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711184788337</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix">
+      <option name="closed" value="true" />
+      <created>1711213737166</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711213737166</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix">
+      <option name="closed" value="true" />
+      <created>1711213753780</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711213753780</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix">
+      <option name="closed" value="true" />
+      <created>1711353856156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711353856156</updated>
+    </task>
+    <task id="LOCAL-00006" summary="win32 file fix">
+      <option name="closed" value="true" />
+      <created>1711498498037</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711498498037</updated>
+    </task>
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1711538704575</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711538704575</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1711542852345</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711542852345</updated>
+    </task>
+    <task id="LOCAL-00009" summary="small enhancements">
+      <option name="closed" value="true" />
+      <created>1712093427047</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712093427047</updated>
+    </task>
+    <task id="LOCAL-00010" summary="more small enhancements">
+      <option name="closed" value="true" />
+      <created>1712095316784</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712095316784</updated>
+    </task>
+    <task id="LOCAL-00011" summary="product detail add-remove favorites fixed.">
+      <option name="closed" value="true" />
+      <created>1712101272853</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712101272853</updated>
+    </task>
+    <task id="LOCAL-00012" summary="search functionality done">
+      <option name="closed" value="true" />
+      <created>1712107058935</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712107058935</updated>
+    </task>
+    <task id="LOCAL-00013" summary="search functionality done">
+      <option name="closed" value="true" />
+      <created>1712107121205</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712107121206</updated>
+    </task>
+    <task id="LOCAL-00014" summary="color changes">
+      <option name="closed" value="true" />
+      <created>1712108311206</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712108311206</updated>
+    </task>
+    <task id="LOCAL-00015" summary="obscureText added">
+      <option name="closed" value="true" />
+      <created>1712176180602</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1712176180602</updated>
+    </task>
+    <task id="LOCAL-00016" summary="bottom buttons moved to appbar, unused buttons removed">
+      <option name="closed" value="true" />
+      <created>1712282199338</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1712282199338</updated>
+    </task>
+    <task id="LOCAL-00017" summary="search funtionality is now fully functional">
+      <option name="closed" value="true" />
+      <created>1712291435321</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1712291435321</updated>
+    </task>
+    <task id="LOCAL-00018" summary="product server is functional">
+      <option name="closed" value="true" />
+      <created>1712291467029</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712291467029</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ui enhancement">
+      <option name="closed" value="true" />
+      <created>1712291674369</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712291674369</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dependency added" />
+    <MESSAGE value="not working" />
+    <MESSAGE value="fixesse" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="win32 file fix" />
+    <MESSAGE value="." />
+    <MESSAGE value="small enhancements" />
+    <MESSAGE value="more small enhancements" />
+    <MESSAGE value="product detail add-remove favorites fixed." />
+    <MESSAGE value="search functionality done" />
+    <MESSAGE value="color changes" />
+    <MESSAGE value="obscureText added" />
+    <MESSAGE value="bottom buttons moved to appbar, unused buttons removed" />
+    <MESSAGE value="search funtionality is now fully functional" />
+    <MESSAGE value="product server is functional" />
+    <MESSAGE value="ui enhancement" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui enhancement" />
+  </component>
+</project>
