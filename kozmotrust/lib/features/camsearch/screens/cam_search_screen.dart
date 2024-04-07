@@ -51,7 +51,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   child: Text(
-                    'Scan Photo',
+                    'Scan Your Product',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,

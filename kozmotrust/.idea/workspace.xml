@@ -12,22 +12,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/widgets/modal_dialog.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/camsearch/CameraUtils/image_picker_class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" afterDir="false" />
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="Scan Photo from Gallery and Camera configuration added">
       <change beforePath="$PROJECT_DIR$/lib/providers/user_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/user_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712291674369</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Scan Photo from Gallery and Camera configuration added">
+      <option name="closed" value="true" />
+      <created>1712491204428</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712491204428</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -361,6 +355,7 @@
     <MESSAGE value="search funtionality is now fully functional" />
     <MESSAGE value="product server is functional" />
     <MESSAGE value="ui enhancement" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui enhancement" />
+    <MESSAGE value="Scan Photo from Gallery and Camera configuration added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scan Photo from Gallery and Camera configuration added" />
   </component>
 </project>
