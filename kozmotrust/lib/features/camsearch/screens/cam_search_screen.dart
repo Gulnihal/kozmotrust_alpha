@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kozmotrust/common/widgets/modal_dialog.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:flutter/material.dart';
 import 'package:kozmotrust/features/camsearch/CameraUtils/image_picker_class.dart';
 
 class CameraSearchScreen extends StatefulWidget {
@@ -27,23 +27,25 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
         ),
       ),
       body: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/logo2.png'),
+            SizedBox(height: 20),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
                 onPressed: () {
                   imagePickerModal(context, onCameraTap: () {
-                   pickImage(source: ImageSource.camera).then((value) {
-                     if (value != '') {
-
-                     }
-                   });
-                  } , onGalleryTap: () {
+                    pickImage(source: ImageSource.camera).then((value) {
+                      if (value != '') {
+                        // Handle image picked from camera
+                      }
+                    });
+                  }, onGalleryTap: () {
                     pickImage(source: ImageSource.gallery).then((value) {
                       if (value != '') {
-
+                        // Handle image picked from gallery
                       }
                     });
                   });
@@ -66,11 +68,10 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
                   minimumSize: Size(300, 100),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
