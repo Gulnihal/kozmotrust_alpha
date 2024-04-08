@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/home/services/home_services.dart';
-import 'package:weather/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/common/widgets/loader.dart';
+import 'package:weather/weather.dart';
 
 class WeatherInformationBox extends StatefulWidget {
   const WeatherInformationBox({super.key});
@@ -14,35 +13,19 @@ class WeatherInformationBox extends StatefulWidget {
 
 class _WeatherInformationBoxState extends State<WeatherInformationBox> {
   final HomeServices _homeServices = HomeServices();
-  Weather? _weather;
-  late String answer = _homeServices.getAnswer();
+  late String modelWeather = _homeServices.getModelWeather();
+  late Weather weatherData;
 
   @override
   void initState() {
     super.initState();
-    _fetchWeather();
     _homeServices.getGptAnswer2(
         context: context,
         onDataReceived: (result) {
           setState(() {
-            answer = result; // Update the answer when data is received
+            modelWeather = result;
           });
         });
-  }
-
-  Future<void> _fetchWeather() async {
-    try {
-      WeatherFactory wf = WeatherFactory('046617570d44df5f9482d205fcbb67df',
-          language: Language.ENGLISH);
-      Weather? weather = await wf.currentWeatherByCityName("Ankara");
-      setState(() {
-        _weather = weather;
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print("Error fetching weather: $e");
-      }
-    }
   }
 
   IconData _getWeatherIcon(String? weatherIcon) {
@@ -91,7 +74,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Text(
-                answer,
+                modelWeather,
                 style: TextStyle(
                   fontSize:
                   MediaQuery.of(context).size.width * 1.5 * 0.025,
@@ -128,7 +111,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
           ),
         ],
       ),
-      child: _weather == null
+      child: _homeServices.getWeather() == null
           ? const CircularProgressIndicator()
           : Row(
               children: [
@@ -146,11 +129,11 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        Icon(_getWeatherIcon(_weather!.weatherIcon),
+                        Icon(_getWeatherIcon(_homeServices.getWeather()!.weatherIcon),
                             color: Colors.orange),
                         const SizedBox(width: 5),
                         Text(
-                          _weather?.weatherMain ?? 'N/A',
+                          _homeServices.getWeather()?.weatherMain ?? 'N/A',
                           style: const TextStyle(fontSize: 16),
                         ),
                       ],
@@ -162,7 +145,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
                             color: Colors.blue),
                         const SizedBox(width: 5),
                         Text(
-                          '${_weather!.temperature?.celsius?.toStringAsFixed(1)}°C',
+                          '${_homeServices.getWeather()!.temperature?.celsius?.toStringAsFixed(1)}°C',
                           style: const TextStyle(fontSize: 16),
                         ),
                       ],
@@ -170,7 +153,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
                   ],
                 ),
                 const Expanded(child: SizedBox()),
-                answer == ''
+                modelWeather == ''
                     ? const Loader()
                     : IconButton(
                         icon: const Icon(

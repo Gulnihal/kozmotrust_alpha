@@ -74,7 +74,10 @@ app.use(
 
 app.route("/").get((req, res) => res.json("Kozmotrust Server!"));
 var modelWeather;
-app.route("/gptweather").get(async (req, res) => res.json({"modelAnswer": modelWeather}));
+app.route("/gptweather").get(async (req, res) => res.json({
+  "modelAnswer": modelWeather,
+  "weatherData": weatherData
+}));
 app.listen(port, async () => {
   try {
     // Fine tuning with using the completions API for weather condition
@@ -117,6 +120,7 @@ app.listen(port, async () => {
     return (response.choices[0].message.content);
     };
     modelWeather = await answer(messages);
+    console.log(modelWeather);
     return console.log(`Kozmotrust Server is running on port ${port}!`);
     } catch (e) {
       return console.log("Error.");

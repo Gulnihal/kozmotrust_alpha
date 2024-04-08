@@ -10,7 +10,7 @@ import 'package:kozmotrust/router.dart';
 import 'constants/global_variables.dart';
 import 'localizations.dart';
 
-void main() {
+Future<void> main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
@@ -70,7 +70,9 @@ class _MyAppState extends State<MyApp> {
           if (userProvider.user.token.isEmpty) {
             return const AuthScreen();
           } else {
-            return userProvider.user.token.isNotEmpty ? const BottomBar() : const HomeScreen();
+            return userProvider.user.token.isNotEmpty
+                ? const BottomBar()
+                : const HomeScreen();
           }
         },
       ),

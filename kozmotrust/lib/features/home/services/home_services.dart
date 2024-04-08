@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/constants/error_handling.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
@@ -10,7 +11,22 @@ import 'package:http/http.dart' as http;
 import 'package:weather/weather.dart';
 
 class HomeServices {
-  late String _answer = '';
+  late String modelWeather = '';
+  late Weather? weatherData = Weather(<String, dynamic> {});
+
+  Future<void> fetchWeather() async {
+    try {
+
+      Weather? weather = await wf.currentWeatherByCityName("Ankara");
+      print(weather);
+      weatherData = weather;
+
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error fetching weather: $e");
+      }
+    }
+  }
 
   void getGptAnswer({
     required BuildContext context,
@@ -38,8 +54,7 @@ class HomeServices {
           final Map<String, dynamic> decodedBody = jsonDecode(res.body);
           String answer = decodedBody['modelAnswer'];
           onDataReceived(answer);
-          print(answer);
-          print("dsfjksdf\n"+getAnswer());
+          modelWeather = answer;
         },
       );
     } catch (e) {
@@ -69,9 +84,8 @@ class HomeServices {
           final Map<String, dynamic> decodedBody = jsonDecode(res.body);
           String answer = decodedBody['modelAnswer'];
           onDataReceived(answer);
-          setAnswer(answer);
-          print(answer);
-          print("dsfjksdf\n"+getAnswer());
+          modelWeather = answer;
+          weatherData = Weather(decodedBody['weatherData']);
         },
       );
     } catch (e) {
@@ -79,8 +93,6 @@ class HomeServices {
     }
   }
 
-  void setAnswer(String answer) {
-    _answer = answer;
-  }
-  String getAnswer() => _answer;
+  String getModelWeather() => modelWeather;
+  Weather? getWeather() => weatherData;
 }

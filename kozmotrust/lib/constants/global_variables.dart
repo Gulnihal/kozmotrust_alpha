@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather/weather.dart';
 
 String uri = 'http://10.0.2.2:5000';
+WeatherFactory wf = WeatherFactory('046617570d44df5f9482d205fcbb67df',
+    language: Language.ENGLISH);
 
 class GlobalVariables {
   static const secondaryColor = Color(0xFFE1BEE7);
