@@ -16,7 +16,6 @@ class HomeServices {
 
   Future<void> fetchWeather() async {
     try {
-
       Weather? weather = await wf.currentWeatherByCityName("Ankara");
       print(weather);
       weatherData = weather;
