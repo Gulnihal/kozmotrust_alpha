@@ -4,6 +4,7 @@ import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/account/widgets/search_favorites.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/account/screens/account_settings.dart';
+import 'package:kozmotrust/features/camsearch/screens/cam_search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/gpt_examine_screen.dart';
@@ -46,6 +47,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => SearchScreen(
           searchQuery: searchQuery,
         ),
+      );
+    case CameraSearchScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const CameraSearchScreen(),
       );
     case SearchFavorites.routeName:
       var searchQuery = routeSettings.arguments as String?;

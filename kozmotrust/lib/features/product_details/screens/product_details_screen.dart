@@ -249,7 +249,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         SizedBox(width: MediaQuery.of(context).size.width / 10),
                         RichText(
                           text: TextSpan(
-                            text: "Combination: ",
+                            text: "Health Ministry Approval: ",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:
