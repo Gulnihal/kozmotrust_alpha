@@ -29,18 +29,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     super.initState();
-    productDetailsServices.getGptAnswer(context: context, product: widget.product, onDataReceived: (result) {
-      setState(() {
-        answer = result; // Update the answer when data is received
-      });
-    });    fetchFavorites();
+    productDetailsServices.getGptAnswer(
+        context: context,
+        product: widget.product,
+        onDataReceived: (result) {
+          setState(() {
+            answer = result; // Update the answer when data is received
+          });
+        });
+    fetchFavorites();
   }
 
   void navigateToGPT() {
     Navigator.pushNamed(
-        context,
-        GPTExamineScreen.routeName,
-        arguments: answer,
+      context,
+      GPTExamineScreen.routeName,
+      arguments: answer,
     );
   }
 
@@ -85,18 +89,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           actions: [
             answer == ''
                 ? const Loader()
-                : Tooltip(
-              message: 'Now your product review is ready.', // Tooltip message
-              child: IconButton(
-                icon: const Icon(
-                  Icons.question_answer_outlined,
-                  color: GlobalVariables.gptIconColor,
-                ),
-                onPressed: navigateToGPT,
-              ),
-            ),
+                : IconButton(
+                    icon: const Icon(
+                      Icons.question_answer_outlined,
+                      color: GlobalVariables.gptIconColor,
+                    ),
+                    onPressed: navigateToGPT,
+                  ),
           ],
-
         ),
       ),
       body: SingleChildScrollView(
