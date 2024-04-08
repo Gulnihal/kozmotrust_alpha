@@ -1,6 +1,10 @@
-import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/account/screens/account_settings.dart';
+import 'package:kozmotrust/features/account/services/account_services.dart';
+import 'package:kozmotrust/features/admin/widgets/add_product.dart';
+import 'package:kozmotrust/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -10,118 +14,79 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
-  int _page = 0;
-  double bottomBarWidth = 42;
-  double bottomBarBorderWidth = 5;
-
-  List<Widget> pages = [
-    const PostsScreen(),
-  ];
-
-  void updatePage(int page) {
-    setState(() {
-      _page = page;
-    });
+  void navigateToAccountSettings() {
+    Navigator.pushNamed(context, AccountSettings.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Image.asset(
-                  'assets/images/profile.png',
-                  width: 120,
-                  height: 45,
-                  color: Colors.black,
-                ),
-              ),
-              const Text(
-                'Admin',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: GlobalVariables.selectedTopBarColor,
           ),
         ),
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Admin Product Control',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.settings,
+            color: Colors.black,
+          ), // Config icon
+          onPressed: () {
+            navigateToAccountSettings();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.black,
+            ), // Logout icon
+            onPressed: () {
+              AccountServices().logOut(context);
+            },
+          ),
+        ],
       ),
-      body: pages[_page],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _page,
-        selectedItemColor: GlobalVariables.primaryColor,
-        unselectedItemColor: GlobalVariables.backgroundColor,
-        backgroundColor: GlobalVariables.backgroundColor,
-        iconSize: 28,
-        onTap: updatePage,
-        items: [
-          // POSTS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 0
-                        ? GlobalVariables.primaryColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
+      body: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "Hi ${user.username} ",
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height / 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
-              ),
-              child: const Icon(
-                Icons.home_outlined,
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '😊', // Smile emoji
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height /
+                            35), // Adjust emoji if needed
+                  ),
+                ],
               ),
             ),
-            label: '',
           ),
-          // ANALYTICS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 1
-                        ? GlobalVariables.primaryColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.analytics_outlined,
-              ),
-            ),
-            label: '',
-          ),
-          // ORDERS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 2
-                        ? GlobalVariables.primaryColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.all_inbox_outlined,
-              ),
-            ),
-            label: '',
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
+          const AddProduct(),
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
+
+          SizedBox(height: MediaQuery.of(context).size.height / 50),
         ],
       ),
     );

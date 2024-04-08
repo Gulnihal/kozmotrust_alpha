@@ -4,7 +4,6 @@ import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/constants/utils.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -27,19 +26,12 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      final cloudinary = CloudinaryPublic('denfgaxvg', 'uszbstnu');
-
-      CloudinaryResponse cloudinaryRes = await cloudinary.uploadFile(
-          CloudinaryFile.fromFile(image.path, folder: name),
-      );
-      String imageUrl = cloudinaryRes.secureUrl;
-
 
       Product product = Product(
         description: description,
         brand: brand,
         name: name,
-        image: imageUrl,
+        image: image,
         ingredients: ingredients,
         category: category,
         combination: combination,
@@ -64,11 +56,11 @@ class AdminServices {
         context: context,
         onSuccess: () {
           showSnackBar(context, 'Product Added Successfully!');
-          Navigator.pop(context);
         },
       );
     } catch (e) {
       showSnackBar(context, e.toString());
+      print(e.toString());
     }
   }
 
@@ -103,37 +95,6 @@ class AdminServices {
     }
     return productList;
   }
-
-  // void deleteProduct({
-  //   required BuildContext context,
-  //   required Product product,
-  //   required VoidCallback onSuccess,
-  // }) async {
-  //   final userProvider = Provider.of<UserProvider>(context, listen: false);
-  //
-  //   try {
-  //     http.Response res = await http.post(
-  //       Uri.parse('$uri/admin/delete-product'),
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'accessToken': userProvider.user.token,
-  //       },
-  //       body: jsonEncode({
-  //         'id': product.id,
-  //       }),
-  //     );
-  //
-  //     httpErrorHandle(
-  //       response: res,
-  //       context: context,
-  //       onSuccess: () {
-  //         onSuccess();
-  //       },
-  //     );
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  // }
 
   void deleteProduct({
     required BuildContext context,

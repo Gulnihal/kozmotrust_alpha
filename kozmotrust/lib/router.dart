@@ -1,7 +1,7 @@
+import 'package:kozmotrust/common/widgets/admin_bottom_bar.dart';
 import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/features/account/screens/healthinfo_screen.dart';
 import 'package:kozmotrust/features/account/widgets/search_favorites.dart';
-import 'package:kozmotrust/features/admin/screens/add_product_screen.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
 import 'package:kozmotrust/features/account/screens/account_settings.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
@@ -33,10 +33,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const BottomBar(),
       );
-    case AddProductScreen.routeName:
+    case AdminBottomBar.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => const AddProductScreen(),
+        builder: (_) => const AdminBottomBar(),
       );
     case SearchScreen.routeName:
       var searchQuery = routeSettings.arguments as String;

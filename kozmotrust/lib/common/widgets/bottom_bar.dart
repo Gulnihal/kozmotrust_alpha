@@ -105,7 +105,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             label: '',
           ),
-          // ASK GPT
+          // CAMERA SEARCH
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
