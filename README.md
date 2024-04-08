@@ -1,1 +1,1 @@
-### Kozmotrust server branch
+### Kozmotrust project repo

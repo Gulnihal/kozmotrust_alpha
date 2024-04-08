@@ -1,8 +1,11 @@
-import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:kozmotrust/common/widgets/modal_dialog.dart';
+import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/camsearch/CameraUtils/image_picker_class.dart';
 
 class CameraSearchScreen extends StatefulWidget {
-  const CameraSearchScreen({super.key});
+  const CameraSearchScreen({Key? key}) : super(key: key);
 
   @override
   State<CameraSearchScreen> createState() {
@@ -23,11 +26,50 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
           title: Image.asset('assets/images/logo.png'),
         ),
       ),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
+      body: Center(
         child: Column(
-          children:[
-          ]
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/logo2.png'),
+            SizedBox(height: 20),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
+                onPressed: () {
+                  imagePickerModal(context, onCameraTap: () {
+                    pickImage(source: ImageSource.camera).then((value) {
+                      if (value != '') {
+                        // Handle image picked from camera
+                      }
+                    });
+                  }, onGalleryTap: () {
+                    pickImage(source: ImageSource.gallery).then((value) {
+                      if (value != '') {
+                        // Handle image picked from gallery
+                      }
+                    });
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: Text(
+                    'Scan Your Product',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: GlobalVariables.buttonBackgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  minimumSize: Size(300, 100),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
