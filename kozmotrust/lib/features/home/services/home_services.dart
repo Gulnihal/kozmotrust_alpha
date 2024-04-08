@@ -12,7 +12,7 @@ import 'package:weather/weather.dart';
 
 class HomeServices {
   late String modelWeather = '';
-  late Weather? weatherData = Weather(<String, dynamic> {});
+  late Weather? weatherData = null;
 
   Future<void> fetchWeather() async {
     try {
@@ -28,40 +28,6 @@ class HomeServices {
   }
 
   void getGptAnswer({
-    required BuildContext context,
-    required Weather? weather,
-    required Function(String) onDataReceived, // Callback function to handle the response
-  }) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-
-    try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/gptweather'),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'accessToken': userProvider.user.token,
-        },
-        body: jsonEncode({
-          'weather': weather!,
-        }),
-      );
-
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () async {
-          final Map<String, dynamic> decodedBody = jsonDecode(res.body);
-          String answer = decodedBody['modelAnswer'];
-          onDataReceived(answer);
-          modelWeather = answer;
-        },
-      );
-    } catch (e) {
-      showSnackBar(context, e.toString());
-    }
-  }
-
-  void getGptAnswer2({
     required BuildContext context,
     required Function(String) onDataReceived, // Callback function to handle the response
   }) async {

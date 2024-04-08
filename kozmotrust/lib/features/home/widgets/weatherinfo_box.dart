@@ -20,7 +20,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
   void initState() {
     super.initState();
     homeServices.fetchWeather();
-    homeServices.getGptAnswer2(
+    homeServices.getGptAnswer(
         context: context,
         onDataReceived: (result) {
           setState(() {
@@ -109,7 +109,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
     return Colors.blue;
   }
 
-  Future<void> getWeather() async {
+  Future<void> getWeatherNotes() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: true, // Allow dismissal by tapping outside
@@ -210,7 +210,7 @@ class _WeatherInformationBoxState extends State<WeatherInformationBox> {
                           Icons.note_outlined,
                           color: GlobalVariables.gptIconColor,
                         ),
-                        onPressed: getWeather,
+                        onPressed: getWeatherNotes,
                       ),
                 const SizedBox(height: 10),
               ],
