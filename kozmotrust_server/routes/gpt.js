@@ -75,8 +75,6 @@ gptRouter.post("/api/gptexamine", auth, async (req, res) => {
   }
 );
 
-
-
 gptRouter.post("/api/gptweather", auth, async (req, res) => {
   try {
     const { weather } = req.body;
@@ -121,7 +119,7 @@ gptRouter.post("/api/gptweather", auth, async (req, res) => {
     return (response.choices[0].message.content);
     };
     const modelAnswer = await answer(messages);
-    console.log("oldu ins");
+    console.log(modelAnswer);
     // console.log(res.json({"modelAnswer": modelAnswer}));
     return res.json({"modelAnswer": modelAnswer});
     } catch (e) {
