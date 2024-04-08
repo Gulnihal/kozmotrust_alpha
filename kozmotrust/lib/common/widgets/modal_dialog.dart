@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kozmotrust/constants/global_variables.dart';
 
 void imagePickerModal(BuildContext context, {VoidCallback? onCameraTap, VoidCallback? onGalleryTap}){
   showModalBottomSheet(
@@ -16,7 +17,7 @@ void imagePickerModal(BuildContext context, {VoidCallback? onCameraTap, VoidCall
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(15),
-                decoration: const BoxDecoration(color: Colors.grey),
+                decoration: const BoxDecoration(color: GlobalVariables.buttonBackgroundColor),
                 child: Text(
                   "Camera",
                   style: TextStyle(
@@ -34,7 +35,7 @@ void imagePickerModal(BuildContext context, {VoidCallback? onCameraTap, VoidCall
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(15),
-                decoration: const BoxDecoration(color: Colors.grey),
+                decoration: const BoxDecoration(color: GlobalVariables.buttonBackgroundColor),
                 child: Text(
                   "Gallery",
                   style: TextStyle(
