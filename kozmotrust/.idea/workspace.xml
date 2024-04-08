@@ -12,14 +12,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="unsaved changes">
-      <change afterPath="$PROJECT_DIR$/lib/common/widgets/modal_dialog.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/camsearch/CameraUtils/image_picker_class.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/camsearch/screens/cam_search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    <list default="true" id="7b4dbee5-8fc6-4536-807b-95b178a7fdd8" name="Changes" comment="admin.js fixed">
+      <change afterPath="$PROJECT_DIR$/lib/features/admin/screens/search-edit-delete-product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/screens/admin_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/services/admin_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/widgets/add_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/admin/widgets/add_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/admin/widgets/posts_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../kozmotrust_server/routes/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,8 +133,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "flutter.view.tool.window.visible": "true",
-    "git-widget-placeholder": "Merging issue#38__2",
+    "git-widget-placeholder": "issue#38__2",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/Gulnihal/Desktop/flutter-amazon-clone-tutorial",
@@ -146,6 +149,7 @@
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\admin\screens" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\account\widgets" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\lib\features\account\screens" />
       <recent name="C:\Users\Gulnihal\StudioProjects\kozmotrust_alpha\kozmotrust\assets\images" />
@@ -334,7 +338,47 @@
       <option name="project" value="LOCAL" />
       <updated>1712371497712</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="working with small error">
+      <option name="closed" value="true" />
+      <created>1712541914966</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712541914966</updated>
+    </task>
+    <task id="LOCAL-00023" summary="working with small error">
+      <option name="closed" value="true" />
+      <created>1712543487747</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1712543487747</updated>
+    </task>
+    <task id="LOCAL-00024" summary="admin can add product now">
+      <option name="closed" value="true" />
+      <created>1712560527363</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560527363</updated>
+    </task>
+    <task id="LOCAL-00025" summary="admin can add product now">
+      <option name="closed" value="true" />
+      <created>1712560571022</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560571022</updated>
+    </task>
+    <task id="LOCAL-00026" summary="admin.js fixed">
+      <option name="closed" value="true" />
+      <created>1712560642689</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560642689</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -372,6 +416,9 @@
     <MESSAGE value="product server is functional" />
     <MESSAGE value="ui enhancement" />
     <MESSAGE value="unsaved changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="unsaved changes" />
+    <MESSAGE value="working with small error" />
+    <MESSAGE value="admin can add product now" />
+    <MESSAGE value="admin.js fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin.js fixed" />
   </component>
 </project>

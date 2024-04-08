@@ -73,6 +73,7 @@ app.use(
 );
 
 app.route("/").get((req, res) => res.json("Kozmotrust Server!"));
+// TODO this is temporary option it will be fixed for updating weather with time period
 var modelWeather;
 app.route("/gptweather").get(async (req, res) => res.json({
   "modelAnswer": modelWeather,

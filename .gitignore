@@ -3,3 +3,4 @@ kozmotrust/windows
 kozmotrust_server/.env
 .github/workflows/main.yaml
 kozmotrust/.env
+kozmotrust/assets/.env

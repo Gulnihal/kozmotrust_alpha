@@ -5,8 +5,10 @@ import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:kozmotrust/features/admin/widgets/add_product.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:kozmotrust/features/admin/screens/search-edit-delete-product.dart';
 
 class AdminScreen extends StatefulWidget {
+  static const String routeName = '/admin-screen';
   const AdminScreen({super.key});
 
   @override
@@ -84,8 +86,6 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
           SizedBox(height: MediaQuery.of(context).size.height / 50),
           const AddProduct(),
-          SizedBox(height: MediaQuery.of(context).size.height / 50),
-
           SizedBox(height: MediaQuery.of(context).size.height / 50),
         ],
       ),

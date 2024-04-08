@@ -112,7 +112,7 @@ class _AddProductState extends State<AddProduct> {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.all(10),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height / 3,
+              height: MediaQuery.of(context).size.height / 1.4,
               child: ListView(
                 children: [
                   Row(

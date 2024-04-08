@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class AdminServices {
+
   void addProduct({
     required BuildContext context,
     required description,
@@ -26,7 +27,6 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-
       Product product = Product(
         description: description,
         brand: brand,
@@ -64,47 +64,60 @@ class AdminServices {
     }
   }
 
-  // get all the products
-  Future<List<Product>> fetchAllProducts(BuildContext context) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    List<Product> productList = [];
+  void updateProduct({
+    required BuildContext context,
+    required description,
+    required brand,
+    required name,
+    required ingredients,
+    required category,
+    required combination,
+    required dry,
+    required normal,
+    required oily,
+    required sensitive,
+    required image,
+  }) async {
     try {
-      http.Response res =
-      await http.get(Uri.parse('$uri/admin/get-products'), headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'accessToken': userProvider.user.token,
-      });
-
+      http.Response res = await http.patch(
+        Uri.parse('$uri/admin/edit-product'),
+        body: jsonEncode({
+          'description': description,
+          'brand': brand,
+          'name': name,
+          'ingredients': ingredients,
+          'category': category,
+          'combination': combination,
+          'dry': dry,
+          'normal': normal,
+          'oily': oily,
+          'sensitive': sensitive,
+          'image': image,
+        }),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {
-          for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            productList.add(
-              Product.fromJson(
-                jsonEncode(
-                  jsonDecode(res.body)[i],
-                ),
-              ),
-            );
-          }
+        onSuccess: () async {
+          showSnackBar(context, "Product edited!");
         },
       );
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-    return productList;
   }
 
   void deleteProduct({
     required BuildContext context,
     required Product product,
-    required VoidCallback onSuccess,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      http.Response res = await http.post(
+      http.Response res = await http.delete(
         Uri.parse('$uri/admin/delete-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -119,7 +132,7 @@ class AdminServices {
         response: res,
         context: context,
         onSuccess: () {
-          onSuccess();
+          showSnackBar(context, "Product deleted!");
         },
       );
     } catch (e) {

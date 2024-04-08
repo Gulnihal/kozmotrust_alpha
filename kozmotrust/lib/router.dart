@@ -10,6 +10,7 @@ import 'package:kozmotrust/features/product_details/screens/gpt_examine_screen.d
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
+import 'features/admin/screens/search-edit-delete-product.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -74,6 +75,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const HealthInformationScreen(),
+      );
+    case SearchEditDeleteScreen.routeName:
+      var searchQuery = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SearchEditDeleteScreen(
+          searchQuery: searchQuery,
+        ),
       );
     default:
       return MaterialPageRoute(
