@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kozmotrust/common/widgets/modal_dialog.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:kozmotrust/features/camsearch/CameraUtils/image_cropper_page.dart';
 import 'package:kozmotrust/features/camsearch/CameraUtils/image_picker_class.dart';
+import 'package:kozmotrust/features/camsearch/screens/recognization_page.dart';
 
 class CameraSearchScreen extends StatefulWidget {
   const CameraSearchScreen({Key? key}) : super(key: key);
@@ -39,13 +42,35 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
                   imagePickerModal(context, onCameraTap: () {
                     pickImage(source: ImageSource.camera).then((value) {
                       if (value != '') {
-                        // Handle image picked from camera
+                        imageCropperView(value, context).then((value) {
+                          if(value != ''){
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (_) => RecognizePage(
+                                      path: value,
+                                    ),
+                                ),
+                            );
+                          }
+                        });
                       }
                     });
                   }, onGalleryTap: () {
                     pickImage(source: ImageSource.gallery).then((value) {
                       if (value != '') {
-                        // Handle image picked from gallery
+                        imageCropperView(value, context).then((value) {
+                          if(value != ''){
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (_) => RecognizePage(
+                                  path: value,
+                                ),
+                              ),
+                            );
+                          }
+                        });
                       }
                     });
                   });

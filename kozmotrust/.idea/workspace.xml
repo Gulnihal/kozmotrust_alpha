@@ -78,12 +78,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1712370778" />
+                    <option name="branchName" value="ocrpart2" />
+                    <option name="lastUsedInstant" value="1712594645" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="issue#42" />
-                    <option name="lastUsedInstant" value="1712370577" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1712370778" />
                   </RecentBranch>
                 </list>
               </option>
@@ -133,7 +133,8 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "issue#38__2",
+    "flutter.view.tool.window.visible": "true",
+    "git-widget-placeholder": "Merging issue#38__2",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/Gulnihal/Desktop/flutter-amazon-clone-tutorial",
@@ -338,47 +339,7 @@
       <option name="project" value="LOCAL" />
       <updated>1712371497712</updated>
     </task>
-    <task id="LOCAL-00022" summary="working with small error">
-      <option name="closed" value="true" />
-      <created>1712541914966</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1712541914966</updated>
-    </task>
-    <task id="LOCAL-00023" summary="working with small error">
-      <option name="closed" value="true" />
-      <created>1712543487747</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1712543487747</updated>
-    </task>
-    <task id="LOCAL-00024" summary="admin can add product now">
-      <option name="closed" value="true" />
-      <created>1712560527363</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1712560527363</updated>
-    </task>
-    <task id="LOCAL-00025" summary="admin can add product now">
-      <option name="closed" value="true" />
-      <created>1712560571022</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1712560571022</updated>
-    </task>
-    <task id="LOCAL-00026" summary="admin.js fixed">
-      <option name="closed" value="true" />
-      <created>1712560642689</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1712560642689</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -416,9 +377,6 @@
     <MESSAGE value="product server is functional" />
     <MESSAGE value="ui enhancement" />
     <MESSAGE value="unsaved changes" />
-    <MESSAGE value="working with small error" />
-    <MESSAGE value="admin can add product now" />
-    <MESSAGE value="admin.js fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin.js fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="unsaved changes" />
   </component>
 </project>
