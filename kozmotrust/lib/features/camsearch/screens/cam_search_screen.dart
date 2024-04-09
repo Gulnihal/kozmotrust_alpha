@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kozmotrust/common/widgets/modal_dialog.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+
 import 'package:kozmotrust/features/camsearch/widgets/image_cropper_page.dart';
 import 'package:kozmotrust/features/camsearch/widgets/image_picker_class.dart';
 import 'package:kozmotrust/features/camsearch/screens/recognization_page.dart';
@@ -18,6 +20,42 @@ class CameraSearchScreen extends StatefulWidget {
 }
 
 class _CameraSearchScreenState extends State<CameraSearchScreen> {
+  bool _isBusy = false;
+  String? path;
+  late List<String> searchQueries = [];
+  late InputImage inputImage;
+
+  void processImage(InputImage image) async {
+    final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+
+    setState(() {
+      _isBusy = true;
+    });
+
+    // Processing the image
+    final RecognizedText recognizedText =
+        await textRecognizer.processImage(image);
+
+    // Splitting the recognized text into lines
+    List<String> lines = recognizedText.text.split('\n');
+
+    // Example usage: Assigning the list of strings to a controller or state variable
+    // This is just an example. Adapt it according to your actual needs
+    // For instance, if you have a List<String> in your state to hold the lines
+    searchQueries = lines;
+    print("1 " + searchQueries.toString());
+
+    setState(() {
+      _isBusy = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,11 +87,15 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
                       if (value != '') {
                         imageCropperView(value, context).then((value) {
                           if (value != '') {
+                            path=value;
+                            inputImage = InputImage.fromFilePath(path!);
+                            processImage(inputImage);
                             Navigator.push(
                               context,
                               CupertinoPageRoute(
                                 builder: (_) => RecognizePage(
-                                  path: value,
+                                  isBusy: _isBusy,
+                                  searchQueries: searchQueries,
                                 ),
                               ),
                             );
@@ -66,11 +108,15 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
                       if (value != '') {
                         imageCropperView(value, context).then((value) {
                           if (value != '') {
+                            path=value;
+                            inputImage = InputImage.fromFilePath(path!);
+                            processImage(inputImage);
                             Navigator.push(
                               context,
                               CupertinoPageRoute(
                                 builder: (_) => RecognizePage(
-                                  path: value,
+                                  isBusy: _isBusy,
+                                  searchQueries: searchQueries,
                                 ),
                               ),
                             );

@@ -17,7 +17,7 @@ class CamSearchServices {
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Product> productList = [];
-
+    print("2 "+searchQueries.toString());
     try {
       for (String searchQuery in searchQueries) {
         http.Response res = await http.get(
@@ -47,6 +47,7 @@ class CamSearchServices {
 
         // If productList is not empty, break the loop
         if (productList.isNotEmpty) {
+          print("3 "+productList.toString());
           break;
         }
       }

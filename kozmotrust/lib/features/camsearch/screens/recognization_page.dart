@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:kozmotrust/features/search/widget/searched_product.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
@@ -10,11 +9,10 @@ import 'package:kozmotrust/features/product_details/screens/product_details_scre
 import 'package:kozmotrust/features/camsearch/services/cam_search_services.dart';
 
 class RecognizePage extends StatefulWidget {
-  final String? path;
-  const RecognizePage({
-    super.key,
-    this.path,
-  });
+  final bool isBusy;
+  final List<String> searchQueries;
+  const RecognizePage(
+      {super.key, required this.isBusy, required this.searchQueries});
 
   @override
   State<RecognizePage> createState() => _RecognizePageState();
@@ -23,21 +21,21 @@ class RecognizePage extends StatefulWidget {
 class _RecognizePageState extends State<RecognizePage> {
   bool _isBusy = false;
   List<Product>? products;
-  late List<String> searchQueries;
+
   final CamSearchServices camSearchServices = CamSearchServices();
   TextEditingController controller = TextEditingController();
 
   fetchSearchedProduct() async {
     // Check if there's a search query available
-    if (searchQueries != []) {
+    if (widget.searchQueries != []) {
       // Use the search query to fetch products
       products = await camSearchServices.fetchSearchedProduct(
           context: context,
-          searchQueries: searchQueries); // Use widget.searchQuery directly
+          searchQueries:
+              widget.searchQueries); // Use widget.searchQuery directly
       setState(() {});
     }
   }
-
 
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
@@ -46,8 +44,7 @@ class _RecognizePageState extends State<RecognizePage> {
   @override
   void initState() {
     super.initState();
-    final InputImage inputImage = InputImage.fromFilePath(widget.path!);
-    processImage(inputImage);
+
     fetchSearchedProduct();
   }
 
@@ -133,28 +130,4 @@ class _RecognizePageState extends State<RecognizePage> {
                     ),
     );
   }
-
-  void processImage(InputImage image) async {
-    final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
-
-    setState(() {
-      _isBusy = true;
-    });
-
-    // Processing the image
-    final RecognizedText recognizedText = await textRecognizer.processImage(image);
-
-    // Splitting the recognized text into lines
-    List<String> lines = recognizedText.text.split('\n');
-
-    // Example usage: Assigning the list of strings to a controller or state variable
-    // This is just an example. Adapt it according to your actual needs
-    // For instance, if you have a List<String> in your state to hold the lines
-    searchQueries = lines;
-
-    setState(() {
-      _isBusy = false;
-    });
-  }
-
 }
