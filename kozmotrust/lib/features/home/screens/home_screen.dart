@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:kozmotrust/features/home/widgets/weatherinfo_box.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -15,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       backgroundColor: GlobalVariables.backgroundColor,
@@ -28,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 50), // Added SizedBox for spacing
             Center( // Center the text horizontally
               child: Text(
-                "Welcome ${user.username}!",
+                " ${AppLocalizations.of(context)?.welcome} ${user.username}!",
                 style: const TextStyle(
                   fontSize: 24, // Set the font size to 24
                   fontWeight: FontWeight.bold, // Make the text bold
@@ -99,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           const SizedBox(height: 8), // Add spacing between image and text
-                          const Text(
+                           const Text(
                             'Insights',
                             style: TextStyle(fontSize: 20), // Increase the font size of the text
                           ),

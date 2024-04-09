@@ -55,6 +55,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   google_mlkit_text_recognition: ^0.11.0
   image_cropper: ^5.0.1
+  intl: ^0.18.1
+
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +79,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  generate: true
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
