@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kozmotrust/common/widgets/modal_dialog.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:kozmotrust/features/camsearch/screens/skin_detector.dart';
 
 import 'package:kozmotrust/features/camsearch/widgets/image_cropper_page.dart';
 import 'package:kozmotrust/features/camsearch/widgets/image_picker_class.dart';
@@ -34,7 +35,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
 
     // Processing the image
     final RecognizedText recognizedText =
-        await textRecognizer.processImage(image);
+    await textRecognizer.processImage(image);
 
     // Splitting the recognized text into lines
     List<String> lines = recognizedText.text.split('\n');
@@ -65,98 +66,128 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
       ),
       body: _isBusy
           ? const Center(
-              child:
-                  CircularProgressIndicator()) // Show loading indicator when busy
+          child: CircularProgressIndicator()) // Show loading indicator when busy
           : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 150,
-                  ),
-                  Image.asset('assets/images/logo2.png'),
-                  const Expanded(child: SizedBox()),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        await imagePickerModal(context, onCameraTap: () async {
-                          String? pickedImagePath =
-                              await pickImage(source: ImageSource.camera);
-                          if (pickedImagePath != null &&
-                              pickedImagePath.isNotEmpty) {
-                            String? croppedImagePath = await imageCropperView(
-                                pickedImagePath, context);
-                            if (croppedImagePath != null &&
-                                croppedImagePath.isNotEmpty) {
-                              path = croppedImagePath;
-                              inputImage = InputImage.fromFilePath(path!);
-                              await processImage(inputImage);
-                              if (!mounted) return;
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                  builder: (_) => RecognizePage(
-                                    isBusy: _isBusy,
-                                    searchQueries: searchQueries,
-                                  ),
-                                ),
-                              );
-                            }
-                          }
-                        }, onGalleryTap: () async {
-                          String? pickedImagePath =
-                              await pickImage(source: ImageSource.gallery);
-                          if (pickedImagePath != null &&
-                              pickedImagePath.isNotEmpty) {
-                            String? croppedImagePath = await imageCropperView(
-                                pickedImagePath, context);
-                            if (croppedImagePath != null &&
-                                croppedImagePath.isNotEmpty) {
-                              path = croppedImagePath;
-                              inputImage = InputImage.fromFilePath(path!);
-                              await processImage(inputImage);
-                              if (!mounted) return;
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                  builder: (_) => RecognizePage(
-                                    isBusy: _isBusy,
-                                    searchQueries: searchQueries,
-                                  ),
-                                ),
-                              );
-                            }
-                          }
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: GlobalVariables.buttonBackgroundColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        minimumSize:
-                            Size(MediaQuery.of(context).size.width, 100),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 30),
-                        child: Text(
-                          'Scan Your Product',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize:
-                                  MediaQuery.of(context).size.height / 35),
-                        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 150,
+            ),
+            Image.asset('assets/images/logo2.png'),
+            const Expanded(child: SizedBox()),
+            // New button added here
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (_) => SkinTypeDetectPage(
+                        title: 'Find Your Skin Type',
                       ),
                     ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: GlobalVariables.buttonBackgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  const SizedBox(
-                    height: 100,
+                  minimumSize: Size(MediaQuery.of(context).size.width, 100),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: Text(
+                    'Find Your Skin Type',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height / 35),
                   ),
-                ],
+                ),
               ),
             ),
+            const SizedBox(height: 20), // Space between the buttons
+            // Original button
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
+                onPressed: () async {
+                  await imagePickerModal(context, onCameraTap: () async {
+                    String? pickedImagePath =
+                    await pickImage(source: ImageSource.camera);
+                    if (pickedImagePath != null &&
+                        pickedImagePath.isNotEmpty) {
+                      String? croppedImagePath = await imageCropperView(
+                          pickedImagePath, context);
+                      if (croppedImagePath != null &&
+                          croppedImagePath.isNotEmpty) {
+                        path = croppedImagePath;
+                        inputImage = InputImage.fromFilePath(path!);
+                        await processImage(inputImage);
+                        if (!mounted) return;
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (_) => RecognizePage(
+                              isBusy: _isBusy,
+                              searchQueries: searchQueries,
+                            ),
+                          ),
+                        );
+                      }
+                    }
+                  }, onGalleryTap: () async {
+                    String? pickedImagePath =
+                    await pickImage(source: ImageSource.gallery);
+                    if (pickedImagePath != null &&
+                        pickedImagePath.isNotEmpty) {
+                      String? croppedImagePath = await imageCropperView(
+                          pickedImagePath, context);
+                      if (croppedImagePath != null &&
+                          croppedImagePath.isNotEmpty) {
+                        path = croppedImagePath;
+                        inputImage = InputImage.fromFilePath(path!);
+                        await processImage(inputImage);
+                        if (!mounted) return;
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (_) => RecognizePage(
+                              isBusy: _isBusy,
+                              searchQueries: searchQueries,
+                            ),
+                          ),
+                        );
+                      }
+                    }
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: GlobalVariables.buttonBackgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  minimumSize: Size(MediaQuery.of(context).size.width, 100),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: Text(
+                    'Scan Your Product',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height / 35),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
