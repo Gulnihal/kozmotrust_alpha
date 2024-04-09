@@ -5,11 +5,13 @@ class CustomButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
   final Color? color;
+  final Color? textColor;
   const CustomButton({
     super.key,
     required this.icon,
     required this.text,
     this.color,
+    this.textColor,
     required this.onTap,
   });
 
@@ -26,13 +28,13 @@ class CustomButton extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.white,
+            color: textColor,
           ),
-          const SizedBox(width: 8), // Add spacing between icon and text
+          const SizedBox(width: 8),
           Text(
             text,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: textColor,
             ),
           ),
         ],

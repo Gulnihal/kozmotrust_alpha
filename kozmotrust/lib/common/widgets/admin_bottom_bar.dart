@@ -1,21 +1,26 @@
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/admin/screens/posts_screen.dart';
+import 'package:kozmotrust/features/admin/screens/admin_add_screen.dart';
+import 'package:kozmotrust/features/admin/screens/admin_edit_delete_screen.dart';
+import 'package:kozmotrust/features/insights/screens/blogs.dart';
 import 'package:flutter/material.dart';
 
-class AdminScreen extends StatefulWidget {
-  const AdminScreen({super.key});
+class AdminBottomBar extends StatefulWidget {
+  static const String routeName = '/admin-home';
+  const AdminBottomBar({super.key});
 
   @override
-  State<AdminScreen> createState() => _AdminScreenState();
+  State<AdminBottomBar> createState() => _AdminBottomBarState();
 }
 
-class _AdminScreenState extends State<AdminScreen> {
+class _AdminBottomBarState extends State<AdminBottomBar> {
   int _page = 0;
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-    const PostsScreen(),
+    const AdminAddScreen(),
+    const AdminEditDeleteScreen(searchQuery: ''),
+    const Blogs(url: ''),
   ];
 
   void updatePage(int page) {
@@ -27,42 +32,16 @@ class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Image.asset(
-                  'assets/images/profile.png',
-                  width: 120,
-                  height: 45,
-                  color: Colors.black,
-                ),
-              ),
-              const Text(
-                'Admin',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.primaryColor,
-        unselectedItemColor: GlobalVariables.backgroundColor,
-        backgroundColor: GlobalVariables.backgroundColor,
+        unselectedItemColor: GlobalVariables.primaryColor,
+        backgroundColor: GlobalVariables.secondaryColor,
         iconSize: 28,
         onTap: updatePage,
         items: [
-          // POSTS
+          // ADMIN PRODUCT ADD
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -77,12 +56,12 @@ class _AdminScreenState extends State<AdminScreen> {
                 ),
               ),
               child: const Icon(
-                Icons.home_outlined,
+                Icons.add_circle_outline,
               ),
             ),
             label: '',
           ),
-          // ANALYTICS
+          // ADMIN PRODUCT EDIT-DELETE
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -97,12 +76,12 @@ class _AdminScreenState extends State<AdminScreen> {
                 ),
               ),
               child: const Icon(
-                Icons.analytics_outlined,
+                Icons.edit_attributes_outlined,
               ),
             ),
             label: '',
           ),
-          // ORDERS
+          // ADMIN INSIGHTS
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -117,7 +96,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 ),
               ),
               child: const Icon(
-                Icons.all_inbox_outlined,
+                Icons.bookmark_added_outlined,
               ),
             ),
             label: '',

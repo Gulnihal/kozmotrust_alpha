@@ -4,7 +4,7 @@ const { secretKey } = require("../config");
 
 const admin = async (req, res, next) => {
   try {
-    const token = req.header("accessToken");
+    const token = jwt.token;
     if (!token)
       return res.status(401).json({ msg: "No auth token, access denied" });
 

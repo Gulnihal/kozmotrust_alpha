@@ -1,5 +1,5 @@
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/account/screens/account_screen.dart';
+import 'package:kozmotrust/features/camsearch/widgets/account_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/camsearch/screens/cam_search_screen.dart';
@@ -105,7 +105,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             label: '',
           ),
-          // ASK GPT
+          // CAMERA SEARCH
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,

@@ -1,12 +1,20 @@
+import 'package:kozmotrust/features/admin/services/admin_services.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
 
-class SearchedProduct extends StatelessWidget {
+class AdminSearchedProduct extends StatefulWidget {
   final Product product;
-  const SearchedProduct({
+  const AdminSearchedProduct({
     super.key,
     required this.product,
   });
+  @override
+  State<AdminSearchedProduct> createState() =>
+      _AdminSearchedProductState();
+}
+
+class _AdminSearchedProductState extends State<AdminSearchedProduct> {
+  final AdminServices adminServices = AdminServices();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +44,7 @@ class SearchedProduct extends StatelessWidget {
                       width: 235,
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
-                        product.brand,
+                        widget.product.brand,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.width * 0.04,
@@ -52,7 +60,7 @@ class SearchedProduct extends StatelessWidget {
                       width: 235,
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
-                        product.name,
+                        widget.product.name,
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width * 0.035,
                         ),

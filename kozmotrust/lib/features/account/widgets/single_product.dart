@@ -9,7 +9,7 @@ class SingleProduct extends StatelessWidget {
     super.key,
     this.brand = '',
     this.name = '',
-    this.image = 'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
+    this.image = 'assets/images/sample.png',
   });
 
   @override
@@ -27,8 +27,8 @@ class SingleProduct extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
         child: Row (
           children: [
-            Image.network(
-              'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
+            Image.asset(
+              'assets/images/sample.png',
               fit: BoxFit.fitHeight,
               height: MediaQuery.of(context).size.width/4,
               width: MediaQuery.of(context).size.width/4,

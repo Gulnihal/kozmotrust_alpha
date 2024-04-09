@@ -50,7 +50,7 @@ userRouter.delete("/api/remove-from-favorites", auth, async (req, res) => {
 });
 
 // save user healthinfo
-userRouter.post("/api/save-user-healthinfo", auth, async (req, res) => {
+userRouter.patch("/api/save-user-healthinfo", auth, async (req, res) => {
   try {
     const { healthinfo } = req.body;
     let user = await User.findById(req.user);

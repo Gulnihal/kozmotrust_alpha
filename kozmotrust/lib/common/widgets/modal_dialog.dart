@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 
-void imagePickerModal(BuildContext context, {VoidCallback? onCameraTap, VoidCallback? onGalleryTap}){
+Future<void> imagePickerModal(BuildContext context, {VoidCallback? onCameraTap, VoidCallback? onGalleryTap})async {
   showModalBottomSheet(
     context: context,
     builder: (context) {

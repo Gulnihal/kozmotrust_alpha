@@ -45,6 +45,7 @@ gptRouter.post("/api/gptexamine", auth, async (req, res) => {
         "content": "Your client is going to ask for information about a specific product. "+
         "If you do not recognize the product, you should try to generate an detailed explanation with examining ingredients for it. "+
         "If you know the product, you must answer directly with a detailed explanion like ,effects of each ingredient and if it is suitable for user and etc., for it. "+
+        "If it is same product you can give exactly the same answer which you have give before."+
         "If you are done, then you can end the conversation.",
     },
     {
@@ -96,6 +97,7 @@ gptRouter.post("/api/gptweather", auth, async (req, res) => {
         "role": "system",
         "content": "Your client is going to ask for information about a weather status. "+
         "You can give general summerize with couple of sentences and warn people if a warning neccessary."+
+        "If it is same weather status you can give exactly the same answer which you have give before."+
         "If you are done, then you can end the conversation.",
     },
     {
@@ -120,7 +122,61 @@ gptRouter.post("/api/gptweather", auth, async (req, res) => {
     };
     const modelAnswer = await answer(messages);
     console.log(modelAnswer);
-    // console.log(res.json({"modelAnswer": modelAnswer}));
+    return res.json({"modelAnswer": modelAnswer});
+    } catch (e) {
+      return res.status(500).json({ error: e.message });
+    }
+  }
+);
+
+gptRouter.post("/api/gptsuggestions", auth, async (req, res) => {
+  try {
+    const { extractedProduct } = req.body;
+
+    // Fine tuning with using the completions API for extracted text from an image
+    const prompt = "I will provide you with an extracted text from a cosmetic product image via google_mlkit_text_recognition tool for flutter. "+
+    "Based on the given text and that text could have some typos, you should correct them if it is possşble for you."+
+    "You will give specific information about that cosmetic product. "+
+    "You can give general summerize with couple of sentences and give other similar examples of products if you have knowledge about it.";
+
+    const fullPrompt = `${prompt}\nExtracted Product: ${JSON.stringify(extractedProduct)}`;
+
+    var messages = [
+    {
+        "role": "system",
+        "content": "You are an experienced cosmetic shop assistant that helps people by suggesting detailed explanation about cosmetic products. "+
+        "You can also provide tips and tricks for the product which your customer seeking for."+
+        "Yo can also give other examples of similar products of the given product.",
+    },
+    {
+        "role": "system",
+        "content": "Your client is going to ask for information about a product which is searched. "+
+        "You can give general summerize with couple of sentences and give other examples of similar products of the given product."+
+        "If it is same product you can give exactly the same answer which you have give before. You don't have to ask text if there is no extracted text."+
+        "If you are done, then you can end the conversation.",
+    },
+    {
+        "role": "user",
+        "content": fullPrompt
+    },
+    ];
+
+    const answer = async (messages) => {
+    const response = await client.chat.completions
+    .create({
+        model: "gpt-4-0125-preview",
+        messages: messages,
+        temperature: 1.00,
+        max_tokens: 4096,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+        });
+        
+    return (response.choices[0].message.content);
+    };
+    const modelAnswer = await answer(messages);
+    console.log(modelAnswer);
     return res.json({"modelAnswer": modelAnswer});
     } catch (e) {
       return res.status(500).json({ error: e.message });

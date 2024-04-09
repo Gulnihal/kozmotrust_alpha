@@ -88,6 +88,7 @@ flutter:
     - assets/images/logo2.png
     - assets/images/profile.png
     - assets/images/google.png
+    - assets/images/sample.png
     - locales/en.json
     - locales/tr.json
 

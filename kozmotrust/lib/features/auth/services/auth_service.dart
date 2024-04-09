@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:kozmotrust/common/widgets/admin_bottom_bar.dart';
 import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/constants/error_handling.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
@@ -81,10 +82,14 @@ class AuthService {
           prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           // print(res.body);
-          await prefs.setString('accessToken', jsonDecode(res.body)['accessToken']);
+          await prefs.setString(
+              'accessToken', jsonDecode(res.body)['accessToken']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            BottomBar.routeName,
+            Provider.of<UserProvider>(context, listen: false).user.type ==
+                    'user'
+                ? BottomBar.routeName
+                : AdminBottomBar.routeName,
             (route) => false,
           );
         },
