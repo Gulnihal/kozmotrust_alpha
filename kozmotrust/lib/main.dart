@@ -10,7 +10,7 @@ import 'package:kozmotrust/common/widgets/bottom_bar.dart';
 import 'package:kozmotrust/features/auth/services/auth_service.dart';
 import 'package:kozmotrust/router.dart';
 import 'constants/global_variables.dart';
-import 'localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   runApp(MultiProvider(providers: [
