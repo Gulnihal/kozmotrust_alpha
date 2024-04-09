@@ -8,9 +8,11 @@ import 'package:kozmotrust/features/account/screens/account_settings.dart';
 import 'package:kozmotrust/features/camsearch/screens/cam_search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/admin/screens/admin_edit_delete_screen.dart';
+import 'package:kozmotrust/features/insights/screens/single_blog_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/product_details/screens/gpt_examine_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
+import 'package:kozmotrust/features/insights/screens/blogs_screen.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -90,6 +92,23 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const HealthInformationScreen(),
+      );
+    case BlogsScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const BlogsScreen(),
+      );
+    case SingleBlogScreen.routeName:
+      var title = routeSettings.arguments as String;
+      var image = routeSettings.arguments as String;
+      var body = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SingleBlogScreen(
+          title: title,
+          image: image,
+          body: body,
+        ),
       );
     case UpdateDeleteProductScreen.routeName:
       var product = routeSettings.arguments as Product;

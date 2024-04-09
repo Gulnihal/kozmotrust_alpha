@@ -1,7 +1,7 @@
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/admin/screens/admin_add_screen.dart';
 import 'package:kozmotrust/features/admin/screens/admin_edit_delete_screen.dart';
-import 'package:kozmotrust/features/insights/screens/blogs.dart';
+import 'package:kozmotrust/features/insights/screens/blogs_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminBottomBar extends StatefulWidget {

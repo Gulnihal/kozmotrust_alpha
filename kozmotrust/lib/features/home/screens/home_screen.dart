@@ -55,22 +55,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(10), // Set border radius to 10
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           Expanded(
-                            child: Image.asset(
-                              'assets/images/profile.png',
-                              fit: BoxFit.contain, // Make the image fit within the button
-                            ),
+                            child: Icon(Icons.book)
                           ),
-                          const SizedBox(height: 8), // Add spacing between image and text
-                          const Text(
+                          SizedBox(height: 8), // Add spacing between image and text
+                          Text(
                             'Insights',
                             style: TextStyle(fontSize: 20), // Increase the font size of the text
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                         ],
                       ),
                     ),

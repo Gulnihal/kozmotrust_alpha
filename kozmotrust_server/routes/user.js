@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const auth = require("../middlewares/auth");
 const { Product } = require("../models/product");
 const User = require("../models/user");
+const Blog = require("../models/blog");
 
 userRouter.post("/api/add-to-favorites", auth, async (req, res) => {
   try {
@@ -44,6 +45,16 @@ userRouter.delete("/api/remove-from-favorites", auth, async (req, res) => {
     }
     user = await user.save();
     res.json(user);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// get blogs
+userRouter.get("/api/blogs", auth, async (req, res) => {
+  try {
+    const blogs = await Blog.find({ title: req.query.title });
+    res.json(blogs);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

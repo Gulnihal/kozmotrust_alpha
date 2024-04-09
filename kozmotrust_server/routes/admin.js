@@ -2,6 +2,24 @@ const express = require("express");
 const adminRouter = express.Router();
 const admin = require("../middlewares/admin");
 const { Product } = require("../models/product");
+const Blog = require("../models/blog");
+
+// Add blog
+adminRouter.post("/admin/add-blog", admin, async (req, res) => {
+  try {
+    const { title, image, body } = req.body;
+    let blog = new Blog({
+      title,
+      image,
+      body,
+    });
+    blog = await blog.save();
+    res.json(blog);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // Add product
 adminRouter.post("/admin/add-product", admin, async (req, res) => {
   try {
@@ -57,7 +75,6 @@ adminRouter.patch("/admin/edit-product", admin, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
-
 
 // Delete the product
 adminRouter.delete("/admin/delete-product", admin, async (req, res) => {

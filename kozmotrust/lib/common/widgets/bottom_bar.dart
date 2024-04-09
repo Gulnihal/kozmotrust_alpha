@@ -3,7 +3,7 @@ import 'package:kozmotrust/features/camsearch/widgets/account_screen.dart';
 import 'package:kozmotrust/features/search/screens/search_screen.dart';
 import 'package:kozmotrust/features/home/screens/home_screen.dart';
 import 'package:kozmotrust/features/camsearch/screens/cam_search_screen.dart';
-import 'package:kozmotrust/features/insights/screens/blogs.dart';
+import 'package:kozmotrust/features/insights/screens/blogs_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
