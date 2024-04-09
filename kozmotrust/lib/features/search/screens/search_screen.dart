@@ -110,15 +110,9 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: products == null
           ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: Image.asset('assets/images/logo2.png'),
-                  ),
-                  const Loader(),
-                ],
+              child:  SizedBox(
+                height: MediaQuery.of(context).size.height / 3,
+                child: Image.asset('assets/images/logo2.png'),
               ),
             )
           : products!.isEmpty

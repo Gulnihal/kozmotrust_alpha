@@ -17,7 +17,6 @@ class CamSearchServices {
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Product> productList = [];
-    print("2 "+searchQueries.toString());
     try {
       for (String searchQuery in searchQueries) {
         http.Response res = await http.get(
@@ -47,7 +46,6 @@ class CamSearchServices {
 
         // If productList is not empty, break the loop
         if (productList.isNotEmpty) {
-          print("3 "+productList.toString());
           break;
         }
       }
@@ -58,41 +56,37 @@ class CamSearchServices {
     return productList;
   }
 
-
-  Future<List<Product>> fetchSearchedFavoriteProduct({
+  void getGptAnswer({
     required BuildContext context,
-    required String searchQuery,
+    required List<String> extractedProduct,
+    required Function(String) onDataReceived, // Callback function to handle the response
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    List<Product> productList = [];
+
     try {
-      http.Response res = await http.get(
-        Uri.parse('$uri/api/user/favorites/search/$searchQuery'),
+      http.Response res = await http.post(
+        Uri.parse('$uri/api/gptsuggestions'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'accessToken': userProvider.user.token,
         },
+        body: jsonEncode({
+          'extractedProduct': extractedProduct,
+        }),
       );
 
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {
-          for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            productList.add(
-              Product.fromJson(
-                jsonEncode(
-                  jsonDecode(res.body)[i],
-                ),
-              ),
-            );
-          }
+        onSuccess: () async {
+          final Map<String, dynamic> decodedBody = jsonDecode(res.body);
+          String answer = decodedBody['modelAnswer'];
+          onDataReceived(answer); // Pass the answer to the callback function
         },
       );
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-    print(productList);
-    return productList;
   }
+
 }

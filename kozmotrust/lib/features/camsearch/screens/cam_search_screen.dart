@@ -25,7 +25,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
   late List<String> searchQueries = [];
   late InputImage inputImage;
 
-  void processImage(InputImage image) async {
+  Future<void> processImage(InputImage image) async {
     final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
 
     setState(() {
@@ -38,12 +38,7 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
 
     // Splitting the recognized text into lines
     List<String> lines = recognizedText.text.split('\n');
-
-    // Example usage: Assigning the list of strings to a controller or state variable
-    // This is just an example. Adapt it according to your actual needs
-    // For instance, if you have a List<String> in your state to hold the lines
     searchQueries = lines;
-    print("1 " + searchQueries.toString());
 
     setState(() {
       _isBusy = false;
@@ -53,7 +48,6 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -69,88 +63,100 @@ class _CameraSearchScreenState extends State<CameraSearchScreen> {
         centerTitle: true,
         title: Image.asset('assets/images/logo.png'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 150,
-            ),
-            Image.asset('assets/images/logo2.png'),
-            const Expanded(child: SizedBox()),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  imagePickerModal(context, onCameraTap: () {
-                    pickImage(source: ImageSource.camera).then((value) {
-                      if (value != '') {
-                        imageCropperView(value, context).then((value) {
-                          if (value != '') {
-                            path=value;
-                            inputImage = InputImage.fromFilePath(path!);
-                            processImage(inputImage);
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (_) => RecognizePage(
-                                  isBusy: _isBusy,
-                                  searchQueries: searchQueries,
+      body: _isBusy
+          ? const Center(
+              child:
+                  CircularProgressIndicator()) // Show loading indicator when busy
+          : Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 150,
+                  ),
+                  Image.asset('assets/images/logo2.png'),
+                  const Expanded(child: SizedBox()),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        await imagePickerModal(context, onCameraTap: () async {
+                          String? pickedImagePath =
+                              await pickImage(source: ImageSource.camera);
+                          if (pickedImagePath != null &&
+                              pickedImagePath.isNotEmpty) {
+                            String? croppedImagePath = await imageCropperView(
+                                pickedImagePath, context);
+                            if (croppedImagePath != null &&
+                                croppedImagePath.isNotEmpty) {
+                              path = croppedImagePath;
+                              inputImage = InputImage.fromFilePath(path!);
+                              await processImage(inputImage);
+                              if (!mounted) return;
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (_) => RecognizePage(
+                                    isBusy: _isBusy,
+                                    searchQueries: searchQueries,
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
+                          }
+                        }, onGalleryTap: () async {
+                          String? pickedImagePath =
+                              await pickImage(source: ImageSource.gallery);
+                          if (pickedImagePath != null &&
+                              pickedImagePath.isNotEmpty) {
+                            String? croppedImagePath = await imageCropperView(
+                                pickedImagePath, context);
+                            if (croppedImagePath != null &&
+                                croppedImagePath.isNotEmpty) {
+                              path = croppedImagePath;
+                              inputImage = InputImage.fromFilePath(path!);
+                              await processImage(inputImage);
+                              if (!mounted) return;
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (_) => RecognizePage(
+                                    isBusy: _isBusy,
+                                    searchQueries: searchQueries,
+                                  ),
+                                ),
+                              );
+                            }
                           }
                         });
-                      }
-                    });
-                  }, onGalleryTap: () {
-                    pickImage(source: ImageSource.gallery).then((value) {
-                      if (value != '') {
-                        imageCropperView(value, context).then((value) {
-                          if (value != '') {
-                            path=value;
-                            inputImage = InputImage.fromFilePath(path!);
-                            processImage(inputImage);
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (_) => RecognizePage(
-                                  isBusy: _isBusy,
-                                  searchQueries: searchQueries,
-                                ),
-                              ),
-                            );
-                          }
-                        });
-                      }
-                    });
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: GlobalVariables.buttonBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: GlobalVariables.buttonBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width, 100),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 30),
+                        child: Text(
+                          'Scan Your Product',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).size.height / 35),
+                        ),
+                      ),
+                    ),
                   ),
-                  minimumSize: Size(MediaQuery.of(context).size.width, 100),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                  child: Text(
-                    'Scan Your Product',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height / 35),
+                  const SizedBox(
+                    height: 100,
                   ),
-                ),
+                ],
               ),
             ),
-            const SizedBox(
-              height: 100,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

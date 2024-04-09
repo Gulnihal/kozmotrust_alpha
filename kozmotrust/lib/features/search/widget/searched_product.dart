@@ -24,8 +24,8 @@ class SearchedProduct extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               children: [
-                Image.network(
-                  product.image,
+                Image.asset(
+                  'assets/images/sample.png',
                   fit: BoxFit.contain,
                   height: 135,
                   width: 135,

@@ -107,8 +107,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Row(
                 children: [
-                  Image.network(
-                    'https://4.imimg.com/data4/OR/CH/MY-24500503/catageroy-1-500x500.jpg',
+                  Image.asset(
+                    'assets/images/sample.png',
                     fit: BoxFit.fitHeight,
                     height: MediaQuery.of(context).size.width / 4,
                     width: MediaQuery.of(context).size.width / 4,
@@ -249,7 +249,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         SizedBox(width: MediaQuery.of(context).size.width / 10),
                         RichText(
                           text: TextSpan(
-                            text: "Health Ministry Approval: ",
+                            text: "Has health ministry approval: ",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:

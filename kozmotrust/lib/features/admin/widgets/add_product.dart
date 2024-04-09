@@ -31,8 +31,8 @@ class _AddProductState extends State<AddProduct> {
   String category = 'Skin Care';
 
   String? path;
-  String defaultPath = 'assets/images/productsample.png';
-  File? pimage = File('assets/images/productsample.png');
+  String defaultPath = 'assets/images/sample.png';
+  File? pimage = File('assets/images/sample.png');
 
   final _addProductFormKey = GlobalKey<FormState>();
 
