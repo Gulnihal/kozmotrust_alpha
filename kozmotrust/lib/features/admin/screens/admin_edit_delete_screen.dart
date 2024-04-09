@@ -1,25 +1,25 @@
-import 'package:kozmotrust/common/widgets/loader.dart';
+import 'package:kozmotrust/features/admin/screens/update_delete_product_screen.dart';
 import 'package:kozmotrust/features/admin/services/admin_services.dart';
+import 'package:kozmotrust/features/admin/widgets/admin_searched_product.dart';
 import 'package:kozmotrust/features/search/services/search_services.dart';
 import 'package:kozmotrust/models/product.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/search/widget/searched_product.dart';
 import 'package:flutter/material.dart';
 
-class SearchEditDeleteScreen extends StatefulWidget {
+class AdminEditDeleteScreen extends StatefulWidget {
   static const String routeName = '/search-edit-delete-screen';
   final String searchQuery;
-  const SearchEditDeleteScreen({
+  const AdminEditDeleteScreen({
     super.key,
     required this.searchQuery,
   });
 
   @override
-  State<SearchEditDeleteScreen> createState() =>
-      _SearchEditDeleteScreenState();
+  State<AdminEditDeleteScreen> createState() =>
+      _AdminEditDeleteScreenState();
 }
 
-class _SearchEditDeleteScreenState extends State<SearchEditDeleteScreen> {
+class _AdminEditDeleteScreenState extends State<AdminEditDeleteScreen> {
   List<Product>? products;
   final AdminServices adminServices = AdminServices();
   final SearchServices searchServices = SearchServices();
@@ -38,7 +38,7 @@ class _SearchEditDeleteScreenState extends State<SearchEditDeleteScreen> {
     }
   }
   void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchEditDeleteScreen.routeName, arguments: query);
+    Navigator.pushNamed(context, AdminEditDeleteScreen.routeName, arguments: query);
   }
 
   @override
@@ -118,7 +118,6 @@ class _SearchEditDeleteScreenState extends State<SearchEditDeleteScreen> {
               height: MediaQuery.of(context).size.height / 3,
               child: Image.asset('assets/images/logo2.png'),
             ),
-            const Loader(),
           ],
         ),
       )
@@ -156,9 +155,13 @@ class _SearchEditDeleteScreenState extends State<SearchEditDeleteScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    //TODO
+                    Navigator.pushNamed(
+                      context,
+                      UpdateDeleteProductScreen.routeName,
+                      arguments: products![index],
+                    );
                   },
-                  child: SearchedProduct(
+                  child: AdminSearchedProduct(
                     product: products![index],
                   ),
                 );

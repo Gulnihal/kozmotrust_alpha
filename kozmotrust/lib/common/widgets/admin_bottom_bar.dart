@@ -1,5 +1,6 @@
 import 'package:kozmotrust/constants/global_variables.dart';
-import 'package:kozmotrust/features/admin/screens/admin_screen.dart';
+import 'package:kozmotrust/features/admin/screens/admin_add_screen.dart';
+import 'package:kozmotrust/features/admin/screens/admin_edit_delete_screen.dart';
 import 'package:kozmotrust/features/insights/screens/blogs.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,8 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-    const AdminScreen(),
+    const AdminAddScreen(),
+    const AdminEditDeleteScreen(searchQuery: ''),
     const Blogs(url: ''),
   ];
 
@@ -39,7 +41,7 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
         iconSize: 28,
         onTap: updatePage,
         items: [
-          // ADMIN
+          // ADMIN PRODUCT ADD
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -54,12 +56,12 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
                 ),
               ),
               child: const Icon(
-                Icons.person_outline_outlined,
+                Icons.add_circle_outline,
               ),
             ),
             label: '',
           ),
-          // INSIGHTS
+          // ADMIN PRODUCT EDIT-DELETE
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -74,7 +76,27 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
                 ),
               ),
               child: const Icon(
-                Icons.book_outlined,
+                Icons.edit_attributes_outlined,
+              ),
+            ),
+            label: '',
+          ),
+          // ADMIN INSIGHTS
+          BottomNavigationBarItem(
+            icon: Container(
+              width: bottomBarWidth,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: _page == 2
+                        ? GlobalVariables.primaryColor
+                        : GlobalVariables.backgroundColor,
+                    width: bottomBarBorderWidth,
+                  ),
+                ),
+              ),
+              child: const Icon(
+                Icons.bookmark_added_outlined,
               ),
             ),
             label: '',

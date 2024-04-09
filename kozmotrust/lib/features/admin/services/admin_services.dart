@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class AdminServices {
 
-  void addProduct({
+  Future<void> addProduct({
     required BuildContext context,
     required description,
     required brand,
@@ -27,30 +27,26 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      Product product = Product(
-        description: description,
-        brand: brand,
-        name: name,
-        image: image,
-        ingredients: ingredients,
-        category: category,
-        combination: combination,
-        dry: dry,
-        normal: normal,
-        oily: oily,
-        sensitive: sensitive,
-        rating: [],
-      );
-
       http.Response res = await http.post(
         Uri.parse('$uri/admin/add-product'),
+        body: jsonEncode({
+          'description': description,
+          'brand': brand,
+          'name': name,
+          'ingredients': ingredients,
+          'category': category,
+          'combination': combination,
+          'dry': dry,
+          'normal': normal,
+          'oily': oily,
+          'sensitive': sensitive,
+          'image': image,
+        }),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'accessToken': userProvider.user.token,
         },
-        body: product.toJson(),
       );
-
       httpErrorHandle(
         response: res,
         context: context,
@@ -60,12 +56,12 @@ class AdminServices {
       );
     } catch (e) {
       showSnackBar(context, e.toString());
-      print(e.toString());
     }
   }
 
-  void updateProduct({
+  Future<void> updateProduct({
     required BuildContext context,
+    required Product product,
     required description,
     required brand,
     required name,
@@ -78,10 +74,13 @@ class AdminServices {
     required sensitive,
     required image,
   }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
     try {
       http.Response res = await http.patch(
         Uri.parse('$uri/admin/edit-product'),
         body: jsonEncode({
+          'id': product.id,
           'description': description,
           'brand': brand,
           'name': name,
@@ -96,6 +95,7 @@ class AdminServices {
         }),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'accessToken': userProvider.user.token,
         },
       );
       httpErrorHandle(
@@ -110,7 +110,7 @@ class AdminServices {
     }
   }
 
-  void deleteProduct({
+  Future<void> deleteProduct({
     required BuildContext context,
     required Product product,
   }) async {
@@ -132,6 +132,7 @@ class AdminServices {
         response: res,
         context: context,
         onSuccess: () {
+          Navigator.of(context).pop(true);
           showSnackBar(context, "Product deleted!");
         },
       );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kozmotrust/common/widgets/admin_bottom_bar.dart';
-import 'package:kozmotrust/features/admin/screens/admin_screen.dart';
+import 'package:kozmotrust/features/admin/screens/admin_add_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:kozmotrust/features/auth/screens/auth_screen.dart';
@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                     : const AdminBottomBar()
                 : userProvider.user.type == 'user'
                     ? const HomeScreen()
-                    : const AdminScreen();
+                    : const AdminAddScreen();
           }
         },
       ),

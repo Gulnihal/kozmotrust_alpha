@@ -18,7 +18,6 @@ adminRouter.post("/admin/add-product", admin, async (req, res) => {
       normal,
       oily,
       sensitive,
-      ratings
     });
     product = await product.save();
     res.json(product);

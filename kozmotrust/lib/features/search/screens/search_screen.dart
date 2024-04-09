@@ -1,4 +1,3 @@
-import 'package:kozmotrust/common/widgets/loader.dart';
 import 'package:kozmotrust/constants/global_variables.dart';
 import 'package:kozmotrust/features/product_details/screens/product_details_screen.dart';
 import 'package:kozmotrust/features/search/services/search_services.dart';

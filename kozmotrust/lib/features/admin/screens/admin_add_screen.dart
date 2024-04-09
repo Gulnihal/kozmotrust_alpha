@@ -5,17 +5,16 @@ import 'package:kozmotrust/features/account/services/account_services.dart';
 import 'package:kozmotrust/features/admin/widgets/add_product.dart';
 import 'package:kozmotrust/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:kozmotrust/features/admin/screens/search-edit-delete-product.dart';
 
-class AdminScreen extends StatefulWidget {
+class AdminAddScreen extends StatefulWidget {
   static const String routeName = '/admin-screen';
-  const AdminScreen({super.key});
+  const AdminAddScreen({super.key});
 
   @override
-  State<AdminScreen> createState() => _AdminScreenState();
+  State<AdminAddScreen> createState() => _AdminAddScreenState();
 }
 
-class _AdminScreenState extends State<AdminScreen> {
+class _AdminAddScreenState extends State<AdminAddScreen> {
   void navigateToAccountSettings() {
     Navigator.pushNamed(context, AccountSettings.routeName);
   }

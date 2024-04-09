@@ -84,7 +84,7 @@ class AccountServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      http.Response res = await http.post(
+      http.Response res = await http.patch(
         Uri.parse('$uri/api/save-user-healthinfo'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
