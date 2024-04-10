@@ -56,6 +56,8 @@ dependencies:
   google_mlkit_text_recognition: ^0.11.0
   image_cropper: ^5.0.1
   intl: ^0.18.1
+  path_provider: ^2.1.2
+  flutter_gen: ^5.4.0
 
 
 dev_dependencies:

@@ -24,7 +24,7 @@ class _BottomBarState extends State<BottomBar> {
     const AccountScreen(),
     const SearchScreen(searchQuery: '',),
     const CameraSearchScreen(),
-    const Blogs(url: ''),
+    const BlogsScreen(),
   ];
 
   void updatePage(int page) {

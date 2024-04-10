@@ -76,7 +76,7 @@ class _AddProductState extends State<AddProduct> {
 
   Future<String> saveImageAndGetPath(File imageFile) async {
     final fileName =
-        '${productBrandController.text}"_"${productNameController.text}.png';
+        '${productBrandController.text}_${productNameController.text}.png';
     final savedImage = await imageFile.copy('kozmotrust/assets/images/$fileName');
     return savedImage.path;
   }
@@ -245,6 +245,7 @@ class _AddProductState extends State<AddProduct> {
                               ],
                             ),
                             const SizedBox(height: 10),
+                            // TODO image pick should be fixed
                             Container(
                               // Wrap DropdownButton with Container
                               decoration: BoxDecoration(

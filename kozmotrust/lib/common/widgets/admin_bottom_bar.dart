@@ -20,7 +20,7 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
   List<Widget> pages = [
     const AdminAddScreen(),
     const AdminEditDeleteScreen(searchQuery: ''),
-    const Blogs(url: ''),
+    const BlogsScreen(),
   ];
 
   void updatePage(int page) {
