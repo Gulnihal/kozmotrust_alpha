@@ -25,5 +25,5 @@ Discover the future of personalized skincare with Kozmotrust – the only app yo
 * A growing library of informative articles to support your skincare journey.
 * A dynamic and user-friendly interface for both casual users and administrators.
 
-Join the Kozmotrust today for free and transform the way you care for your skin. Experience a personalized skincare journey that adapts to your life, powered by the latest in AI technology.
+Join the Kozmotrust today and transform the way you care for your skin. Experience a personalized skincare journey that adapts to your life, powered by the latest in AI technology.
 
